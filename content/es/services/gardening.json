@@ -1,0 +1,29 @@
+{
+  "title": "Jardinería y mantenimiento de patios | Rosa's Sparkling Cleaning",
+  "metaDescription": "Cuidado de césped, poda de setos y limpieza de patio para que el atractivo exterior no decaiga en propiedades en venta o vacías en Ocala, Tampa y Spring Hill, FL.",
+  "h1": "El atractivo exterior es la primera muestra, aunque nadie esté mirando.",
+  "kicker": "Jardinería",
+  "intro": "Un jardín descuidado es la primera señal de que una propiedad lleva tiempo vacía. Mantenemos el césped cortado, los setos con forma y los canteros limpios para que el exterior esté a la altura del trabajo que se hace adentro.",
+  "heroImage": "service-landscaping.webp",
+  "heroImageAlt": "Un jardinero podando un seto bien cuidado en el jardín delantero de una casa",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, me gustaría preguntar por su servicio de jardinería",
+  "relatedPages": ["services/cleaning", "services/painting", "services/management"],
+  "sections": [
+    {
+      "heading": "Qué incluye",
+      "body": "Una visita típica cubre:",
+      "items": ["Corte, bordeado y soplado", "Poda de setos y arbustos", "Deshierbe y limpieza de canteros", "Revisión de riego y plantas muertas"]
+    },
+    {
+      "heading": "Para quién es",
+      "body": "Propiedades vacías que necesitan un calendario recurrente para que el jardín no delate que no hay nadie, y vendedores que quieren el exterior listo para las fotos."
+    }
+  ],
+  "evidence": {
+    "heading": "Mira la diferencia",
+    "image": "evidence-landscaping.webp",
+    "alt": "Comparación de antes y después de un jardín delantero: césped disparejo y crecido con setos sin podar a la izquierda, césped verde y prolijo con setos podados y canteros con mantillo a la derecha",
+    "caption": "El mismo jardín, una sola visita &mdash; el tipo de fachada que sí llama la atención."
+  }
+}

@@ -6,7 +6,7 @@
   "intro": "En vez de contratar por separado limpieza, pintura, mantenimiento y jardinería, el equipo de Rosa's cubre toda la lista &mdash; recurrente o de una sola vez.",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría preguntar sobre sus servicios adicionales",
-  "relatedPages": ["vacant-home"],
+  "relatedPages": ["services/cleaning", "services/painting", "services/management", "services/gardening"],
   "sections": [
     {
       "heading": "Limpieza",

@@ -44,6 +44,10 @@ module.exports = {
     { id: 'services/pre-sale', slug: 'services/pre-sale' },
     { id: 'services/post-sale', slug: 'services/post-sale' },
     { id: 'services/additional', slug: 'services/additional' },
+    { id: 'services/cleaning', slug: 'services/cleaning' },
+    { id: 'services/painting', slug: 'services/painting' },
+    { id: 'services/management', slug: 'services/management' },
+    { id: 'services/gardening', slug: 'services/gardening' },
     { id: 'areas/ocala', slug: 'areas/ocala' },
     { id: 'areas/tampa', slug: 'areas/tampa' },
     { id: 'areas/spring-hill', slug: 'areas/spring-hill' }

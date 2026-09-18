@@ -1,0 +1,29 @@
+{
+  "title": "Property Management & Repairs | Rosa's Sparkling Cleaning",
+  "metaDescription": "Recurring visits, minor repairs and maintenance oversight for vacant or listed properties in Ocala, Tampa and Spring Hill, FL &mdash; one point of contact instead of five.",
+  "h1": "Someone should be checking on it. Let it be us.",
+  "kicker": "Management",
+  "intro": "A vacant or listed property needs eyes on it &mdash; a loose cabinet door, a leak, a package left on the porch. We do recurring walkthroughs and handle the small repairs ourselves instead of just emailing you a list.",
+  "heroImage": "service-fixing.webp",
+  "heroImageAlt": "A handyman installing a kitchen cabinet drawer with a power drill",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'd like to ask about your property management service",
+  "relatedPages": ["services/cleaning", "services/painting", "services/gardening"],
+  "sections": [
+    {
+      "heading": "What's included",
+      "body": "A typical management visit covers:",
+      "items": ["Scheduled walkthroughs on the cadence you choose", "Minor repairs: cabinets, fixtures, hardware", "Coordinating trades for bigger fixes", "A photo report after every visit"]
+    },
+    {
+      "heading": "Who it's for",
+      "body": "Out-of-town owners, agents managing a vacant listing, and anyone who'd rather get a photo report than a surprise phone call."
+    }
+  ],
+  "evidence": {
+    "heading": "See the difference",
+    "image": "evidence-repair.webp",
+    "alt": "Before and after comparison of a kitchen: cabinet doors hanging open and damaged on the left, cabinets repaired and closed with the counter cleared on the right",
+    "caption": "Same kitchen, caught early &mdash; nothing left to surprise a buyer's inspector."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Gardening & Yard Maintenance | Rosa's Sparkling Cleaning",
+  "metaDescription": "Lawn care, hedge trimming and yard cleanup that keeps curb appeal from lapsing on listed and vacant properties in Ocala, Tampa and Spring Hill, FL.",
+  "h1": "Curb appeal is the first showing, whether anyone's watching or not.",
+  "kicker": "Gardening",
+  "intro": "An overgrown yard is the first sign a property's been sitting empty. We keep lawns cut, hedges shaped and beds cleared so the outside matches the work happening inside.",
+  "heroImage": "service-landscaping.webp",
+  "heroImageAlt": "A landscaper trimming a manicured hedge in a home's front yard",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'd like to ask about your gardening service",
+  "relatedPages": ["services/cleaning", "services/painting", "services/management"],
+  "sections": [
+    {
+      "heading": "What's included",
+      "body": "A typical visit covers:",
+      "items": ["Mowing, edging and blowing", "Hedge and shrub trimming", "Weeding and bed cleanup", "Irrigation and dead-plant check"]
+    },
+    {
+      "heading": "Who it's for",
+      "body": "Vacant properties that need a recurring schedule so the yard never gives away that no one's home, and sellers who want the exterior photo-ready."
+    }
+  ],
+  "evidence": {
+    "heading": "See the difference",
+    "image": "evidence-landscaping.webp",
+    "alt": "Before and after comparison of a front yard: overgrown patchy grass and untrimmed hedges on the left, a manicured green lawn with trimmed hedges and mulched beds on the right",
+    "caption": "Same yard, one visit &mdash; the kind of curb appeal that gets a second look."
+  }
+}

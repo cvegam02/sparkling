@@ -4,6 +4,7 @@
   "private": true,
   "description": "Static marketing site for Rosa's Sparkling Cleaning",
   "scripts": {
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "preview": "node scripts/preview.js && npx serve dist-preview -l 5050"
   }
 }

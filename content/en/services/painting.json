@@ -1,0 +1,29 @@
+{
+  "title": "Painting Services | Rosa's Sparkling Cleaning",
+  "metaDescription": "Interior and exterior painting &mdash; touch-ups, full rooms and full exteriors &mdash; for listings, rentals and vacant properties in Ocala, Tampa and Spring Hill, FL.",
+  "h1": "A fresh coat sells faster than a fresh excuse.",
+  "kicker": "Painting",
+  "intro": "A faded exterior or scuffed walls are one of the first things a buyer notices and one of the fastest things to fix. We handle touch-ups, full rooms and full exteriors with the same crew doing the rest of the prep.",
+  "heroImage": "service-paint.webp",
+  "heroImageAlt": "A painter rolling white paint onto an interior wall",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'd like to ask about your painting service",
+  "relatedPages": ["services/cleaning", "services/management", "services/gardening"],
+  "sections": [
+    {
+      "heading": "What's included",
+      "body": "Every painting job can cover:",
+      "items": ["Interior walls, trim and ceilings", "Full exterior repaints", "Touch-ups on scuffs and nail holes", "Color-matching to the existing paint"]
+    },
+    {
+      "heading": "Who it's for",
+      "body": "Sellers repainting before listing photos, landlords turning over a rental, and owners of vacant homes whose exterior has faded from sitting empty."
+    }
+  ],
+  "evidence": {
+    "heading": "See the difference",
+    "image": "evidence-paint.webp",
+    "alt": "Before and after comparison of a house exterior: faded, stained stucco on the left, freshly painted grey exterior with a tidied driveway on the right",
+    "caption": "Same house, one paint job &mdash; curb appeal a listing photo can actually sell."
+  }
+}

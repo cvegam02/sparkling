@@ -60,10 +60,10 @@
     "heading": "Un solo proveedor, cada trabajo que la propiedad necesita",
     "body": "En vez de contratar por separado limpieza, pintura, mantenimiento y jardinería, el equipo de Rosa's cubre toda la lista &mdash; recurrente o de una sola vez.",
     "items": [
-      { "slug": "clean", "title": "Limpieza", "body": "Limpiezas profundas y visitas recurrentes, programadas según tu calendario.", "image": "service-clean.webp", "alt": "Un miembro del equipo de Rosa's Sparkling Cleaning limpiando un piso de mármol en una sala luminosa" },
-      { "slug": "paint", "title": "Pintura", "body": "Retoques y habitaciones completas, por dentro y por fuera.", "image": "service-paint.webp", "alt": "Un pintor aplicando pintura blanca en una pared interior" },
-      { "slug": "management", "title": "Gestión", "body": "Visitas recurrentes y supervisión de propiedades vacías o en venta, coordinando mantenimiento y reparaciones menores en tu nombre.", "image": "service-fixing.webp", "alt": "Un técnico instalando un cajón de cocina con un taladro" },
-      { "slug": "garden", "title": "Jardinería", "body": "Jardines cuidados para que el atractivo exterior nunca decaiga.", "image": "service-landscaping.webp", "alt": "Un jardinero podando un seto bien cuidado en el jardín delantero de una casa" }
+      { "slug": "clean", "title": "Limpieza", "body": "Limpiezas profundas y visitas recurrentes, programadas según tu calendario.", "image": "service-clean.webp", "alt": "Un miembro del equipo de Rosa's Sparkling Cleaning limpiando un piso de mármol en una sala luminosa", "linkRouteId": "services/cleaning" },
+      { "slug": "paint", "title": "Pintura", "body": "Retoques y habitaciones completas, por dentro y por fuera.", "image": "service-paint.webp", "alt": "Un pintor aplicando pintura blanca en una pared interior", "linkRouteId": "services/painting" },
+      { "slug": "management", "title": "Gestión", "body": "Visitas recurrentes y supervisión de propiedades vacías o en venta, coordinando mantenimiento y reparaciones menores en tu nombre.", "image": "service-fixing.webp", "alt": "Un técnico instalando un cajón de cocina con un taladro", "linkRouteId": "services/management" },
+      { "slug": "garden", "title": "Jardinería", "body": "Jardines cuidados para que el atractivo exterior nunca decaiga.", "image": "service-landscaping.webp", "alt": "Un jardinero podando un seto bien cuidado en el jardín delantero de una casa", "linkRouteId": "services/gardening" }
     ],
     "secondaryNote": "También disponible: ventanas, puertas y mosquiteros."
   },

@@ -60,10 +60,10 @@
     "heading": "One provider, every job the property needs",
     "body": "Instead of hiring separate cleaners, painters, handymen and landscapers, Rosa's team covers the full list &mdash; recurring or one time.",
     "items": [
-      { "slug": "clean", "title": "Cleaning", "body": "Deep cleans and recurring visits, scheduled around your timeline.", "image": "service-clean.webp", "alt": "A Rosa's Sparkling Cleaning team member wiping down a marble floor in a bright living room" },
-      { "slug": "paint", "title": "Painting", "body": "Touch-ups and full rooms, inside and out.", "image": "service-paint.webp", "alt": "A painter rolling white paint onto an interior wall" },
-      { "slug": "management", "title": "Management", "body": "Recurring visits and oversight for vacant or listed properties, coordinating maintenance and minor repairs on your behalf.", "image": "service-fixing.webp", "alt": "A handyman installing a kitchen cabinet drawer with a power drill" },
-      { "slug": "garden", "title": "Gardening", "body": "Yards kept tidy so curb appeal never lapses.", "image": "service-landscaping.webp", "alt": "A landscaper trimming a manicured hedge in a home's front yard" }
+      { "slug": "clean", "title": "Cleaning", "body": "Deep cleans and recurring visits, scheduled around your timeline.", "image": "service-clean.webp", "alt": "A Rosa's Sparkling Cleaning team member wiping down a marble floor in a bright living room", "linkRouteId": "services/cleaning" },
+      { "slug": "paint", "title": "Painting", "body": "Touch-ups and full rooms, inside and out.", "image": "service-paint.webp", "alt": "A painter rolling white paint onto an interior wall", "linkRouteId": "services/painting" },
+      { "slug": "management", "title": "Management", "body": "Recurring visits and oversight for vacant or listed properties, coordinating maintenance and minor repairs on your behalf.", "image": "service-fixing.webp", "alt": "A handyman installing a kitchen cabinet drawer with a power drill", "linkRouteId": "services/management" },
+      { "slug": "garden", "title": "Gardening", "body": "Yards kept tidy so curb appeal never lapses.", "image": "service-landscaping.webp", "alt": "A landscaper trimming a manicured hedge in a home's front yard", "linkRouteId": "services/gardening" }
     ],
     "secondaryNote": "Also available: windows, doors and screening."
   },

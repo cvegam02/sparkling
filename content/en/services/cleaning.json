@@ -1,0 +1,29 @@
+{
+  "title": "Cleaning Services | Rosa's Sparkling Cleaning",
+  "metaDescription": "Deep cleans and recurring cleaning visits for homes, listings and vacant properties in Ocala, Tampa and Spring Hill, FL &mdash; scheduled around your timeline.",
+  "h1": "Cleaning that's ready for a showing, not just a glance.",
+  "kicker": "Cleaning",
+  "intro": "From a single deep clean before the listing photos go up to a recurring schedule that keeps a property market-ready, our crews clean every room the way a buyer or tenant will actually see it.",
+  "heroImage": "service-clean.webp",
+  "heroImageAlt": "A Rosa's Sparkling Cleaning team member wiping down a marble floor in a bright living room",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'd like to ask about your cleaning service",
+  "relatedPages": ["services/painting", "services/management", "services/gardening"],
+  "sections": [
+    {
+      "heading": "What's included",
+      "body": "Every cleaning visit covers:",
+      "items": ["Kitchens and bathrooms, top to bottom", "Floors, baseboards and window sills", "Dusting, cobwebs and light fixtures", "Trash removal and a final walkthrough"]
+    },
+    {
+      "heading": "Who it's for",
+      "body": "Homeowners between tenants, agents prepping a listing, and owners of vacant properties who'd rather have a set schedule than a one-off favor."
+    }
+  ],
+  "evidence": {
+    "heading": "See the difference",
+    "image": "evidence-cleaning.webp",
+    "alt": "Before and after comparison of a bedroom: cluttered with toys and open drawers on the left, tidied and organized on the right",
+    "caption": "Same room, one visit &mdash; nothing moved out, everything put right."
+  }
+}

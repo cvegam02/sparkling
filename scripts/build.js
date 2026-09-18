@@ -9,12 +9,17 @@ const pricingConfig = require('../pricing.config.js');
 const { validateContent, collectAltTextWarnings } = require('./validate.js');
 
 const ROOT = path.join(__dirname, '..');
-const DIST = path.join(ROOT, 'dist');
+// PREVIEW_OUT_DIR/PREVIEW_BASE_URL let `npm run preview` build a local copy
+// that links to itself on localhost instead of the production baseUrl, so
+// clicking a link while reviewing doesn't jump off to a domain that isn't
+// live yet. Plain `npm run build` (no env vars set) is unaffected.
+const DIST = path.join(ROOT, process.env.PREVIEW_OUT_DIR || 'dist');
+const BASE_URL = process.env.PREVIEW_BASE_URL || config.baseUrl;
 
 // GitHub Pages project sites are served under a subpath (e.g.
 // https://user.github.io/repo/), so every asset reference must be prefixed
 // with that subpath rather than assuming the site lives at the domain root.
-const ASSET_BASE = new URL(config.baseUrl).pathname.replace(/\/$/, '');
+const ASSET_BASE = new URL(BASE_URL).pathname.replace(/\/$/, '');
 
 function readJson(filePath) {
   if (!fs.existsSync(filePath)) {
@@ -58,7 +63,7 @@ function urlPathFromSegments(segments) {
 }
 
 function absoluteUrl(route, locale) {
-  const base = config.baseUrl.replace(/\/$/, '');
+  const base = BASE_URL.replace(/\/$/, '');
   return base + urlPathFromSegments(routeSegments(route, locale));
 }
 
@@ -113,7 +118,7 @@ function buildNavLinks(locale) {
   };
 }
 
-// --- design-system icons (copied verbatim from the locked index.html /
+// --- design-system icons (copied verbatim from the locked docs/design-reference.html /
 // docs/superpowers/specs/2026-09-17-design-system.md — never redraw these) --
 
 const CHECK_ICON = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg>';
@@ -171,17 +176,19 @@ function renderBillItems(items) {
     .join('\n');
 }
 
-function renderServiceCards(items) {
+function renderServiceCards(items, locale, fallbackHref) {
   return items
-    .map(
-      (item) => `        <div class="service-card service-card--${item.slug}">
+    .map((item) => {
+      const route = item.linkRouteId ? getRoute(item.linkRouteId) : null;
+      const href = route ? absoluteUrl(route, locale) : fallbackHref;
+      return `        <a class="service-card service-card--${item.slug}" href="${href}">
           <img class="service-photo" src="${ASSET_BASE}/assets/img/${item.image}" alt="${item.alt}" width="1536" height="1024" loading="lazy">
           <div class="service-card-body">
             <h3>${item.title}</h3>
             <p>${item.body}</p>
           </div>
-        </div>`
-    )
+        </a>`;
+    })
     .join('\n');
 }
 
@@ -192,8 +199,15 @@ function renderHowSteps(steps) {
 const PIN_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>';
 
-function renderAreasList() {
-  return config.business.areasServed.map((area) => `      <li>${PIN_ICON}${area}</li>`).join('\n');
+function renderAreasList(locale) {
+  return config.business.areasServed
+    .map((area) => {
+      const slug = area.toLowerCase().replace(/\s+/g, '-');
+      const route = getRoute(`areas/${slug}`);
+      const href = route ? absoluteUrl(route, locale) : '#areas';
+      return `      <li><a href="${href}">${PIN_ICON}${area}</a></li>`;
+    })
+    .join('\n');
 }
 
 function renderSelectOptions(options) {
@@ -278,6 +292,33 @@ function renderSections(sections) {
         .filter(Boolean)
         .join('\n');
     })
+    .join('\n');
+}
+
+// Discreet hero photo for an interior page (e.g. a service page). Renders
+// nothing when the page has no heroImage, so the hero falls back to its
+// plain text-only layout.
+function renderHeroImage(content) {
+  if (!content.heroImage) return '';
+  return `      <div class="interior-hero-media">
+        <img src="${ASSET_BASE}/assets/img/${content.heroImage}" alt="${content.heroImageAlt || ''}" width="1536" height="1024" loading="lazy">
+      </div>`;
+}
+
+// Before/after "evidence" photo block for a service page. Renders nothing
+// when the page has no evidence block.
+function renderEvidence(evidence) {
+  if (!evidence || !evidence.image) return '';
+  return [
+    '  <section class="evidence-section">',
+    '    <div class="wrap">',
+    evidence.heading ? `      <h2>${evidence.heading}</h2>` : '',
+    `      <img class="evidence-photo" src="${ASSET_BASE}/assets/img/${evidence.image}" alt="${evidence.alt || ''}" width="1536" height="1024" loading="lazy">`,
+    evidence.caption ? `      <p class="evidence-caption">${evidence.caption}</p>` : '',
+    '    </div>',
+    '  </section>'
+  ]
+    .filter(Boolean)
     .join('\n');
 }
 
@@ -388,14 +429,14 @@ function buildHomeValues(locale, content, common, whatsappHref) {
 
     servicesHeading: content.services.heading,
     servicesBody: content.services.body,
-    serviceCardsHtml: renderServiceCards(content.services.items),
+    serviceCardsHtml: renderServiceCards(content.services.items, locale, absoluteUrl(getRoute('services/additional'), locale)),
     servicesSecondaryNote: content.services.secondaryNote,
 
     howHeading: content.how.heading,
     howStepsHtml: renderHowSteps(content.how.steps),
 
     areasHeading: content.areasSection.heading,
-    areasListHtml: renderAreasList(),
+    areasListHtml: renderAreasList(locale),
 
     reviewsHtml: renderReviews(common),
 
@@ -415,6 +456,7 @@ function buildInteriorValues(locale, content, common, whatsappHref) {
     intro: content.intro,
     whatsappHref,
     whatsappLabel: content.whatsappLabel,
+    heroImageHtml: renderHeroImage(content),
 
     navServices: common.nav.services,
     navServicesHref: nav.servicesHref,
@@ -426,6 +468,7 @@ function buildInteriorValues(locale, content, common, whatsappHref) {
     navContactHref: nav.contactHref,
 
     sectionsHtml: renderSections(content.sections || []),
+    evidenceHtml: renderEvidence(content.evidence),
     reviewsHtml: content.showReviews ? renderReviews(common) : '',
 
     footerCopyright: common.footer.copyright,
@@ -486,7 +529,7 @@ function writeSitemap(urls) {
 }
 
 function writeRobots() {
-  const sitemapUrl = `${config.baseUrl.replace(/\/$/, '')}/sitemap.xml`;
+  const sitemapUrl = `${BASE_URL.replace(/\/$/, '')}/sitemap.xml`;
   const robots = `User-agent: *\nAllow: /\n\nSitemap: ${sitemapUrl}\n`;
   fs.writeFileSync(path.join(DIST, 'robots.txt'), robots);
 }

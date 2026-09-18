@@ -822,11 +822,13 @@ p {
   border-top: 3px solid var(--color-ink);
   border-radius: var(--radius);
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
   transition: flex-grow 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover,
-.service-card:focus-within {
+.service-card:focus-visible {
   flex-grow: 2.4;
   transform: translateY(-6px);
   box-shadow: 0 18px 32px -20px rgba(20, 25, 47, 0.35);
@@ -857,7 +859,7 @@ p {
 }
 
 .service-card:hover .service-photo,
-.service-card:focus-within .service-photo {
+.service-card:focus-visible .service-photo {
   transform: scale(1.06) translateX(-3%);
   transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -957,11 +959,18 @@ p {
   font-size: var(--step-1);
 }
 
-.areas-list li {
+.areas-list li a {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
   color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.areas-list li a:hover,
+.areas-list li a:focus-visible {
+  border-color: var(--color-pink-deep);
 }
 
 .areas-list li svg {
@@ -983,11 +992,39 @@ p {
   padding-block: var(--space-5);
 }
 
+.interior-hero-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.interior-hero-copy {
+  flex: 1 1 28rem;
+  min-width: 0;
+}
+
 .interior-hero .kicker {
   font-size: 0.95rem;
   color: var(--color-ink);
   opacity: 0.75;
   margin-bottom: var(--space-2);
+}
+
+/* Discreet — a single rounded photo, not the home hero's abstract color
+   blocks, so interior pages read as calmer than the landing page. */
+.interior-hero-media {
+  flex: 1 1 22rem;
+  min-width: 0;
+}
+
+.interior-hero-media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
 }
 
 .content-section {
@@ -1022,6 +1059,118 @@ p {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* Service detail pages (cleaning.html, painting.html, management.html, gardening.html) */
+
+.service-hero {
+  padding-block: var(--space-5) var(--space-4);
+  background: var(--color-cloud);
+}
+
+.service-hero .kicker {
+  font-size: 0.95rem;
+  color: var(--color-pink-deep);
+  margin-bottom: var(--space-1);
+}
+
+.service-hero h1 {
+  max-width: 18ch;
+}
+
+.service-hero-image {
+  width: 100%;
+  max-width: 56rem;
+  margin: var(--space-4) auto 0;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.service-detail {
+  padding-block: var(--space-5);
+  background: var(--color-white);
+}
+
+.service-detail + .service-detail {
+  padding-top: 0;
+}
+
+.check-list {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  max-width: var(--measure);
+}
+
+.check-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--color-cloud-deep);
+}
+
+.check-list li svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--color-green);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.related-services {
+  padding-block: var(--space-4);
+  background: var(--color-cloud);
+}
+
+.related-services ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+}
+
+.related-services a {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-pink-deep);
+  text-decoration: none;
+}
+
+.related-services a:hover {
+  text-decoration: underline;
+}
+
+/* Evidence — a before/after photo proving the service, on service pages */
+
+.evidence-section {
+  padding-block: var(--space-5);
+  background: var(--color-white);
+  text-align: center;
+}
+
+.evidence-photo {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+  height: clamp(220px, 55vw, 420px);
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.evidence-caption {
+  max-width: 40rem;
+  margin: var(--space-2) auto 0;
+  color: var(--color-ink);
+  opacity: 0.75;
+  font-size: 0.95rem;
 }
 
 /* Reviews placeholder (home + area pages) */
@@ -1254,7 +1403,7 @@ p {
 @media (max-width: 1100px) {
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-2);
   }
 
@@ -1268,8 +1417,7 @@ p {
   }
 
   .service-photo {
-    aspect-ratio: 1 / 1;
-    max-height: 200px;
+    aspect-ratio: 16 / 9;
   }
 
   .service-card-body {
@@ -1391,10 +1539,6 @@ p {
 
   .how ol {
     grid-template-columns: 1fr;
-  }
-
-  .service-photo {
-    max-height: 150px;
   }
 
   .service-card-body {

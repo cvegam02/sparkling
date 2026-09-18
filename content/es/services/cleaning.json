@@ -1,0 +1,29 @@
+{
+  "title": "Servicios de limpieza | Rosa's Sparkling Cleaning",
+  "metaDescription": "Limpiezas profundas y visitas recurrentes para casas, listados y propiedades vacías en Ocala, Tampa y Spring Hill, FL &mdash; programadas según tu calendario.",
+  "h1": "Una limpieza lista para una muestra, no solo para una mirada rápida.",
+  "kicker": "Limpieza",
+  "intro": "Desde una limpieza profunda antes de las fotos hasta un calendario recurrente que mantiene la propiedad lista para el mercado, nuestros equipos limpian cada habitación como realmente la va a ver un comprador o inquilino.",
+  "heroImage": "service-clean.webp",
+  "heroImageAlt": "Un miembro del equipo de Rosa's Sparkling Cleaning limpiando un piso de mármol en una sala luminosa",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, me gustaría preguntar por su servicio de limpieza",
+  "relatedPages": ["services/painting", "services/management", "services/gardening"],
+  "sections": [
+    {
+      "heading": "Qué incluye",
+      "body": "Cada visita de limpieza cubre:",
+      "items": ["Cocinas y baños, de principio a fin", "Pisos, zócalos y marcos de ventanas", "Sacudido de polvo, telarañas y luminarias", "Retiro de basura y recorrido final"]
+    },
+    {
+      "heading": "Para quién es",
+      "body": "Dueños entre inquilinos, agentes preparando un listado, y dueños de propiedades vacías que prefieren un calendario fijo en vez de un favor puntual."
+    }
+  ],
+  "evidence": {
+    "heading": "Mira la diferencia",
+    "image": "evidence-cleaning.webp",
+    "alt": "Comparación de antes y después de una habitación: desordenada con juguetes y cajones abiertos a la izquierda, ordenada y organizada a la derecha",
+    "caption": "El mismo cuarto, una sola visita &mdash; nada se sacó, todo quedó en su lugar."
+  }
+}

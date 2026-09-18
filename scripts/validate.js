@@ -40,7 +40,8 @@ function validateContent(pages) {
 
 /**
  * Warns (never fails the build) about any image entry missing descriptive
- * alt text. Content images live in `services.items[]` today; extend this
+ * alt text. Content images live in `services.items[]`, `heroImage` +
+ * `heroImageAlt`, and `evidence.image` + `evidence.alt` today; extend this
  * list if another content shape starts carrying images.
  *
  * @param {Array<{ locale: string, file: string, content: object }>} pages
@@ -49,15 +50,25 @@ function validateContent(pages) {
 function collectAltTextWarnings(pages) {
   const warnings = [];
 
+  const checkAlt = (file, image, alt) => {
+    if (!image) return;
+    if (typeof alt !== 'string' || alt.trim() === '') {
+      warnings.push(`${file}: image "${image}" is missing alt text`);
+    }
+  };
+
   for (const page of pages) {
     const items = page.content.services && page.content.services.items;
-    if (!Array.isArray(items)) continue;
-
-    for (const item of items) {
-      if (!item.image) continue;
-      if (typeof item.alt !== 'string' || item.alt.trim() === '') {
-        warnings.push(`${page.file}: image "${item.image}" is missing alt text`);
+    if (Array.isArray(items)) {
+      for (const item of items) {
+        checkAlt(page.file, item.image, item.alt);
       }
+    }
+
+    checkAlt(page.file, page.content.heroImage, page.content.heroImageAlt);
+
+    if (page.content.evidence) {
+      checkAlt(page.file, page.content.evidence.image, page.content.evidence.alt);
     }
   }
 

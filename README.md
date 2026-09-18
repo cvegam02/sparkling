@@ -2,6 +2,16 @@
 
 Static marketing site, bilingual (English/Spanish), deployed to GitHub Pages. No backend, no database — everything you edit is a plain text file. See `CLAUDE.md` and `docs/superpowers/specs/` for the full design and architecture if you're a developer picking this up.
 
+## Where's the actual site?
+
+There is no `index.html` (or any page) sitting in the project root to open directly — that's on purpose. The real pages don't exist as files until you build them:
+
+1. **You edit:** page text in `content/en/*.json` + `content/es/*.json`, styling in `assets/css/main.css`, HTML structure in `templates/*.html`.
+2. **The build reads those and writes real HTML into `dist/`** (via `npm run build`, or automatically on every push to `main`). `dist/` is gitignored — it's output, not something you edit by hand.
+3. **To look at the site, always run `npm run preview`** (see below) and open the URL it prints. Never open an HTML file directly with your browser or a file explorer — nothing at the project root is the live site.
+
+`docs/design-reference.html` is a separate, frozen mockup used only as a design reference for spacing/colors/icons (see `docs/superpowers/specs/2026-09-17-design-system.md`) — it is not the live site either.
+
 ## Build
 
 ```
@@ -10,7 +20,13 @@ npm run build
 
 Generates the site into `dist/` (gitignored). Every push to `main` also triggers this automatically via GitHub Actions and publishes the result — you don't need to run this yourself before deploying, only when you want to preview a change locally.
 
-To preview locally after building, serve the `dist/` folder with any static file server (e.g. `npx serve dist`).
+## Preview locally
+
+```
+npm run preview
+```
+
+Builds the site into `dist-preview/` and serves it at `http://localhost:5050/sparkling/`. Unlike a plain `npm run build`, every link in this preview points back at `localhost` instead of the real `baseUrl` from `site.config.js` — so clicking around (services, areas, the calculator) stays on your machine instead of jumping to a domain that isn't live yet. Stop the server with Ctrl+C; `dist-preview/` is gitignored.
 
 ## Editing page content
 

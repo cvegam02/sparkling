@@ -6,7 +6,7 @@
   "intro": "Instead of hiring separate cleaners, painters, handymen and landscapers, Rosa's team covers the full list &mdash; recurring or one time.",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about your additional services",
-  "relatedPages": ["vacant-home"],
+  "relatedPages": ["services/cleaning", "services/painting", "services/management", "services/gardening"],
   "sections": [
     {
       "heading": "Cleaning",

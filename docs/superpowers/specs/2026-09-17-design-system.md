@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-17
 **Status:** Locked — this is the reference for building every other page on the site.
-**Source of truth:** [assets/css/main.css](../../../assets/css/main.css) and [index.html](../../../index.html). If this document and the code ever disagree, the code wins — update this file to match it.
+**Source of truth:** [assets/css/main.css](../../../assets/css/main.css) and [docs/design-reference.html](../../design-reference.html) &mdash; a frozen mockup, not the live site (the live site is generated into `dist/` by `npm run build`; see `templates/home.html` for the real, current markup). If this document and the code ever disagree, the code wins — update this file to match it.
 
 This captures the visual language established on the home page so new pages (About, service detail pages, area pages, Spanish locale, etc.) look like they belong to the same site without having to reinvent decisions each time.
 
@@ -49,7 +49,7 @@ All defined in `:root` in `main.css`. Never hardcode a hex value in a new compon
 --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* everything else */
 ```
 
-Loaded via Google Fonts in `<head>` (weights 400/500/600 for Fraunces incl. italic via `opsz` axis; 400/500/600 for Work Sans). Adding a page? Copy the exact `<link>` tags from `index.html` — don't add a second font.
+Loaded via Google Fonts in `<head>` (weights 400/500/600 for Fraunces incl. italic via `opsz` axis; 400/500/600 for Work Sans). Adding a page? Copy the exact `<link>` tags from `docs/design-reference.html` — don't add a second font.
 
 Fluid type scale (all `clamp()`, so no separate mobile font-size overrides are usually needed):
 
@@ -84,7 +84,7 @@ Breakpoints in use: `1100px` (services grid goes 2-col, photos shrink to square 
 Three kinds, never mixed:
 - `.btn.btn-primary` — the one pink CTA per view. Solid `--color-pink-deep`, white text.
 - `.btn.btn-secondary` — outline, `--color-ink` border/text, inverts on hover. Used for lower-emphasis actions (`Ask about Pre-Sale`, `Ask about Move-In Ready`). On a dark card (e.g. `.path-presale`), override to white border/text — see the `.path-presale .btn-secondary` rule for the pattern.
-- `.btn-whatsapp` (optionally `.btn` too, for full padding) — WhatsApp green, always paired with the WhatsApp glyph SVG (copy it verbatim from `index.html`, don't redraw it) and the phrase "…on WhatsApp" / "WhatsApp us". `.btn-whatsapp--small` is the compact footer variant.
+- `.btn-whatsapp` (optionally `.btn` too, for full padding) — WhatsApp green, always paired with the WhatsApp glyph SVG (copy it verbatim from `docs/design-reference.html`, don't redraw it) and the phrase "…on WhatsApp" / "WhatsApp us". `.btn-whatsapp--small` is the compact footer variant.
 
 ### Cards
 Three distinct card languages exist on purpose — don't collapse them into one "card" component:
