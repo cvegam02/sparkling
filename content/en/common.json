@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "services": "Services",
+    "vacantHome": "Vacant home?",
+    "areas": "Areas",
+    "contact": "Contact"
+  },
+  "footer": {
+    "copyright": "&copy; 2026 Rosa's Sparkling Cleaning &mdash; Ocala, Tampa &amp; Spring Hill, FL",
+    "whatsappLabel": "WhatsApp us"
+  },
+  "reviews": {
+    "heading": "What customers say",
+    "placeholderBody": "We're setting up our Google Business Profile so you can read real customer reviews here soon.",
+    "linkLabel": "See our reviews on Google"
+  }
+}

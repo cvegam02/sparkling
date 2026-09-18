@@ -1,0 +1,43 @@
+{
+  "title": "Get Your Estimate | Rosa's Sparkling Cleaning",
+  "metaDescription": "Answer three quick questions and get an estimated price range for your property, in Ocala, Tampa and Spring Hill, FL.",
+  "h1": "Get your estimate",
+  "kicker": "Three questions, no forms to sign",
+  "intro": "Tell us the service, the size and the area, and we'll send you straight to WhatsApp with your details ready to go.",
+  "whatsappMessage": "Hi, I'd like a quote",
+  "relatedPages": ["vacant-home"],
+
+  "form": {
+    "serviceLabel": "What do you need done?",
+    "serviceOptions": [
+      { "value": "presale", "label": "Pre-Sale prep" },
+      { "value": "post-sale", "label": "Post-Sale / Move-In Ready" },
+      { "value": "additional", "label": "Additional services (cleaning, painting, management, gardening)" }
+    ],
+    "sizeLabel": "How big is the property?",
+    "sizeOptions": [
+      { "value": "studio", "label": "Studio - 1 bed" },
+      { "value": "twothree", "label": "2-3 beds" },
+      { "value": "fourplus", "label": "4+ beds" }
+    ],
+    "areaLabel": "Which area is the property in?",
+    "areaOptions": [
+      { "value": "ocala", "label": "Ocala" },
+      { "value": "tampa", "label": "Tampa" },
+      { "value": "spring-hill", "label": "Spring Hill" }
+    ],
+    "submitLabel": "See my estimate"
+  },
+
+  "result": {
+    "estimateHeading": "Your estimated range",
+    "estimateDisclaimer": "This is an estimate — the final price is confirmed once we've spoken on WhatsApp.",
+    "fallbackHeading": "We'll confirm your price by chat",
+    "fallbackBody": "This combination needs a quick look before we can quote it. Send your details on WhatsApp and we'll reply with a custom price today.",
+    "whatsappCtaLabel": "Send this to WhatsApp",
+    "startOverLabel": "Start over"
+  },
+
+  "whatsappMessageEstimate": "Hi, I'd like to book {service} ({size}) in {area}. I saw an estimated range of {range} on the site.",
+  "whatsappMessageCustom": "Hi, I'd like a custom quote for {service} ({size}) in {area}."
+}

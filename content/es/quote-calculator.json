@@ -1,0 +1,43 @@
+{
+  "title": "Obtén tu Estimado | Rosa's Sparkling Cleaning",
+  "metaDescription": "Responde tres preguntas rápidas y obtén un rango de precio estimado para tu propiedad, en Ocala, Tampa y Spring Hill, FL.",
+  "h1": "Obtén tu estimado",
+  "kicker": "Tres preguntas, sin formularios que firmar",
+  "intro": "Cuéntanos el servicio, el tamaño y el área, y te enviamos directo a WhatsApp con tus datos listos.",
+  "whatsappMessage": "Hola, me gustaría una cotización",
+  "relatedPages": ["vacant-home"],
+
+  "form": {
+    "serviceLabel": "¿Qué necesitas?",
+    "serviceOptions": [
+      { "value": "presale", "label": "Preparación Pre-Sale" },
+      { "value": "post-sale", "label": "Post-Sale / Move-In Ready" },
+      { "value": "additional", "label": "Servicios adicionales (limpieza, pintura, gestión, jardinería)" }
+    ],
+    "sizeLabel": "¿Qué tan grande es la propiedad?",
+    "sizeOptions": [
+      { "value": "studio", "label": "Estudio - 1 habitación" },
+      { "value": "twothree", "label": "2-3 habitaciones" },
+      { "value": "fourplus", "label": "4+ habitaciones" }
+    ],
+    "areaLabel": "¿En qué área está la propiedad?",
+    "areaOptions": [
+      { "value": "ocala", "label": "Ocala" },
+      { "value": "tampa", "label": "Tampa" },
+      { "value": "spring-hill", "label": "Spring Hill" }
+    ],
+    "submitLabel": "Ver mi estimado"
+  },
+
+  "result": {
+    "estimateHeading": "Tu rango estimado",
+    "estimateDisclaimer": "Esto es un estimado — el precio final se confirma una vez que hablemos por WhatsApp.",
+    "fallbackHeading": "Te confirmamos el precio por chat",
+    "fallbackBody": "Esta combinación necesita una revisión rápida antes de poder cotizarla. Envíanos tus datos por WhatsApp y te respondemos con un precio personalizado hoy mismo.",
+    "whatsappCtaLabel": "Enviar esto por WhatsApp",
+    "startOverLabel": "Empezar de nuevo"
+  },
+
+  "whatsappMessageEstimate": "Hola, me gustaría reservar {service} ({size}) en {area}. Vi un rango estimado de {range} en el sitio.",
+  "whatsappMessageCustom": "Hola, me gustaría un precio personalizado para {service} ({size}) en {area}."
+}

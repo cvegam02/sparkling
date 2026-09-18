@@ -1,0 +1,83 @@
+{
+  "title": "Rosa's Sparkling Cleaning | Ocala, Tampa y Spring Hill, FL",
+  "metaDescription": "Limpieza, preparación y gestión de propiedades para vendedores, compradores y casas vacías en Ocala, Tampa y Spring Hill, Florida.",
+  "h1": "Una casa vacía no es una casa vendida.",
+  "kicker": "Ocala &middot; Tampa &middot; Spring Hill, FL",
+  "tagline": "Espacios limpios. Lugares más luminosos. Mejor vivir.",
+  "heroBody": "Cada mes que una propiedad permanece vacía te cuesta dinero: seguro más caro, una ventana que se cierra para tu exención de homestead, y desgaste que nadie está ahí para detectar. Limpiamos, preparamos y mantenemos la propiedad para que se vea bien y se venda más rápido &mdash; no te la compramos, te ayudamos a venderla como corresponde.",
+  "ctaPrimaryLabel": "Solicita un estimado gratis",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, me gustaría una cotización",
+
+  "relatedPages": ["vacant-home"],
+
+  "paths": [
+    {
+      "slug": "presale",
+      "title": "Vendiendo una propiedad",
+      "highlight": "Listados listos para mostrar que se venden mejor y más rápido.",
+      "body": "La preparación Pre-Sale deja el listado listo para las fotos y así se mantiene durante los recorridos.",
+      "items": ["Limpieza profunda de principio a fin", "Staging y decoración ligera", "Reparaciones menores y retoques"],
+      "ctaLabel": "Pregunta por Pre-Sale",
+      "linkRouteId": "services/pre-sale"
+    },
+    {
+      "slug": "movein",
+      "title": "Acabas de comprar una casa",
+      "highlight": "Entra a una casa que ya está lista.",
+      "body": "Move-In Ready significa abrir la puerta a una casa limpia, organizada y acogedora &mdash; sin nada pendiente para ti.",
+      "items": ["Limpieza completa de mudanza", "Ayuda para organizar y desempacar", "Toques de decoración"],
+      "ctaLabel": "Pregunta por Move-In Ready",
+      "linkRouteId": "services/post-sale"
+    }
+  ],
+
+  "vacantBand": {
+    "kicker": "El costo oculto de la vacancia",
+    "heading": "¿Tienes una casa que lleva demasiado tiempo vacía?",
+    "body": "Una propiedad vacía y sin vender no solo espera en silencio &mdash; te sigue costando, y es justo la situación que las empresas de \"compra de casas en efectivo\" aprovechan. Nosotros no somos eso. Dejamos la propiedad lista para vender para que te quedes con el valor completo de tu venta.",
+    "billHeading": "Si esta casa se queda vacía, esta es la cuenta mensual",
+    "billItems": [
+      { "icon": "insurance", "label": "Seguro", "body": "Las pólizas de propiedades vacías suelen costar más que las de una casa ocupada." },
+      { "icon": "homestead", "label": "Exención de homestead", "body": "Una vacancia prolongada puede poner en riesgo tu exención en Florida." },
+      { "icon": "wear", "label": "Desgaste", "body": "Una casa vacía muestra deterioro que nadie está ahí para detectar a tiempo." }
+    ],
+    "ctaLabel": "Deja de pagar por esperar &mdash; agenda un recorrido gratis"
+  },
+
+  "results": {
+    "heading": "La preparación se paga sola",
+    "body": "Una propiedad que se ve bien no solo se vende más rápido &mdash; se vende por más. Esto fue lo que logró una preparación adecuada en un listado reciente:",
+    "beforeLabel": "Listada tal cual",
+    "beforePrice": "$70,000",
+    "afterLabel": "Vendida tras la preparación de Rosa's",
+    "afterPrice": "$140,000",
+    "afterDelta": "+100%",
+    "note": "*Ejemplo ilustrativo basado en un listado anterior. Cada propiedad y mercado es diferente &mdash; pregúntanos por una lectura honesta de la tuya."
+  },
+
+  "services": {
+    "heading": "Un solo proveedor, cada trabajo que la propiedad necesita",
+    "body": "En vez de contratar por separado limpieza, pintura, mantenimiento y jardinería, el equipo de Rosa's cubre toda la lista &mdash; recurrente o de una sola vez.",
+    "items": [
+      { "slug": "clean", "title": "Limpieza", "body": "Limpiezas profundas y visitas recurrentes, programadas según tu calendario.", "image": "service-clean.webp", "alt": "Un miembro del equipo de Rosa's Sparkling Cleaning limpiando un piso de mármol en una sala luminosa" },
+      { "slug": "paint", "title": "Pintura", "body": "Retoques y habitaciones completas, por dentro y por fuera.", "image": "service-paint.webp", "alt": "Un pintor aplicando pintura blanca en una pared interior" },
+      { "slug": "management", "title": "Gestión", "body": "Visitas recurrentes y supervisión de propiedades vacías o en venta, coordinando mantenimiento y reparaciones menores en tu nombre.", "image": "service-fixing.webp", "alt": "Un técnico instalando un cajón de cocina con un taladro" },
+      { "slug": "garden", "title": "Jardinería", "body": "Jardines cuidados para que el atractivo exterior nunca decaiga.", "image": "service-landscaping.webp", "alt": "Un jardinero podando un seto bien cuidado en el jardín delantero de una casa" }
+    ],
+    "secondaryNote": "También disponible: ventanas, puertas y mosquiteros."
+  },
+
+  "how": {
+    "heading": "Obtener una cotización toma tres pasos",
+    "steps": [
+      "Cuéntanos el servicio, el tamaño y el área.",
+      "Te enviamos un rango estimado.",
+      "Confirmas el trabajo por WhatsApp."
+    ]
+  },
+
+  "areasSection": {
+    "heading": "Dónde trabajamos"
+  }
+}

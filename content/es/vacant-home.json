@@ -1,0 +1,29 @@
+{
+  "title": "¿Tienes una Propiedad Vacía Sin Vender? | Rosa's Sparkling Cleaning",
+  "metaDescription": "Preparamos y mantenemos propiedades vacías por mucho tiempo en Ocala, Tampa y Spring Hill, FL, para que te quedes con el valor completo de tu venta en vez de una oferta baja en efectivo.",
+  "h1": "Una propiedad vacía no espera en silencio.",
+  "kicker": "Para dueños ausentes y listados vacíos por mucho tiempo",
+  "intro": "Cada mes que una propiedad permanece vacía y sin vender, juega en tu contra: seguro más caro, una ventana que se cierra para tu exención de homestead en Florida, y desgaste que nadie está ahí para detectar. Dejamos la propiedad lista para vender para que te quedes con el valor completo de tu venta.",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, tengo una propiedad vacía y me gustaría ayuda para prepararla para la venta",
+  "relatedPages": ["services/pre-sale"],
+  "sections": [
+    {
+      "heading": "El costo real de una casa vacía",
+      "body": "La vacancia no es neutral &mdash; te cuesta activamente cada mes que continúa:",
+      "items": [
+        "Seguro: las pólizas de propiedades vacías suelen costar más que las de una casa ocupada.",
+        "Exención de homestead: una vacancia prolongada puede poner en riesgo tu exención en Florida.",
+        "Desgaste: una casa vacía muestra deterioro que nadie está ahí para detectar a tiempo."
+      ]
+    },
+    {
+      "heading": "No somos una empresa de compra en efectivo",
+      "body": "Las empresas de \"compra de casas en efectivo\" se benefician exactamente de esta situación &mdash; un dueño que solo quiere deshacerse de la propiedad. Nosotros no te compramos la casa. La preparamos, la ponemos en escena y la mantenemos para que se venda a su valor real de mercado, en tus términos."
+    },
+    {
+      "heading": "Por dónde empezar",
+      "body": "La preparación Pre-Sale es el camino más rápido de una propiedad vacía y descuidada a un listado listo para mostrar. Si la venta toma más tiempo del esperado, las visitas de Gestión continuas mantienen la propiedad cuidada mientras tanto."
+    }
+  ]
+}

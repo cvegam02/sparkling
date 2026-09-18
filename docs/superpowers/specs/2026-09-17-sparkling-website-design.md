@@ -5,7 +5,7 @@
 
 ## 1. Business Context
 
-Rosas's Sparkling Cleaning is a property cleaning/prep business serving **Ocala, Tampa, and Spring Hill, Florida**. Core services: Pre-Sale prep (deep cleaning, staging, minor improvements), Post-Sale/Move-In Ready (cleaning, organizing, decorating), and additional recurring/one-time services (regular cleaning, painting, gardening, minor repairs). Differentiator: one integrated provider instead of hiring cleaning, painting, and gardening separately.
+Rosas's Sparkling Cleaning is a property cleaning/prep business serving **Ocala, Tampa, and Spring Hill, Florida**. Core services: Pre-Sale prep (deep cleaning, staging, minor improvements) and Post-Sale/Move-In Ready (cleaning, organizing, decorating), built on a service catalog of: Cleaning, Painting, Gardening, and Management (recurring visits, oversight and coordination of maintenance/minor repairs for absentee owners of vacant or for-sale properties) — plus Windows, Doors and Screening as a secondary service. Differentiator: one integrated provider instead of hiring cleaning, painting, gardening and property management separately.
 
 The strongest business angle is **absentee owners with a long-vacant, unsold property** (higher insurance costs, risk of losing Florida homestead exemption, accumulated deterioration). The real competition for this segment is **cash-home-buyer companies** — messaging must differentiate ("we help you sell better, we don't buy your house").
 

@@ -1,0 +1,21 @@
+{
+  "title": "Preparación Pre-Sale | Rosa's Sparkling Cleaning",
+  "metaDescription": "Limpieza profunda, staging y reparaciones menores que dejan una propiedad lista para las fotos y así se mantiene durante los recorridos, en Ocala, Tampa y Spring Hill, FL.",
+  "h1": "Listados listos para mostrar que se venden mejor y más rápido.",
+  "kicker": "Preparación Pre-Sale",
+  "intro": "La preparación Pre-Sale deja el listado listo para las fotos y así se mantiene durante los recorridos, para que los compradores vean la propiedad en su mejor momento desde la primera foto hasta el cierre.",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, me gustaría preguntar sobre la preparación Pre-Sale",
+  "relatedPages": ["vacant-home", "services/post-sale"],
+  "sections": [
+    {
+      "heading": "Qué incluye",
+      "body": "Cada visita Pre-Sale cubre:",
+      "items": ["Limpieza profunda de principio a fin", "Staging y decoración ligera", "Reparaciones menores y retoques"]
+    },
+    {
+      "heading": "Para quién es",
+      "body": "Dueños de casa y agentes inmobiliarios que preparan un listado &mdash; incluyendo propiedades vacías por mucho tiempo que necesitan más que una limpieza rápida antes de salir al mercado."
+    }
+  ]
+}

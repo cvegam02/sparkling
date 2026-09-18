@@ -1,0 +1,21 @@
+{
+  "title": "Move-In Ready | Rosa's Sparkling Cleaning",
+  "metaDescription": "Full cleaning, organizing and decorating so you walk into a home that's already done, in Ocala, Tampa and Spring Hill, FL.",
+  "h1": "Walk into a home that's already done.",
+  "kicker": "Post-Sale / Move-In Ready",
+  "intro": "Move-In Ready means you unlock the door to a clean, organized, welcoming home &mdash; nothing left for you to do.",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'd like to ask about Move-In Ready",
+  "relatedPages": ["services/additional"],
+  "sections": [
+    {
+      "heading": "What's included",
+      "body": "Every Move-In Ready visit covers:",
+      "items": ["Full move-in clean", "Organizing and unpacking help", "Light decorating touches"]
+    },
+    {
+      "heading": "Who it's for",
+      "body": "Buyers closing on a new home, and anyone who'd rather skip the exhausting first weekend of moving-day cleaning."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "title": "Rosa's Sparkling Cleaning | Ocala, Tampa & Spring Hill, FL",
+  "metaDescription": "Property cleaning, staging and management for home sellers, buyers and vacant properties in Ocala, Tampa and Spring Hill, Florida.",
+  "h1": "A vacant house is not a sold house.",
+  "kicker": "Ocala &middot; Tampa &middot; Spring Hill, FL",
+  "tagline": "Clean spaces. Brighter places. Better living.",
+  "heroBody": "Every month a property sits empty, it costs you: higher insurance, a shrinking window on your homestead exemption, and wear no one's there to catch. We clean, stage and maintain the property so it shows well and sells faster &mdash; we don't buy it off you, we help you sell it right.",
+  "ctaPrimaryLabel": "Get a free estimate",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'd like a quote",
+
+  "relatedPages": ["vacant-home"],
+
+  "paths": [
+    {
+      "slug": "presale",
+      "title": "Selling a property",
+      "highlight": "Show-ready listings that sell for more, faster.",
+      "body": "Pre-Sale prep gets a listing photo-ready and keeps it that way through showings.",
+      "items": ["Deep clean, top to bottom", "Staging and light decorating", "Minor repairs and touch-ups"],
+      "ctaLabel": "Ask about Pre-Sale",
+      "linkRouteId": "services/pre-sale"
+    },
+    {
+      "slug": "movein",
+      "title": "Just bought a home",
+      "highlight": "Walk into a home that's already done.",
+      "body": "Move-In Ready means you unlock the door to a clean, organized, welcoming home &mdash; nothing left for you to do.",
+      "items": ["Full move-in clean", "Organizing &amp; unpacking help", "Light decorating touches"],
+      "ctaLabel": "Ask about Move-In Ready",
+      "linkRouteId": "services/post-sale"
+    }
+  ],
+
+  "vacantBand": {
+    "kicker": "The hidden cost of vacancy",
+    "heading": "Own a home that's sat empty too long?",
+    "body": "An unsold, unoccupied property doesn't just wait quietly &mdash; it keeps costing you, and it's the exact situation the \"we buy houses for cash\" companies are built to take advantage of. We're not that. We get the property back into sellable shape so you keep the full value of your sale.",
+    "billHeading": "If this home stays empty, here's the monthly bill",
+    "billItems": [
+      { "icon": "insurance", "label": "Insurance", "body": "Vacant-property policies typically cost more than an occupied home's." },
+      { "icon": "homestead", "label": "Homestead exemption", "body": "Extended vacancy can put your Florida exemption at risk." },
+      { "icon": "wear", "label": "Wear &amp; tear", "body": "An empty house shows deterioration no one's there to catch early." }
+    ],
+    "ctaLabel": "Stop paying to wait &mdash; get a free walkthrough"
+  },
+
+  "results": {
+    "heading": "Prep pays for itself",
+    "body": "A property that shows well doesn't just sell faster &mdash; it sells for more. Here's what proper prep did for one recent listing:",
+    "beforeLabel": "Listed as-is",
+    "beforePrice": "$70,000",
+    "afterLabel": "Sold after Rosa's prep",
+    "afterPrice": "$140,000",
+    "afterDelta": "+100%",
+    "note": "*Illustrative example based on a past listing. Every property and market is different &mdash; ask us for an honest read on yours."
+  },
+
+  "services": {
+    "heading": "One provider, every job the property needs",
+    "body": "Instead of hiring separate cleaners, painters, handymen and landscapers, Rosa's team covers the full list &mdash; recurring or one time.",
+    "items": [
+      { "slug": "clean", "title": "Cleaning", "body": "Deep cleans and recurring visits, scheduled around your timeline.", "image": "service-clean.webp", "alt": "A Rosa's Sparkling Cleaning team member wiping down a marble floor in a bright living room" },
+      { "slug": "paint", "title": "Painting", "body": "Touch-ups and full rooms, inside and out.", "image": "service-paint.webp", "alt": "A painter rolling white paint onto an interior wall" },
+      { "slug": "management", "title": "Management", "body": "Recurring visits and oversight for vacant or listed properties, coordinating maintenance and minor repairs on your behalf.", "image": "service-fixing.webp", "alt": "A handyman installing a kitchen cabinet drawer with a power drill" },
+      { "slug": "garden", "title": "Gardening", "body": "Yards kept tidy so curb appeal never lapses.", "image": "service-landscaping.webp", "alt": "A landscaper trimming a manicured hedge in a home's front yard" }
+    ],
+    "secondaryNote": "Also available: windows, doors and screening."
+  },
+
+  "how": {
+    "heading": "Getting a quote takes three steps",
+    "steps": [
+      "Tell us the service, size and area.",
+      "We send you an estimated range.",
+      "You confirm the job over WhatsApp."
+    ]
+  },
+
+  "areasSection": {
+    "heading": "Where we work"
+  }
+}

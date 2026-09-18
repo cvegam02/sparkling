@@ -1,0 +1,139 @@
+<div class="progress-bar" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img class="brand-mark" src="{{assetBase}}/assets/img/logo-icon.png" alt="Rosa's Sparkling Cleaning logo" width="40" height="40">
+      Rosa<span>'</span>s Sparkling Cleaning
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+    <nav aria-label="Primary">
+      <ul class="site-nav" id="site-nav">
+        <li><a href="#paths">{{navServices}}</a></li>
+        <li><a href="#vacant-home">{{navVacantHome}}</a></li>
+        <li><a href="#areas">{{navAreas}}</a></li>
+        <li><a href="#contact">{{navContact}}</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-wrap">
+      <div class="hero-copy">
+        <p class="kicker">{{kicker}}</p>
+        <p class="tagline">{{tagline}}</p>
+        <h1>{{h1}}</h1>
+        <p>{{heroBody}}</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="{{quoteCalculatorUrl}}">{{ctaPrimaryLabel}}</a>
+          <a class="btn btn-whatsapp" href="{{whatsappHref}}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.001 3C9.383 3 4 8.383 4 15c0 2.386.703 4.612 1.912 6.482L4 29l7.72-1.876A11.94 11.94 0 0 0 16 27c6.617 0 12-5.383 12-12S22.617 3 16.001 3zm0 21.818c-1.94 0-3.766-.516-5.35-1.415l-.384-.222-4.583 1.115 1.128-4.463-.25-.397A9.78 9.78 0 0 1 6.182 15c0-5.42 4.398-9.818 9.818-9.818S25.818 9.58 25.818 15 21.42 24.818 16 24.818zm5.4-7.36c-.296-.148-1.75-.864-2.022-.963-.272-.099-.47-.148-.668.148-.198.297-.767.963-.94 1.161-.173.198-.346.223-.642.075-.297-.148-1.253-.462-2.386-1.472-.882-.787-1.478-1.76-1.65-2.057-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.52.148-.173.198-.297.297-.495.099-.198.05-.372-.025-.52-.075-.148-.668-1.61-.915-2.205-.24-.578-.485-.5-.668-.51l-.57-.01c-.198 0-.52.075-.792.372-.272.297-1.04 1.017-1.04 2.48 0 1.463 1.065 2.876 1.213 3.074.148.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.873.118.571-.085 1.75-.715 1.997-1.406.247-.69.247-1.282.173-1.406-.074-.124-.272-.198-.568-.347z"/></svg>
+            {{whatsappLabel}}
+          </a>
+        </div>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <span class="hero-block hero-block--pink"></span>
+        <span class="hero-block hero-block--blue"></span>
+        <span class="hero-block hero-block--gold"></span>
+        <span class="hero-block hero-block--green"></span>
+        <svg class="hero-spark hero-spark--a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+        <svg class="hero-spark hero-spark--b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
+        <img class="hero-logo" src="{{assetBase}}/assets/img/logo-icon.png" alt="" width="1024" height="1024">
+      </div>
+    </div>
+  </section>
+
+  <section class="paths" id="paths">
+    <div class="wrap">
+{{pathsHtml}}
+    </div>
+  </section>
+
+  <section class="vacant-band" id="vacant-home">
+    <div class="wrap">
+      <div class="vacant-copy">
+        <p class="vacant-kicker">{{vacantKicker}}</p>
+        <h2>{{vacantHeading}}</h2>
+        <p>{{vacantBody}}</p>
+      </div>
+      <div class="bill">
+        <p class="bill-heading">{{billHeading}}</p>
+        <ul class="bill-list">
+{{billItemsHtml}}
+        </ul>
+        <a class="bill-cta" href="{{billCtaHref}}">{{billCtaLabel}}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="results">
+    <div class="wrap">
+      <h2>{{resultsHeading}}</h2>
+      <p>{{resultsBody}}</p>
+      <div class="results-card">
+        <div class="results-side">
+          <span class="results-label">{{resultsBeforeLabel}}</span>
+          <span class="results-price results-price--before">{{resultsBeforePrice}}</span>
+        </div>
+        <svg class="results-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        <div class="results-side">
+          <span class="results-label">{{resultsAfterLabel}}</span>
+          <span class="results-price results-price--after">{{resultsAfterPrice}}</span>
+          <span class="results-delta">{{resultsAfterDelta}}</span>
+        </div>
+      </div>
+      <p class="results-note">{{resultsNote}}</p>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="wrap">
+      <h2>{{servicesHeading}}</h2>
+      <p>{{servicesBody}}</p>
+      <div class="services-grid">
+{{serviceCardsHtml}}
+      </div>
+      <p class="services-secondary">{{servicesSecondaryNote}}</p>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <h2>{{howHeading}}</h2>
+      <ol>
+{{howStepsHtml}}
+      </ol>
+    </div>
+  </section>
+
+  <section class="areas" id="areas">
+    <div class="wrap">
+      <h2>{{areasHeading}}</h2>
+      <ul class="areas-list">
+{{areasListHtml}}
+      </ul>
+    </div>
+  </section>
+
+{{reviewsHtml}}
+
+{{relatedLinks}}
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <span>{{footerCopyright}}</span>
+    <a class="btn-whatsapp btn-whatsapp--small" href="{{whatsappHref}}" target="_blank" rel="noopener">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.001 3C9.383 3 4 8.383 4 15c0 2.386.703 4.612 1.912 6.482L4 29l7.72-1.876A11.94 11.94 0 0 0 16 27c6.617 0 12-5.383 12-12S22.617 3 16.001 3zm0 21.818c-1.94 0-3.766-.516-5.35-1.415l-.384-.222-4.583 1.115 1.128-4.463-.25-.397A9.78 9.78 0 0 1 6.182 15c0-5.42 4.398-9.818 9.818-9.818S25.818 9.58 25.818 15 21.42 24.818 16 24.818zm5.4-7.36c-.296-.148-1.75-.864-2.022-.963-.272-.099-.47-.148-.668.148-.198.297-.767.963-.94 1.161-.173.198-.346.223-.642.075-.297-.148-1.253-.462-2.386-1.472-.882-.787-1.478-1.76-1.65-2.057-.173-.297-.018-.457.13-.605.134-.133.297-.347.446-.52.148-.173.198-.297.297-.495.099-.198.05-.372-.025-.52-.075-.148-.668-1.61-.915-2.205-.24-.578-.485-.5-.668-.51l-.57-.01c-.198 0-.52.075-.792.372-.272.297-1.04 1.017-1.04 2.48 0 1.463 1.065 2.876 1.213 3.074.148.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.873.118.571-.085 1.75-.715 1.997-1.406.247-.69.247-1.282.173-1.406-.074-.124-.272-.198-.568-.347z"/></svg>
+      {{footerWhatsappLabel}}
+    </a>
+  </div>
+</footer>
+
+<script src="{{assetBase}}/assets/js/main.js" defer></script>

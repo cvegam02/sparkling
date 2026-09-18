@@ -1,0 +1,9 @@
+{
+  "name": "sparkling-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static marketing site for Rosa's Sparkling Cleaning",
+  "scripts": {
+    "build": "node scripts/build.js"
+  }
+}

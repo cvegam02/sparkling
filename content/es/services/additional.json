@@ -1,0 +1,32 @@
+{
+  "title": "Limpieza, Pintura, Gestión y Más | Rosa's Sparkling Cleaning",
+  "metaDescription": "Limpieza, pintura, jardinería y gestión de propiedades recurrente o de una sola vez, además de ventanas, puertas y mosquiteros &mdash; un solo proveedor para cada trabajo que la propiedad necesita.",
+  "h1": "Un solo proveedor, cada trabajo que la propiedad necesita.",
+  "kicker": "Servicios adicionales",
+  "intro": "En vez de contratar por separado limpieza, pintura, mantenimiento y jardinería, el equipo de Rosa's cubre toda la lista &mdash; recurrente o de una sola vez.",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, me gustaría preguntar sobre sus servicios adicionales",
+  "relatedPages": ["vacant-home"],
+  "sections": [
+    {
+      "heading": "Limpieza",
+      "body": "Limpiezas profundas y visitas recurrentes, programadas según tu calendario."
+    },
+    {
+      "heading": "Pintura",
+      "body": "Retoques y habitaciones completas, por dentro y por fuera."
+    },
+    {
+      "heading": "Gestión",
+      "body": "Visitas recurrentes y supervisión de propiedades vacías o en venta, coordinando mantenimiento y reparaciones menores en tu nombre."
+    },
+    {
+      "heading": "Jardinería",
+      "body": "Jardines cuidados para que el atractivo exterior nunca decaiga."
+    },
+    {
+      "heading": "Ventanas, puertas y mosquiteros",
+      "body": "También disponible como servicio secundario &mdash; pregúntanos al solicitar tu estimado."
+    }
+  ]
+}
