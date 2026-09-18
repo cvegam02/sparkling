@@ -3,22 +3,22 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="{{homeUrl}}">
-      <img class="brand-mark" src="{{assetBase}}/assets/img/logo-icon.png" alt="Rosa's Sparkling Cleaning logo" width="40" height="40">
-      Rosa<span>'</span>s Sparkling Cleaning
+      <img class="brand-mark" src="{{assetBase}}/assets/img/logo-icon.png" alt="Rosa's Sparkling Clean & Management logo" width="40" height="40">
+      <span class="brand-name">Rosa<span class="brand-apostrophe">'</span>s Sparkling Clean & Management</span>
     </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-    </button>
+    <div class="mobile-header-actions">
+{{mobileLangSwitchHtml}}
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      </button>
+    </div>
     <nav aria-label="Primary">
-      <ul class="site-nav" id="site-nav">
-        <li><a href="{{navServicesHref}}">{{navServices}}</a></li>
-        <li><a href="{{navVacantHomeHref}}">{{navVacantHome}}</a></li>
-        <li><a href="{{navAreasHref}}">{{navAreas}}</a></li>
-        <li><a href="{{navContactHref}}">{{navContact}}</a></li>
-      </ul>
+{{siteNavHtml}}
     </nav>
   </div>
 </header>
+
+<p class="mobile-brand-header">Rosa<span class="brand-apostrophe">'</span>s Sparkling Clean &amp; Management</p>
 
 <main id="top">
 

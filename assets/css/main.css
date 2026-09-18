@@ -28,9 +28,13 @@
   --color-green: #4a9950;
   --color-green-deep: #357339;
 
-  /* WhatsApp's own brand green, used only for WhatsApp links so they read instantly */
-  --color-whatsapp: #25d366;
-  --color-whatsapp-deep: #1da851;
+  /* WhatsApp's own color lane (never reused elsewhere), shifted from the
+     official brand mint to a deeper jade so it sits comfortably in this
+     site's more muted, jewel-toned palette instead of reading as a stock
+     WhatsApp widget. Also clears 4.5:1 contrast with white text, which the
+     original brand mint (#25d366) did not (~2:1). */
+  --color-whatsapp: #127a4e;
+  --color-whatsapp-deep: #0c5c3b;
 
   /* Type */
   --font-display: "Fraunces", Georgia, serif;
@@ -155,8 +159,16 @@ p {
   flex-shrink: 0;
 }
 
-.brand span {
+.brand-apostrophe {
   color: var(--color-pink-deep);
+}
+
+.mobile-brand-header {
+  display: none;
+}
+
+.mobile-header-actions {
+  display: none;
 }
 
 .site-nav {
@@ -181,6 +193,19 @@ p {
   border-color: var(--color-pink);
 }
 
+.site-nav .nav-lang-switch {
+  border: 1px solid var(--color-cloud-deep);
+  border-radius: 999px;
+  padding: 0.3em 0.85em;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.site-nav .nav-lang-switch:hover {
+  border-color: var(--color-pink);
+  background: var(--color-cloud);
+}
+
 .nav-toggle {
   display: none;
   align-items: center;
@@ -200,6 +225,76 @@ p {
   stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: round;
+}
+
+/* Nav submenus — "Services" and "Areas" each expand into a list of their
+   sub-pages. Desktop reveals them on hover/focus; mobile needs the caret
+   button since there's no hover, see .nav-submenu-toggle click handling in
+   assets/js/main.js. */
+
+.nav-item--has-submenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-submenu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.nav-submenu-toggle svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.15s ease;
+}
+
+.nav-item--has-submenu:hover .nav-submenu-toggle svg,
+.nav-item--has-submenu:focus-within .nav-submenu-toggle svg,
+.nav-item--has-submenu.is-open .nav-submenu-toggle svg {
+  transform: rotate(180deg);
+}
+
+.nav-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 14rem;
+  margin: 0;
+  padding: var(--space-1) 0;
+  list-style: none;
+  background: var(--color-white);
+  border: 1px solid var(--color-cloud-deep);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 32px -20px rgba(20, 25, 47, 0.35);
+  z-index: 20;
+}
+
+.nav-submenu a {
+  display: block;
+  padding: 0.6em var(--space-2);
+  border-bottom: none;
+  white-space: nowrap;
+}
+
+.nav-item--has-submenu:hover .nav-submenu,
+.nav-item--has-submenu:focus-within .nav-submenu,
+.nav-item--has-submenu.is-open .nav-submenu {
+  display: block;
 }
 
 /* Buttons */
@@ -255,8 +350,8 @@ p {
 }
 
 .btn-whatsapp svg {
-  width: 1.15em;
-  height: 1.15em;
+  width: 1.6em;
+  height: 1.6em;
   flex-shrink: 0;
   fill: currentColor;
 }
@@ -288,13 +383,11 @@ p {
 .hero-wrap {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: var(--space-4);
-  align-items: center;
 }
 
 .hero-copy {
+  position: relative;
+  z-index: 2;
   max-width: 32rem;
 }
 
@@ -317,125 +410,53 @@ p {
 }
 
 .hero-graphic {
-  position: relative;
-  height: clamp(360px, 48vh, 480px);
+  position: absolute;
+  top: 50%;
+  right: -6%;
+  z-index: 1;
+  width: min(75%, 52rem);
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
-.hero-block {
-  position: absolute;
+.hero-video {
   display: block;
-  border-radius: 28px;
-  opacity: 0;
-  animation: hero-block-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.hero-block--pink {
-  background: var(--color-pink);
-  width: 46%;
-  aspect-ratio: 4 / 5;
-  top: 2%;
-  left: 8%;
-  --end-rotate: -8deg;
-  animation-delay: 0.05s;
-}
-
-.hero-block--blue {
-  background: var(--color-blue);
-  width: 42%;
-  aspect-ratio: 1 / 1;
-  bottom: 4%;
-  left: 0;
-  --end-rotate: 7deg;
-  animation-delay: 0.15s;
-}
-
-.hero-block--gold {
-  background: var(--color-gold);
-  width: 36%;
-  aspect-ratio: 3 / 4;
-  top: 6%;
-  right: 4%;
-  --end-rotate: 9deg;
-  animation-delay: 0.25s;
-}
-
-.hero-block--green {
-  background: var(--color-green);
-  width: 40%;
-  aspect-ratio: 5 / 6;
-  bottom: 0;
-  right: 10%;
-  --end-rotate: -6deg;
-  animation-delay: 0.35s;
-}
-
-@keyframes hero-block-in {
-  from {
-    opacity: 0;
-    transform: scale(0.5) rotate(0deg);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(var(--end-rotate));
-  }
-}
-
-.hero-spark {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  fill: var(--color-pink-deep);
-  opacity: 0;
-  animation: hero-spark-in 0.5s ease-out forwards;
-}
-
-.hero-spark--a {
-  top: 10%;
-  right: 30%;
-  animation-delay: 0.55s;
-}
-
-.hero-spark--b {
-  width: 18px;
-  height: 18px;
-  bottom: 14%;
-  left: 32%;
-  fill: var(--color-gold);
-  animation-delay: 0.65s;
-}
-
-@keyframes hero-spark-in {
-  from {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.hero-logo {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 62%;
+  width: 100%;
   height: auto;
-  filter: drop-shadow(0 16px 28px rgba(20, 25, 47, 0.3));
-  opacity: 0;
-  animation: hero-logo-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 0.4s;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  /* Fades the edge nearest the copy column to transparent instead of a hard
+     rectangle, since (unlike the old transparent-background PNG) this is an
+     opaque video and would otherwise sit right behind the paragraph text
+     where .hero-graphic overlaps .hero-copy, hurting legibility. */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 42%);
+  mask-image: linear-gradient(to right, transparent, black 42%);
 }
 
-@keyframes hero-logo-in {
-  from {
-    opacity: 0;
-    transform: scale(0.55);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Vacant-house note — short context band between the hero and the service
+   paths, so the page doesn't jump straight from the headline into "pick
+   your path" */
+
+.vacant-note {
+  padding-block: var(--space-5);
+  background: var(--color-cloud);
+  text-align: center;
+  border-top: 1px solid var(--color-cloud-deep);
+}
+
+.vacant-note .wrap {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.vacant-note h2 {
+  max-width: none;
+}
+
+.vacant-note p:last-child {
+  margin-bottom: 0;
+  max-width: none;
 }
 
 /* Two-path section: two independent cards, offset, that slide in from their own side on scroll */
@@ -842,7 +863,7 @@ p {
   border-top-color: var(--color-blue);
 }
 
-.service-card--management {
+.service-card--repairs {
   border-top-color: var(--color-gold);
 }
 
@@ -852,6 +873,7 @@ p {
 
 .service-photo {
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   transform: scale(1) translateX(0);
@@ -870,6 +892,42 @@ p {
 
 .service-card-body p {
   margin-bottom: 0;
+}
+
+/* Same circular-badge language as .path-icon, reprised here so the "pick
+   your path" and "our services" sections read as one family. Colors match
+   each card's own door color (see .service-card--* above); gold swaps to
+   its -deep variant since plain gold falls under the 3:1 contrast floor
+   for a white icon (see docs/superpowers/specs/2026-09-17-design-system.md
+   §2's contrast rule). */
+
+.service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-bottom: var(--space-2);
+  background: var(--color-pink);
+}
+
+.service-icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  stroke: var(--color-white);
+}
+
+.service-card--paint .service-icon {
+  background: var(--color-blue);
+}
+
+.service-card--repairs .service-icon {
+  background: var(--color-gold-deep);
+}
+
+.service-card--garden .service-icon {
+  background: var(--color-green);
 }
 
 .services-secondary {
@@ -1061,7 +1119,7 @@ p {
   stroke-linejoin: round;
 }
 
-/* Service detail pages (cleaning.html, painting.html, management.html, gardening.html) */
+/* Service detail pages (cleaning.html, painting.html, repairs.html, gardening.html) */
 
 .service-hero {
   padding-block: var(--space-5) var(--space-4);
@@ -1156,10 +1214,45 @@ p {
   text-align: center;
 }
 
-.evidence-photo {
+.evidence-photo-trigger {
+  position: relative;
+  display: block;
   width: 100%;
   max-width: 56rem;
   margin-inline: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+/* Visible expand cue — cursor:zoom-in above only signals "clickable" to a
+   mouse; touch has no hover, so the photo needs its own icon to read as
+   interactive there too. */
+
+.evidence-zoom-icon {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: rgba(20, 25, 47, 0.65);
+  fill: none;
+  stroke: var(--color-white);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.evidence-photo-trigger:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+.evidence-photo {
+  width: 100%;
   height: clamp(220px, 55vw, 420px);
   object-fit: cover;
   border-radius: var(--radius);
@@ -1171,6 +1264,50 @@ p {
   color: var(--color-ink);
   opacity: 0.75;
   font-size: 0.95rem;
+}
+
+/* Evidence photo lightbox — opens the full-size image on click */
+
+.lightbox {
+  width: min(90vw, 60rem);
+  max-height: 90vh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+}
+
+.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 2px;
 }
 
 /* Reviews placeholder (home + area pages) */
@@ -1315,7 +1452,7 @@ p {
   .results-card {
     animation: fade-slide-in linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 35%;
+    animation-range: entry 0% entry 100%;
   }
 
   /*
@@ -1334,70 +1471,97 @@ p {
   .path-presale {
     animation: slide-in-left linear both;
     animation-timeline: view();
-    animation-range: entry 0% cover 55%;
+    animation-range: entry 0% entry 100%;
   }
 
   .path-movein {
     animation: slide-in-right linear both;
     animation-timeline: view();
-    animation-range: entry 8% cover 63%;
+    animation-range: entry 8% entry 100%;
   }
 
   .service-card:nth-child(1) {
-    animation-range: entry 0% cover 45%;
+    animation-range: entry 0% entry 100%;
   }
 
   .service-card:nth-child(2) {
-    animation-range: entry 6% cover 51%;
+    animation-range: entry 6% entry 100%;
   }
 
   .service-card:nth-child(3) {
-    animation-range: entry 12% cover 57%;
+    animation-range: entry 12% entry 100%;
   }
 
   .service-card:nth-child(4) {
-    animation-range: entry 18% cover 63%;
+    animation-range: entry 18% entry 100%;
   }
 
   .how li:nth-child(1) {
-    animation-range: entry 0% cover 45%;
+    animation-range: entry 0% entry 100%;
   }
 
   .how li:nth-child(2) {
-    animation-range: entry 8% cover 53%;
+    animation-range: entry 8% entry 100%;
   }
 
   .how li:nth-child(3) {
-    animation-range: entry 16% cover 61%;
+    animation-range: entry 16% entry 100%;
   }
 
 }
 
 @keyframes fade-slide-in {
   from {
+    opacity: 0;
     transform: translateY(40px);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes slide-in-left {
   from {
+    opacity: 0;
     transform: translateX(-60px);
   }
   to {
+    opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes slide-in-right {
   from {
+    opacity: 0;
     transform: translateX(60px);
   }
   to {
+    opacity: 1;
     transform: translateX(0);
   }
+}
+
+/*
+  Fallback for browsers without `animation-timeline: view()` support
+  (Firefox, at the time of writing). main.js only adds `.reveal-pending`
+  once it has confirmed native support is missing and JS is running, so
+  no-JS visitors and reduced-motion visitors always get the static,
+  fully-visible layout — this never becomes the only way to see the content.
+*/
+
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.6s cubic-bezier(0, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.reveal-pending.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 @media (max-width: 1100px) {
@@ -1440,15 +1604,62 @@ p {
     --space-4: 2rem;
   }
 
+  .mobile-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
   .nav-toggle {
     display: inline-flex;
     flex-shrink: 0;
+  }
+
+  .mobile-lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-cloud-deep);
+    border-radius: 999px;
+    padding: 0.3em 0.75em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .mobile-lang-switch:hover {
+    border-color: var(--color-pink);
+    background: var(--color-cloud);
   }
 
   .brand {
     font-size: 1.05rem;
     flex-shrink: 1;
     min-width: 0;
+  }
+
+  .brand-mark {
+    width: 52px;
+    height: 52px;
+  }
+
+  .brand-name {
+    display: none;
+  }
+
+  .mobile-brand-header {
+    display: block;
+    margin: 0;
+    padding: var(--space-2) var(--space-3);
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-cloud);
+    border-bottom: 1px solid var(--color-cloud-deep);
   }
 
   nav[aria-label='Primary'] {
@@ -1479,10 +1690,69 @@ p {
     border-bottom: 1px solid var(--color-cloud-deep);
   }
 
-  .hero-wrap,
+  .site-nav .nav-lang-switch {
+    display: none;
+  }
+
+  /* No hover on touch, so the submenu opens in place (accordion-style)
+     via the caret button instead of floating like the desktop dropdown. */
+
+  .nav-item--has-submenu {
+    flex-wrap: wrap;
+  }
+
+  .nav-item--has-submenu > a {
+    flex: 1 1 auto;
+  }
+
+  .nav-item--has-submenu .nav-submenu-toggle {
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--color-cloud-deep);
+  }
+
+  .nav-submenu {
+    position: static;
+    flex: 1 0 100%;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .nav-submenu a {
+    padding-left: calc(var(--space-1) * 2);
+    background: var(--color-cloud);
+  }
+
   .paths .wrap,
   .vacant-band .wrap {
     grid-template-columns: 1fr;
+  }
+
+  /* The desktop layout overlaps the video behind the copy (absolute
+     position + a mask-image fade for legibility). Mobile has no room for
+     an overlap, so the video instead becomes a normal block placed above
+     the copy — column-reverse flips it ahead of .hero-copy without
+     needing to reorder the markup. */
+
+  .hero-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .hero-graphic {
+    position: static;
+    width: 100%;
+    margin-bottom: var(--space-3);
+    transform: none;
+  }
+
+  .hero-video {
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .path-movein {
@@ -1525,10 +1795,6 @@ p {
   .path li {
     padding: 0.4em 0;
     font-size: 0.92rem;
-  }
-
-  .hero-graphic {
-    display: none;
   }
 
   .cta-row .btn,
@@ -1603,35 +1869,14 @@ p {
     transition: none !important;
   }
 
-  .hero-block,
-  .hero-spark,
-  .hero-logo {
-    opacity: 1 !important;
-  }
-
   .vacant-band,
   .results-card,
   .path,
   .service-card,
   .how li,
-  .areas-list li {
+  .areas-list li,
+  .reveal-pending {
     opacity: 1 !important;
     transform: none !important;
-  }
-
-  .hero-block--pink {
-    transform: rotate(-8deg);
-  }
-
-  .hero-block--blue {
-    transform: rotate(7deg);
-  }
-
-  .hero-block--gold {
-    transform: rotate(9deg);
-  }
-
-  .hero-block--green {
-    transform: rotate(-6deg);
   }
 }

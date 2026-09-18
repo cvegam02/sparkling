@@ -1,4 +1,4 @@
-# Rosa's Sparkling Cleaning — Website
+# Rosa's Sparkling Clean & Management — Website
 
 Static marketing site, bilingual (English/Spanish), deployed to GitHub Pages. No backend, no database — everything you edit is a plain text file. See `CLAUDE.md` and `docs/superpowers/specs/` for the full design and architecture if you're a developer picking this up.
 

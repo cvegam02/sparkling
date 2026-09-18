@@ -2,7 +2,7 @@
   "name": "sparkling-website",
   "version": "0.1.0",
   "private": true,
-  "description": "Static marketing site for Rosa's Sparkling Cleaning",
+  "description": "Static marketing site for Rosa's Sparkling Clean & Management",
   "scripts": {
     "build": "node scripts/build.js",
     "preview": "node scripts/preview.js && npx serve dist-preview -l 5050"

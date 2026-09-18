@@ -3,22 +3,22 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top">
-      <img class="brand-mark" src="{{assetBase}}/assets/img/logo-icon.png" alt="Rosa's Sparkling Cleaning logo" width="40" height="40">
-      Rosa<span>'</span>s Sparkling Cleaning
+      <img class="brand-mark" src="{{assetBase}}/assets/img/logo-icon.png" alt="Rosa's Sparkling Clean & Management logo" width="40" height="40">
+      <span class="brand-name">Rosa<span class="brand-apostrophe">'</span>s Sparkling Clean & Management</span>
     </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
-    </button>
+    <div class="mobile-header-actions">
+{{mobileLangSwitchHtml}}
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      </button>
+    </div>
     <nav aria-label="Primary">
-      <ul class="site-nav" id="site-nav">
-        <li><a href="#paths">{{navServices}}</a></li>
-        <li><a href="#vacant-home">{{navVacantHome}}</a></li>
-        <li><a href="#areas">{{navAreas}}</a></li>
-        <li><a href="#contact">{{navContact}}</a></li>
-      </ul>
+{{siteNavHtml}}
     </nav>
   </div>
 </header>
+
+<p class="mobile-brand-header">Rosa<span class="brand-apostrophe">'</span>s Sparkling Clean &amp; Management</p>
 
 <main id="top">
 
@@ -38,14 +38,17 @@
         </div>
       </div>
       <div class="hero-graphic" aria-hidden="true">
-        <span class="hero-block hero-block--pink"></span>
-        <span class="hero-block hero-block--blue"></span>
-        <span class="hero-block hero-block--gold"></span>
-        <span class="hero-block hero-block--green"></span>
-        <svg class="hero-spark hero-spark--a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
-        <svg class="hero-spark hero-spark--b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>
-        <img class="hero-logo" src="{{assetBase}}/assets/img/logo-icon.png" alt="" width="1024" height="1024">
+        <video class="hero-video" autoplay muted playsinline width="1440" height="1440">
+          <source src="{{assetBase}}/assets/video/hero.mp4" type="video/mp4">
+        </video>
       </div>
+    </div>
+  </section>
+
+  <section class="vacant-note">
+    <div class="wrap">
+      <h2>{{vacantNoteHeading}}</h2>
+      <p>{{vacantNoteBody}}</p>
     </div>
   </section>
 

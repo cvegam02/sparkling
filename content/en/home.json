@@ -1,13 +1,18 @@
 {
-  "title": "Rosa's Sparkling Cleaning | Ocala, Tampa & Spring Hill, FL",
-  "metaDescription": "Property cleaning, staging and management for home sellers, buyers and vacant properties in Ocala, Tampa and Spring Hill, Florida.",
-  "h1": "A vacant house is not a sold house.",
+  "title": "Rosa's Sparkling Clean & Management | Ocala, Tampa & Spring Hill, FL",
+  "metaDescription": "Property cleaning, staging and repairs for home sellers, buyers and vacant properties in Ocala, Tampa and Spring Hill, Florida.",
+  "h1": "The full job, or just the one thing you need done.",
   "kicker": "Ocala &middot; Tampa &middot; Spring Hill, FL",
   "tagline": "Clean spaces. Brighter places. Better living.",
-  "heroBody": "Every month a property sits empty, it costs you: higher insurance, a shrinking window on your homestead exemption, and wear no one's there to catch. We clean, stage and maintain the property so it shows well and sells faster &mdash; we don't buy it off you, we help you sell it right.",
+  "heroBody": "Cleaning, painting, repairs and gardening &mdash; hire us for the complete package or a single service, and get the same reliable team either way. No juggling contractors, no guessing who to call next.",
   "ctaPrimaryLabel": "Get a free estimate",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like a quote",
+
+  "vacantNote": {
+    "heading": "A vacant house is not a sold house.",
+    "body": "Every month a property sits empty, it costs you: higher insurance, a shrinking window on your homestead exemption, and wear no one's there to catch. We clean, stage and maintain the property so it shows well and sells faster &mdash; we don't buy it off you, we help you sell it right."
+  },
 
   "relatedPages": ["vacant-home"],
 
@@ -60,9 +65,9 @@
     "heading": "One provider, every job the property needs",
     "body": "Instead of hiring separate cleaners, painters, handymen and landscapers, Rosa's team covers the full list &mdash; recurring or one time.",
     "items": [
-      { "slug": "clean", "title": "Cleaning", "body": "Deep cleans and recurring visits, scheduled around your timeline.", "image": "service-clean.webp", "alt": "A Rosa's Sparkling Cleaning team member wiping down a marble floor in a bright living room", "linkRouteId": "services/cleaning" },
+      { "slug": "clean", "title": "Cleaning", "body": "Deep cleans and recurring visits, scheduled around your timeline.", "image": "service-clean.webp", "alt": "A Rosa's Sparkling Clean & Management team member wiping down a marble floor in a bright living room", "linkRouteId": "services/cleaning" },
       { "slug": "paint", "title": "Painting", "body": "Touch-ups and full rooms, inside and out.", "image": "service-paint.webp", "alt": "A painter rolling white paint onto an interior wall", "linkRouteId": "services/painting" },
-      { "slug": "management", "title": "Management", "body": "Recurring visits and oversight for vacant or listed properties, coordinating maintenance and minor repairs on your behalf.", "image": "service-fixing.webp", "alt": "A handyman installing a kitchen cabinet drawer with a power drill", "linkRouteId": "services/management" },
+      { "slug": "repairs", "title": "Repairs", "body": "Recurring visits and oversight for vacant or listed properties, coordinating maintenance and minor repairs on your behalf.", "image": "service-fixing.webp", "alt": "A handyman installing a kitchen cabinet drawer with a power drill", "linkRouteId": "services/repairs" },
       { "slug": "garden", "title": "Gardening", "body": "Yards kept tidy so curb appeal never lapses.", "image": "service-landscaping.webp", "alt": "A landscaper trimming a manicured hedge in a home's front yard", "linkRouteId": "services/gardening" }
     ],
     "secondaryNote": "Also available: windows, doors and screening."

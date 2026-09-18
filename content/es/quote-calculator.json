@@ -1,5 +1,5 @@
 {
-  "title": "Obtén tu Estimado | Rosa's Sparkling Cleaning",
+  "title": "Obtén tu Estimado | Rosa's Sparkling Clean & Management",
   "metaDescription": "Responde tres preguntas rápidas y obtén un rango de precio estimado para tu propiedad, en Ocala, Tampa y Spring Hill, FL.",
   "h1": "Obtén tu estimado",
   "kicker": "Tres preguntas, sin formularios que firmar",
@@ -12,7 +12,7 @@
     "serviceOptions": [
       { "value": "presale", "label": "Preparación Pre-Sale" },
       { "value": "post-sale", "label": "Post-Sale / Move-In Ready" },
-      { "value": "additional", "label": "Servicios adicionales (limpieza, pintura, gestión, jardinería)" }
+      { "value": "additional", "label": "Servicios adicionales (limpieza, pintura, reparaciones, jardinería)" }
     ],
     "sizeLabel": "¿Qué tan grande es la propiedad?",
     "sizeOptions": [

@@ -10,7 +10,7 @@ This captures the visual language established on the home page so new pages (Abo
 
 - **The palette is the logo, nothing else.** Every color on the site traces back to the actual logo artwork (navy wordmark, pink "Rosa's" script, and the four colored door panels — pink/blue/gold/green for Cleaning/Painting/Management/Gardening). Don't introduce a new hue to solve a one-off problem; reach for an existing token or a `-deep` variant of one.
 - **One primary action color.** Pink (`--color-pink-deep`) is the only color used for the main call-to-action button and focus rings. It stays consistent everywhere so "the pink button" always means the same thing.
-- **WhatsApp is its own color.** Any link that opens WhatsApp uses WhatsApp's own brand green (`--color-whatsapp`), not a site color, so it reads as "this opens WhatsApp" at a glance. Never use that green for anything else.
+- **WhatsApp is its own color.** Any link that opens WhatsApp uses a dedicated green (`--color-whatsapp`) that no other component uses, so it reads as "this opens WhatsApp" at a glance. As of 2026-09, this is a deeper jade (`#127a4e`) rather than WhatsApp's official brand mint (`#25d366`) — chosen to sit inside this site's muted, jewel-toned palette instead of reading as a stock widget, and because the official mint only clears ~2:1 contrast with white text (this jade clears 4.5:1). Never use that green for anything else, including `--color-green` (the logo's gardening-door green) — the two must stay visually distinct since they mean different things.
 - **Real photography for real services, illustration for brand moments.** The four service photos (cleaning/painting/management/gardening) are the only place real photography appears. The hero uses an abstract color-block-and-logo composition instead of a photo or video specifically so it doesn't repeat content the services section already shows.
 - **Motion answers scrolling, not looping.** All animation on the page is either a one-time page-load sequence (hero) or tied to scroll position via CSS `animation-timeline: view()`/`scroll()` — nothing loops or plays on a timer. Every animation must also work with `prefers-reduced-motion: reduce` (see §7).
 - **Never animate opacity to 0 on scroll-reveal.** Learned the hard way: scroll-linked reveals that fade from `opacity: 0` can get caught mid-transition in static screenshots/previews and look like a rendering bug ("why is this see-through?"). Scroll-reveal keyframes here only animate `transform` — elements are always fully opaque, just slide/settle into position.
@@ -35,8 +35,8 @@ All defined in `:root` in `main.css`. Never hardcode a hex value in a new compon
 | `--color-gold-deep` | `#b9800f` | Reserved for backgrounds carrying white text (not yet used — add here when needed) |
 | `--color-green` | `#4a9950` | Gardening door. Decorative accents, icons |
 | `--color-green-deep` | `#357339` | Vacant-band section background |
-| `--color-whatsapp` | `#25d366` | WhatsApp buttons only |
-| `--color-whatsapp-deep` | `#1da851` | WhatsApp button hover |
+| `--color-whatsapp` | `#127a4e` | WhatsApp buttons only |
+| `--color-whatsapp-deep` | `#0c5c3b` | WhatsApp button hover |
 
 ### Contrast rule for the four brand colors
 
@@ -97,6 +97,8 @@ Inline SVG only, no icon font/library dependency (keeps the "no external depende
 - **Verify centering with coordinate math, not memory.** Hand-drawn/half-remembered bezier paths inside a circular badge have repeatedly rendered off-center. Prefer simple primitives (`<circle>`, `<polygon>`, `<polyline>`, `<line>`, `<rect>`) with coordinates you can check by hand (bounding box center should equal the viewBox center) over freehand `<path>` curves.
 - 24×24 viewBox is the default; stroke-based (`fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"`), so they can be recolored via `color`/`stroke`.
 - The WhatsApp glyph is the one exception (a real, specific brand mark) — copy it exactly, don't simplify it.
+- **Service tile icons** (`SERVICE_ICONS` in `scripts/build.js`): a badge per service card (`.service-icon`, same 3rem circular-badge treatment as `.path-icon`), sitting above the `<h3>` so the two card families visually rhyme. Sparkle (clean), roller (paint), toolbox (repairs), potted plant (garden) — all primitive-only per the rule above. `repairs` uses `--color-gold-deep` instead of plain `--color-gold` for its badge background; plain gold under a white stroke icon only clears ~2:1 contrast, below the 3:1 floor this section requires.
+- **Evidence photo expand cue** (`EXPAND_ICON` in `scripts/build.js`, `.evidence-zoom-icon`): a small corner-bracket "maximize" glyph overlaid bottom-right on the before/after photo. `cursor: zoom-in` alone only signals "clickable" to a mouse; this makes the affordance visible on touch too.
 
 ### Header / nav
 Logo mark (`logo-icon.png`, 40×40) + wordmark on the left, nav links on the right. Below `860px` the links collapse into a `<button class="nav-toggle">` (hamburger, plain SVG lines) that toggles a full-width dropdown (`#site-nav.is-open`) via `assets/js/main.js` — vanilla JS, no framework, closes on link click or `Escape`. If you add a page, copy the whole header block including the toggle button and script tag; don't ship a page with the links always-visible-and-wrapping like the very first version had (real bug: caused horizontal scroll on 320–375px screens).

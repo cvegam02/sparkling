@@ -1,18 +1,18 @@
 {
-  "title": "Gestión y reparaciones de propiedades | Rosa's Sparkling Cleaning",
+  "title": "Reparaciones de propiedades | Rosa's Sparkling Clean & Management",
   "metaDescription": "Visitas recurrentes, reparaciones menores y supervisión de mantenimiento para propiedades vacías o en venta en Ocala, Tampa y Spring Hill, FL &mdash; un solo contacto en vez de cinco.",
   "h1": "Alguien debería estar revisándola. Que seamos nosotros.",
-  "kicker": "Gestión",
+  "kicker": "Reparaciones",
   "intro": "Una propiedad vacía o en venta necesita que alguien la revise &mdash; una puerta de gabinete floja, una fuga, un paquete abandonado en la entrada. Hacemos recorridos recurrentes y resolvemos las reparaciones menores nosotros mismos, en vez de solo mandarte una lista por correo.",
   "heroImage": "service-fixing.webp",
   "heroImageAlt": "Un técnico instalando un cajón de cocina con un taladro",
   "whatsappLabel": "Escríbenos por WhatsApp",
-  "whatsappMessage": "Hola, me gustaría preguntar por su servicio de gestión de propiedades",
+  "whatsappMessage": "Hola, me gustaría preguntar por su servicio de reparaciones de propiedades",
   "relatedPages": ["services/cleaning", "services/painting", "services/gardening"],
   "sections": [
     {
       "heading": "Qué incluye",
-      "body": "Una visita típica de gestión cubre:",
+      "body": "Una visita típica de reparaciones cubre:",
       "items": ["Recorridos programados con la frecuencia que elijas", "Reparaciones menores: gabinetes, accesorios, herrajes", "Coordinación de otros oficios para arreglos mayores", "Reporte con fotos después de cada visita"]
     },
     {

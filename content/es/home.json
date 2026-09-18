@@ -1,13 +1,18 @@
 {
-  "title": "Rosa's Sparkling Cleaning | Ocala, Tampa y Spring Hill, FL",
-  "metaDescription": "Limpieza, preparación y gestión de propiedades para vendedores, compradores y casas vacías en Ocala, Tampa y Spring Hill, Florida.",
-  "h1": "Una casa vacía no es una casa vendida.",
+  "title": "Rosa's Sparkling Clean & Management | Ocala, Tampa y Spring Hill, FL",
+  "metaDescription": "Limpieza, preparación y reparaciones de propiedades para vendedores, compradores y casas vacías en Ocala, Tampa y Spring Hill, Florida.",
+  "h1": "El trabajo completo, o solo lo que necesites.",
   "kicker": "Ocala &middot; Tampa &middot; Spring Hill, FL",
   "tagline": "Espacios limpios. Lugares más luminosos. Mejor vivir.",
-  "heroBody": "Cada mes que una propiedad permanece vacía te cuesta dinero: seguro más caro, una ventana que se cierra para tu exención de homestead, y desgaste que nadie está ahí para detectar. Limpiamos, preparamos y mantenemos la propiedad para que se vea bien y se venda más rápido &mdash; no te la compramos, te ayudamos a venderla como corresponde.",
+  "heroBody": "Limpieza, pintura, reparaciones y jardinería &mdash; contrátanos para el paquete completo o para un solo servicio, y ten siempre el mismo equipo de confianza. Sin coordinar varios contratistas, sin adivinar a quién llamar después.",
   "ctaPrimaryLabel": "Solicita un estimado gratis",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría una cotización",
+
+  "vacantNote": {
+    "heading": "Una casa vacía no es una casa vendida.",
+    "body": "Cada mes que una propiedad permanece vacía te cuesta dinero: seguro más caro, una ventana que se cierra para tu exención de homestead, y desgaste que nadie está ahí para detectar. Limpiamos, preparamos y mantenemos la propiedad para que se vea bien y se venda más rápido &mdash; no te la compramos, te ayudamos a venderla como corresponde."
+  },
 
   "relatedPages": ["vacant-home"],
 
@@ -60,9 +65,9 @@
     "heading": "Un solo proveedor, cada trabajo que la propiedad necesita",
     "body": "En vez de contratar por separado limpieza, pintura, mantenimiento y jardinería, el equipo de Rosa's cubre toda la lista &mdash; recurrente o de una sola vez.",
     "items": [
-      { "slug": "clean", "title": "Limpieza", "body": "Limpiezas profundas y visitas recurrentes, programadas según tu calendario.", "image": "service-clean.webp", "alt": "Un miembro del equipo de Rosa's Sparkling Cleaning limpiando un piso de mármol en una sala luminosa", "linkRouteId": "services/cleaning" },
+      { "slug": "clean", "title": "Limpieza", "body": "Limpiezas profundas y visitas recurrentes, programadas según tu calendario.", "image": "service-clean.webp", "alt": "Un miembro del equipo de Rosa's Sparkling Clean & Management limpiando un piso de mármol en una sala luminosa", "linkRouteId": "services/cleaning" },
       { "slug": "paint", "title": "Pintura", "body": "Retoques y habitaciones completas, por dentro y por fuera.", "image": "service-paint.webp", "alt": "Un pintor aplicando pintura blanca en una pared interior", "linkRouteId": "services/painting" },
-      { "slug": "management", "title": "Gestión", "body": "Visitas recurrentes y supervisión de propiedades vacías o en venta, coordinando mantenimiento y reparaciones menores en tu nombre.", "image": "service-fixing.webp", "alt": "Un técnico instalando un cajón de cocina con un taladro", "linkRouteId": "services/management" },
+      { "slug": "repairs", "title": "Reparaciones", "body": "Visitas recurrentes y supervisión de propiedades vacías o en venta, coordinando mantenimiento y reparaciones menores en tu nombre.", "image": "service-fixing.webp", "alt": "Un técnico instalando un cajón de cocina con un taladro", "linkRouteId": "services/repairs" },
       { "slug": "garden", "title": "Jardinería", "body": "Jardines cuidados para que el atractivo exterior nunca decaiga.", "image": "service-landscaping.webp", "alt": "Un jardinero podando un seto bien cuidado en el jardín delantero de una casa", "linkRouteId": "services/gardening" }
     ],
     "secondaryNote": "También disponible: ventanas, puertas y mosquiteros."

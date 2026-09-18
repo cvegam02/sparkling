@@ -6,13 +6,13 @@
 module.exports = {
   // TODO: switch to the custom domain once one is bought. Until then this is
   // the GitHub Pages default subdomain for this repo.
-  baseUrl: 'https://example.github.io/sparkling',
+  baseUrl: 'https://cvegam02.github.io/sparkling',
 
   defaultLocale: 'en',
   locales: ['en', 'es'],
 
   business: {
-    name: "Rosa's Sparkling Cleaning",
+    name: "Rosa's Sparkling Clean & Management",
     // TODO: fill in with the real business phone number.
     phone: null,
     whatsapp: 'https://wa.me/10000000000',
@@ -46,8 +46,9 @@ module.exports = {
     { id: 'services/additional', slug: 'services/additional' },
     { id: 'services/cleaning', slug: 'services/cleaning' },
     { id: 'services/painting', slug: 'services/painting' },
-    { id: 'services/management', slug: 'services/management' },
+    { id: 'services/repairs', slug: 'services/repairs' },
     { id: 'services/gardening', slug: 'services/gardening' },
+    { id: 'areas', slug: 'areas' },
     { id: 'areas/ocala', slug: 'areas/ocala' },
     { id: 'areas/tampa', slug: 'areas/tampa' },
     { id: 'areas/spring-hill', slug: 'areas/spring-hill' }

@@ -1,0 +1,20 @@
+{
+  "title": "Service Areas: Ocala, Tampa & Spring Hill, FL | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Property cleaning, prep and maintenance across Ocala, Tampa and Spring Hill, Florida. Find the page for your area.",
+  "h1": "Serving Ocala, Tampa & Spring Hill, FL",
+  "kicker": "Service areas",
+  "intro": "We work with homeowners and real estate agents across three Florida markets. Pick your area below for local details, or reach out and we'll confirm we cover your property.",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'd like to check if you cover my area",
+  "relatedPages": ["services/pre-sale", "vacant-home"],
+  "sections": [
+    {
+      "heading": "The same full-service catalog everywhere",
+      "body": "Cleaning, painting, repairs and gardening, plus windows, doors and screening &mdash; every area gets the same catalog, whether the job is a single pre-sale clean or ongoing upkeep on a vacant property."
+    }
+  ],
+  "areasSection": {
+    "heading": "Choose your area"
+  },
+  "showReviews": true
+}

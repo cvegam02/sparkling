@@ -113,9 +113,86 @@ function buildNavLinks(locale) {
     homeUrl,
     servicesHref: `${homeUrl}#paths`,
     vacantHomeHref: vacantRoute ? absoluteUrl(vacantRoute, locale) : `${homeUrl}#vacant-home`,
-    areasHref: `${homeUrl}#areas`,
     contactHref: `${homeUrl}#contact`
   };
+}
+
+// Route ids for the individual service pages, in the order the "Services"
+// nav submenu lists them.
+const SERVICE_NAV_ROUTE_IDS = [
+  'services/pre-sale',
+  'services/post-sale',
+  'services/additional',
+  'services/cleaning',
+  'services/painting',
+  'services/repairs',
+  'services/gardening'
+];
+
+function renderNavSubmenuItems(routeIds, locale, contentByRoute) {
+  return routeIds
+    .map((id) => {
+      const label = contentByRoute[id][locale].content.kicker;
+      const href = absoluteUrl(getRoute(id), locale);
+      return `              <li><a href="${href}">${label}</a></li>`;
+    })
+    .join('\n');
+}
+
+function renderAreaNavSubmenuItems(locale) {
+  return config.business.areasServed
+    .map((area) => {
+      const slug = area.toLowerCase().replace(/\s+/g, '-');
+      const route = getRoute(`areas/${slug}`);
+      const href = route ? absoluteUrl(route, locale) : '#';
+      return `              <li><a href="${href}">${area}</a></li>`;
+    })
+    .join('\n');
+}
+
+// Link to the same page in the other locale. Rendered both inside the site
+// nav (desktop and the collapsed mobile menu list) and standalone next to
+// the hamburger button (mobile only, always visible — see .mobile-header-actions
+// in assets/css/main.css) so switching language on mobile doesn't require
+// opening the menu first.
+function renderLangSwitchLink(locale, common, route, extraClass) {
+  const otherLocale = config.locales.find((l) => l !== locale);
+  const href = absoluteUrl(route, otherLocale);
+  const classes = ['nav-lang-switch', extraClass].filter(Boolean).join(' ');
+  return `<a class="${classes}" href="${href}" hreflang="${otherLocale}" lang="${otherLocale}" aria-label="${common.nav.languageSwitchAriaLabel}">${common.nav.languageSwitchLabel}</a>`;
+}
+
+// The full primary nav, shared by every template. Rendered as one block
+// (rather than per-template tokens) because "Services" and "Areas" expand
+// into submenus listing every service/area page — see .nav-submenu-toggle
+// in assets/js/main.js for how those submenus open on click/tap.
+function renderSiteNav(locale, common, contentByRoute, route) {
+  const nav = buildNavLinks(locale);
+  const areasHubHref = absoluteUrl(getRoute('areas'), locale);
+
+  return `      <ul class="site-nav" id="site-nav">
+        <li class="nav-item nav-item--has-submenu">
+          <a href="${nav.servicesHref}">${common.nav.services}</a>
+          <button type="button" class="nav-submenu-toggle" aria-expanded="false" aria-controls="nav-submenu-services" aria-label="${common.nav.submenuToggle}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="nav-submenu" id="nav-submenu-services">
+${renderNavSubmenuItems(SERVICE_NAV_ROUTE_IDS, locale, contentByRoute)}
+          </ul>
+        </li>
+        <li><a href="${nav.vacantHomeHref}">${common.nav.vacantHome}</a></li>
+        <li class="nav-item nav-item--has-submenu">
+          <a href="${areasHubHref}">${common.nav.areas}</a>
+          <button type="button" class="nav-submenu-toggle" aria-expanded="false" aria-controls="nav-submenu-areas" aria-label="${common.nav.submenuToggle}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="nav-submenu" id="nav-submenu-areas">
+${renderAreaNavSubmenuItems(locale)}
+          </ul>
+        </li>
+        <li><a href="${nav.contactHref}">${common.nav.contact}</a></li>
+        <li>${renderLangSwitchLink(locale, common, route)}</li>
+      </ul>`;
 }
 
 // --- design-system icons (copied verbatim from the locked docs/design-reference.html /
@@ -129,6 +206,21 @@ const PATH_ICONS = {
   movein:
     '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12 20 3"/><path d="M16 4l3 3"/><path d="M13 7l2.5 2.5"/></svg>'
 };
+
+// New additions (not part of the original locked set above) — built only
+// from primitives (<polygon>, <rect>, <polyline>, <line>) with coordinates
+// checked by hand against the 24x24 viewBox center, per the icon rules in
+// docs/superpowers/specs/2026-09-17-design-system.md (freehand bezier paths
+// inside a badge have rendered off-center before).
+const SERVICE_ICONS = {
+  clean: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 14,10 22,12 14,14 12,22 10,14 2,12 10,10"/></svg>',
+  paint: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="14" height="6" rx="2"/><line x1="10" y1="10" x2="10" y2="15"/><line x1="10" y1="15" x2="19" y2="20"/></svg>',
+  repairs: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="10" rx="1"/><polyline points="8,10 8,6 16,6 16,10"/><line x1="3" y1="15" x2="21" y2="15"/></svg>',
+  garden: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="7,15 17,15 15,21 9,21"/><line x1="12" y1="15" x2="12" y2="6"/><polygon points="12,6 12,9 5,7"/><polygon points="12,6 12,9 19,7"/></svg>'
+};
+
+const EXPAND_ICON =
+  '<svg class="evidence-zoom-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4,9 4,4 9,4"/><polyline points="15,4 20,4 20,9"/><polyline points="20,15 20,20 15,20"/><polyline points="9,20 4,20 4,15"/></svg>';
 
 const BILL_ICONS = {
   insurance:
@@ -184,6 +276,7 @@ function renderServiceCards(items, locale, fallbackHref) {
       return `        <a class="service-card service-card--${item.slug}" href="${href}">
           <img class="service-photo" src="${ASSET_BASE}/assets/img/${item.image}" alt="${item.alt}" width="1536" height="1024" loading="lazy">
           <div class="service-card-body">
+            <span class="service-icon" aria-hidden="true">${SERVICE_ICONS[item.slug]}</span>
             <h3>${item.title}</h3>
             <p>${item.body}</p>
           </div>
@@ -208,6 +301,22 @@ function renderAreasList(locale) {
       return `      <li><a href="${href}">${PIN_ICON}${area}</a></li>`;
     })
     .join('\n');
+}
+
+// The same "Where we work" list of area pages used on the home page,
+// reused on the areas hub page. Renders nothing when the interior page's
+// content has no `areasSection` (every other interior page).
+function renderAreasSection(heading, locale) {
+  return [
+    '  <section class="areas" id="areas">',
+    '    <div class="wrap">',
+    `      <h2>${heading}</h2>`,
+    '      <ul class="areas-list">',
+    renderAreasList(locale),
+    '      </ul>',
+    '    </div>',
+    '  </section>'
+  ].join('\n');
 }
 
 function renderSelectOptions(options) {
@@ -235,15 +344,6 @@ function buildCalculatorValues(locale, content, common, whatsappHref) {
     h1: content.h1,
     intro: content.intro,
     whatsappHref,
-
-    navServices: common.nav.services,
-    navServicesHref: nav.servicesHref,
-    navVacantHome: common.nav.vacantHome,
-    navVacantHomeHref: nav.vacantHomeHref,
-    navAreas: common.nav.areas,
-    navAreasHref: nav.areasHref,
-    navContact: common.nav.contact,
-    navContactHref: nav.contactHref,
 
     serviceLabel: form.serviceLabel,
     serviceOptionsHtml: renderSelectOptions(form.serviceOptions),
@@ -306,17 +406,27 @@ function renderHeroImage(content) {
 }
 
 // Before/after "evidence" photo block for a service page. Renders nothing
-// when the page has no evidence block.
-function renderEvidence(evidence) {
+// when the page has no evidence block. The photo opens in a native <dialog>
+// lightbox on click (see assets/js/main.js) for a closer look at full size.
+function renderEvidence(evidence, common) {
   if (!evidence || !evidence.image) return '';
+  const src = `${ASSET_BASE}/assets/img/${evidence.image}`;
+  const alt = evidence.alt || '';
   return [
     '  <section class="evidence-section">',
     '    <div class="wrap">',
     evidence.heading ? `      <h2>${evidence.heading}</h2>` : '',
-    `      <img class="evidence-photo" src="${ASSET_BASE}/assets/img/${evidence.image}" alt="${evidence.alt || ''}" width="1536" height="1024" loading="lazy">`,
+    `      <button type="button" class="evidence-photo-trigger" data-lightbox-trigger aria-label="${common.evidence.expandLabel}">`,
+    `        <img class="evidence-photo" src="${src}" alt="${alt}" width="1536" height="1024" loading="lazy">`,
+    `        ${EXPAND_ICON}`,
+    '      </button>',
     evidence.caption ? `      <p class="evidence-caption">${evidence.caption}</p>` : '',
     '    </div>',
-    '  </section>'
+    '  </section>',
+    '  <dialog class="lightbox">',
+    `    <button type="button" class="lightbox-close" data-lightbox-close aria-label="${common.evidence.closeLabel}">&times;</button>`,
+    `    <img class="lightbox-photo" src="${src}" alt="${alt}">`,
+    '  </dialog>'
   ]
     .filter(Boolean)
     .join('\n');
@@ -403,10 +513,8 @@ function buildHomeValues(locale, content, common, whatsappHref) {
     whatsappLabel: content.whatsappLabel,
     whatsappHref,
 
-    navServices: common.nav.services,
-    navVacantHome: common.nav.vacantHome,
-    navAreas: common.nav.areas,
-    navContact: common.nav.contact,
+    vacantNoteHeading: content.vacantNote.heading,
+    vacantNoteBody: content.vacantNote.body,
 
     pathsHtml: renderPaths(content.paths, locale),
 
@@ -458,17 +566,9 @@ function buildInteriorValues(locale, content, common, whatsappHref) {
     whatsappLabel: content.whatsappLabel,
     heroImageHtml: renderHeroImage(content),
 
-    navServices: common.nav.services,
-    navServicesHref: nav.servicesHref,
-    navVacantHome: common.nav.vacantHome,
-    navVacantHomeHref: nav.vacantHomeHref,
-    navAreas: common.nav.areas,
-    navAreasHref: nav.areasHref,
-    navContact: common.nav.contact,
-    navContactHref: nav.contactHref,
-
     sectionsHtml: renderSections(content.sections || []),
-    evidenceHtml: renderEvidence(content.evidence),
+    evidenceHtml: renderEvidence(content.evidence, common),
+    areasListHtml: content.areasSection ? renderAreasSection(content.areasSection.heading, locale) : '',
     reviewsHtml: content.showReviews ? renderReviews(common) : '',
 
     footerCopyright: common.footer.copyright,
@@ -496,6 +596,8 @@ function buildPage(route, locale, contentByRoute, commonByLocale) {
   }
 
   pageValues.relatedLinks = renderRelatedLinks(content, contentByRoute, locale);
+  pageValues.siteNavHtml = renderSiteNav(locale, common, contentByRoute, route);
+  pageValues.mobileLangSwitchHtml = renderLangSwitchLink(locale, common, route, 'mobile-lang-switch');
 
   const pageHtml = render(pageTemplate, pageValues);
 

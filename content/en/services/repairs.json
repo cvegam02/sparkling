@@ -1,18 +1,18 @@
 {
-  "title": "Property Management & Repairs | Rosa's Sparkling Cleaning",
+  "title": "Property Repairs | Rosa's Sparkling Clean & Management",
   "metaDescription": "Recurring visits, minor repairs and maintenance oversight for vacant or listed properties in Ocala, Tampa and Spring Hill, FL &mdash; one point of contact instead of five.",
   "h1": "Someone should be checking on it. Let it be us.",
-  "kicker": "Management",
+  "kicker": "Repairs",
   "intro": "A vacant or listed property needs eyes on it &mdash; a loose cabinet door, a leak, a package left on the porch. We do recurring walkthroughs and handle the small repairs ourselves instead of just emailing you a list.",
   "heroImage": "service-fixing.webp",
   "heroImageAlt": "A handyman installing a kitchen cabinet drawer with a power drill",
   "whatsappLabel": "Message us on WhatsApp",
-  "whatsappMessage": "Hi, I'd like to ask about your property management service",
+  "whatsappMessage": "Hi, I'd like to ask about your property repairs service",
   "relatedPages": ["services/cleaning", "services/painting", "services/gardening"],
   "sections": [
     {
       "heading": "What's included",
-      "body": "A typical management visit covers:",
+      "body": "A typical repairs visit covers:",
       "items": ["Scheduled walkthroughs on the cadence you choose", "Minor repairs: cabinets, fixtures, hardware", "Coordinating trades for bigger fixes", "A photo report after every visit"]
     },
     {

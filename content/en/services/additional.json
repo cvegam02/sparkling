@@ -1,12 +1,12 @@
 {
-  "title": "Cleaning, Painting, Management & More | Rosa's Sparkling Cleaning",
-  "metaDescription": "Recurring or one-time cleaning, painting, gardening and property management, plus windows, doors and screening &mdash; one provider for every job the property needs.",
+  "title": "Cleaning, Painting, Repairs & More | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Recurring or one-time cleaning, painting, gardening and property repairs, plus windows, doors and screening &mdash; one provider for every job the property needs.",
   "h1": "One provider, every job the property needs.",
   "kicker": "Additional services",
   "intro": "Instead of hiring separate cleaners, painters, handymen and landscapers, Rosa's team covers the full list &mdash; recurring or one time.",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about your additional services",
-  "relatedPages": ["services/cleaning", "services/painting", "services/management", "services/gardening"],
+  "relatedPages": ["services/cleaning", "services/painting", "services/repairs", "services/gardening"],
   "sections": [
     {
       "heading": "Cleaning",
@@ -17,7 +17,7 @@
       "body": "Touch-ups and full rooms, inside and out."
     },
     {
-      "heading": "Management",
+      "heading": "Repairs",
       "body": "Recurring visits and oversight for vacant or listed properties, coordinating maintenance and minor repairs on your behalf."
     },
     {

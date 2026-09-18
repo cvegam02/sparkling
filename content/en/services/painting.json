@@ -1,5 +1,5 @@
 {
-  "title": "Painting Services | Rosa's Sparkling Cleaning",
+  "title": "Painting Services | Rosa's Sparkling Clean & Management",
   "metaDescription": "Interior and exterior painting &mdash; touch-ups, full rooms and full exteriors &mdash; for listings, rentals and vacant properties in Ocala, Tampa and Spring Hill, FL.",
   "h1": "A fresh coat sells faster than a fresh excuse.",
   "kicker": "Painting",
@@ -8,7 +8,7 @@
   "heroImageAlt": "A painter rolling white paint onto an interior wall",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about your painting service",
-  "relatedPages": ["services/cleaning", "services/management", "services/gardening"],
+  "relatedPages": ["services/cleaning", "services/repairs", "services/gardening"],
   "sections": [
     {
       "heading": "What's included",
