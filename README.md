@@ -73,6 +73,6 @@ This is a manual step outside this repository: create your business listing at [
 - `assets/img/logo-full.png` has a known typo baked into the artwork ("PAIHTING") — don't use it anywhere the text would be legible until a corrected export exists.
 - The site loads no JavaScript frameworks and no analytics/tracking scripts. The only page-specific script is the quote calculator's, which loads only on the estimate page — every other page ships just the small nav-toggle script.
 
-## Known limitation
+## Mobile check
 
-Mobile-width rendering (375–400px) was checked against the CSS breakpoints in `assets/css/main.css` (`860px`, `1100px`, `480px`) but not confirmed with a live phone-width screenshot in this environment — the automated browser tooling available here wasn't able to reliably emulate a narrow viewport. Worth a quick manual check on a real phone or browser dev tools before launch.
+Home, a service page, an area page, the vacant-home page, and the quote calculator form were all confirmed at 375px width with no horizontal scroll and a fully usable calculator (nav collapses, dropdowns and the submit button render correctly). Still worth a spot-check on a real device before launch, but no known issues.
