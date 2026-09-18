@@ -1251,11 +1251,19 @@ p {
   outline-offset: 4px;
 }
 
-.evidence-photo {
+.evidence-photo,
+.evidence-video {
   width: 100%;
   height: clamp(220px, 55vw, 420px);
   object-fit: cover;
   border-radius: var(--radius);
+}
+
+.evidence-video {
+  display: block;
+  max-width: 56rem;
+  margin-inline: auto;
+  background: var(--color-ink);
 }
 
 .evidence-caption {

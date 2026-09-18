@@ -405,19 +405,43 @@ function renderHeroImage(content) {
       </div>`;
 }
 
-// Before/after "evidence" photo block for a service page. Renders nothing
-// when the page has no evidence block. The photo opens in a native <dialog>
-// lightbox on click (see assets/js/main.js) for a closer look at full size.
+const VIDEO_MIME_TYPES = { '.mp4': 'video/mp4', '.webm': 'video/webm' };
+
+// Proof-of-work "evidence" block for a service page: a looping video when
+// the content provides one, otherwise a before/after photo. Renders nothing
+// when the page has no evidence block. The photo variant opens in a native
+// <dialog> lightbox on click (see assets/js/main.js) for a closer look at
+// full size; the video variant plays inline and needs no lightbox since its
+// own controls already give a bigger, pausable view.
 function renderEvidence(evidence, common) {
   if (!evidence || !evidence.image) return '';
-  const src = `${ASSET_BASE}/assets/img/${evidence.image}`;
+  const posterSrc = `${ASSET_BASE}/assets/img/${evidence.image}`;
   const alt = evidence.alt || '';
+
+  if (evidence.video) {
+    const videoSrc = `${ASSET_BASE}/assets/video/${evidence.video}`;
+    const mimeType = VIDEO_MIME_TYPES[path.extname(evidence.video)] || 'video/mp4';
+    return [
+      '  <section class="evidence-section">',
+      '    <div class="wrap">',
+      evidence.heading ? `      <h2>${evidence.heading}</h2>` : '',
+      `      <video class="evidence-video" width="1536" height="1024" poster="${posterSrc}" aria-label="${alt}" autoplay muted loop playsinline controls preload="metadata">`,
+      `        <source src="${videoSrc}" type="${mimeType}">`,
+      '      </video>',
+      evidence.caption ? `      <p class="evidence-caption">${evidence.caption}</p>` : '',
+      '    </div>',
+      '  </section>'
+    ]
+      .filter(Boolean)
+      .join('\n');
+  }
+
   return [
     '  <section class="evidence-section">',
     '    <div class="wrap">',
     evidence.heading ? `      <h2>${evidence.heading}</h2>` : '',
     `      <button type="button" class="evidence-photo-trigger" data-lightbox-trigger aria-label="${common.evidence.expandLabel}">`,
-    `        <img class="evidence-photo" src="${src}" alt="${alt}" width="1536" height="1024" loading="lazy">`,
+    `        <img class="evidence-photo" src="${posterSrc}" alt="${alt}" width="1536" height="1024" loading="lazy">`,
     `        ${EXPAND_ICON}`,
     '      </button>',
     evidence.caption ? `      <p class="evidence-caption">${evidence.caption}</p>` : '',
@@ -425,7 +449,7 @@ function renderEvidence(evidence, common) {
     '  </section>',
     '  <dialog class="lightbox">',
     `    <button type="button" class="lightbox-close" data-lightbox-close aria-label="${common.evidence.closeLabel}">&times;</button>`,
-    `    <img class="lightbox-photo" src="${src}" alt="${alt}">`,
+    `    <img class="lightbox-photo" src="${posterSrc}" alt="${alt}">`,
     '  </dialog>'
   ]
     .filter(Boolean)
