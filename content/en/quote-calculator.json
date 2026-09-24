@@ -1,43 +1,70 @@
 {
-  "title": "Get Your Estimate | Rosa's Sparkling Clean & Management",
-  "metaDescription": "Answer three quick questions and get an estimated price range for your property, in Ocala, Tampa and Spring Hill, FL.",
-  "h1": "Get your estimate",
-  "kicker": "Three questions, no forms to sign",
-  "intro": "Tell us the service, the size and the area, and we'll send you straight to WhatsApp with your details ready to go.",
+  "title": "Cleaning Price Calculator | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Build your cleaning quote room by room and see the full price breakdown instantly, for homes in Ocala, Tampa and Spring Hill, FL.",
+  "h1": "Get your cleaning estimate",
+  "kicker": "Room by room, price by price",
+  "intro": "Pick the type of cleaning, count your rooms and add any extras. You'll see the full breakdown as you go, then send it to us on WhatsApp in one tap.",
   "whatsappMessage": "Hi, I'd like a quote",
   "relatedPages": ["vacant-home"],
 
   "form": {
-    "serviceLabel": "What do you need done?",
-    "serviceOptions": [
-      { "value": "presale", "label": "Pre-Sale prep" },
-      { "value": "post-sale", "label": "Post-Sale / Move-In Ready" },
-      { "value": "additional", "label": "Additional services (cleaning, painting, repairs, gardening)" }
+    "typeLegend": "Type of cleaning",
+    "cleaningTypes": [
+      { "value": "standard", "label": "Standard cleaning", "description": "Regular upkeep: dusting, floors, kitchen and bathroom surfaces." },
+      { "value": "deep", "label": "Deep cleaning", "description": "Top to bottom: baseboards, grout, behind appliances, built-up grime." }
     ],
-    "sizeLabel": "How big is the property?",
-    "sizeOptions": [
-      { "value": "studio", "label": "Studio - 1 bed" },
-      { "value": "twothree", "label": "2-3 beds" },
-      { "value": "fourplus", "label": "4+ beds" }
+    "fromLabel": "from {price}",
+
+    "roomsLegend": "Rooms",
+    "rooms": [
+      { "id": "bedrooms", "label": "Bedrooms" },
+      { "id": "bathrooms", "label": "Bathrooms" },
+      { "id": "kitchens", "label": "Kitchens" },
+      { "id": "laundry", "label": "Laundry rooms" },
+      { "id": "living", "label": "Living rooms" },
+      { "id": "dining", "label": "Dining rooms" }
     ],
-    "areaLabel": "Which area is the property in?",
+
+    "extrasLegend": "Extras",
+    "extras": [
+      { "id": "windows", "label": "Windows" },
+      { "id": "fridge", "label": "Refrigerator (inside)" },
+      { "id": "oven", "label": "Oven (inside)" }
+    ],
+    "eachLabel": "{price} each",
+
+    "areaLegend": "Where is the property?",
     "areaOptions": [
       { "value": "ocala", "label": "Ocala" },
       { "value": "tampa", "label": "Tampa" },
       { "value": "spring-hill", "label": "Spring Hill" }
     ],
-    "submitLabel": "See my estimate"
+
+    "decreaseLabel": "Fewer {item}",
+    "increaseLabel": "More {item}",
+    "otherServicesNote": "Need pre-sale prep, painting, repairs or gardening instead? Those are quoted by chat —",
+    "otherServicesLink": "message us on WhatsApp"
   },
 
   "result": {
-    "estimateHeading": "Your estimated range",
-    "estimateDisclaimer": "This is an estimate — the final price is confirmed once we've spoken on WhatsApp.",
+    "heading": "Price breakdown",
+    "estimatedTimeLabel": "Estimated time",
+    "suggestedCleanersLabel": "Suggested cleaners",
+    "basePriceLabel": "{type} - Base price",
+    "travelLabel": "Distance ({area})",
+    "totalLabel": "Total",
+    "hours": "{h} h",
+    "minutes": "{m} min",
+    "disclaimer": "This is an estimate. The final price is confirmed once we've spoken on WhatsApp.",
     "fallbackHeading": "We'll confirm your price by chat",
-    "fallbackBody": "This combination needs a quick look before we can quote it. Send your details on WhatsApp and we'll reply with a custom price today.",
-    "whatsappCtaLabel": "Send this to WhatsApp",
-    "startOverLabel": "Start over"
+    "fallbackBody": "Part of what you picked still needs a quick look before we can price it. Send your details on WhatsApp and we'll reply with an exact quote.",
+    "whatsappCtaLabel": "Send this quote on WhatsApp",
+    "printLabel": "Save as PDF",
+    "mobileBarLabel": "Estimated total",
+    "mobileBarLink": "See breakdown",
+    "noscript": "The calculator needs JavaScript. Message us on WhatsApp and we'll quote you directly."
   },
 
-  "whatsappMessageEstimate": "Hi, I'd like to book {service} ({size}) in {area}. I saw an estimated range of {range} on the site.",
-  "whatsappMessageCustom": "Hi, I'd like a custom quote for {service} ({size}) in {area}."
+  "whatsappMessageEstimate": "Hi, I'd like to book a {type} in {area}:\n{items}\nEstimated total: {total}",
+  "whatsappMessageCustom": "Hi, I'd like a quote for a {type} in {area}:\n{items}"
 }

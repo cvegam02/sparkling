@@ -32,32 +32,55 @@
 
   <section class="content-section calculator-section">
     <div class="wrap calculator-wrap">
+      <noscript><p class="qc-noscript">{{noscriptText}} <a href="{{whatsappHref}}" target="_blank" rel="noopener">WhatsApp</a></p></noscript>
+
       <form id="qc-form" class="calculator-form" novalidate>
-        <div class="form-field">
-          <label for="qc-service">{{serviceLabel}}</label>
-          <select id="qc-service" name="service" required>
-            <option value="" disabled selected></option>
-{{serviceOptionsHtml}}
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="qc-size">{{sizeLabel}}</label>
-          <select id="qc-size" name="size" required>
-            <option value="" disabled selected></option>
-{{sizeOptionsHtml}}
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="qc-area">{{areaLabel}}</label>
-          <select id="qc-area" name="area" required>
-            <option value="" disabled selected></option>
+        <fieldset class="qc-group">
+          <legend>{{typeLegend}}</legend>
+          <div class="qc-type-options">
+{{cleaningTypesHtml}}
+          </div>
+        </fieldset>
+
+        <fieldset class="qc-group">
+          <legend>{{roomsLegend}}</legend>
+          <div class="qc-rows">
+{{roomsHtml}}
+          </div>
+        </fieldset>
+
+        <fieldset class="qc-group">
+          <legend>{{extrasLegend}}</legend>
+          <div class="qc-rows">
+{{extrasHtml}}
+          </div>
+        </fieldset>
+
+        <fieldset class="qc-group">
+          <legend>{{areaLegend}}</legend>
+          <div class="qc-chips">
 {{areaOptionsHtml}}
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary">{{submitLabel}}</button>
+          </div>
+        </fieldset>
+
+        <p class="qc-other-services">{{otherServicesNote}} <a href="{{whatsappHref}}" target="_blank" rel="noopener">{{otherServicesLink}}</a>.</p>
       </form>
 
-      <div id="qc-result" class="calculator-result" hidden></div>
+      <aside id="qc-summary" class="qc-summary" aria-labelledby="qc-summary-heading">
+        <div class="qc-summary-head">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="13" y2="15"/></svg>
+          <h2 id="qc-summary-heading">{{resultHeading}}</h2>
+        </div>
+        <div id="qc-summary-body" class="qc-summary-body"></div>
+      </aside>
+    </div>
+
+    <div id="qc-mobile-bar" class="qc-mobile-bar" hidden>
+      <span class="qc-mobile-bar-total">
+        <small>{{mobileBarLabel}}</small>
+        <strong id="qc-mobile-total"></strong>
+      </span>
+      <a class="btn btn-primary" href="#qc-summary">{{mobileBarLink}}</a>
     </div>
   </section>
 

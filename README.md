@@ -48,12 +48,13 @@ The build will refuse to publish (and tell you exactly why) if:
 
 ## Editing pricing
 
-`pricing.config.js` in the project root controls the quote calculator's estimated ranges. It ships with `null` placeholders everywhere, which is why the calculator currently always shows "we'll confirm your price by chat" instead of a number. To turn on real pricing:
+`pricing.config.js` in the project root holds every number the quote calculator uses: the base price per cleaning type (standard, deep), the price per room (bedrooms, bathrooms, kitchens, ...), the add-ons (windows, fridge, oven), the travel fee per area, and the minutes per item that feed the "Estimated time" / "Suggested cleaners" lines. To change a price:
 
-1. Open `pricing.config.js`.
-2. Replace the `null, null` pairs under `ranges` with real `[low, high]` dollar amounts for whichever service/size combinations you're ready to quote automatically. You don't have to fill in every combination at once — any combination left as `null` just keeps showing the "confirm by chat" message.
-3. Optionally adjust `areaAdjustmentPercent` if one area should cost more or less than the others (e.g. `10` for +10%).
-4. Run `npm run build` and redeploy.
+1. Open `pricing.config.js` and edit the number (dollars, cents allowed, no `$`).
+2. Set a price to `null` if it isn't decided yet — picking that item then shows "we'll confirm your price by chat" instead of a total.
+3. Run `npm run build` and redeploy.
+
+The labels visitors see live in `content/*/quote-calculator.json`; their `id`s must match the keys in `pricing.config.js` (the build fails with a clear message if one doesn't).
 
 No code changes needed.
 

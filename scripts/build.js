@@ -169,6 +169,8 @@ function renderLangSwitchLink(locale, common, route, extraClass) {
 function renderSiteNav(locale, common, contentByRoute, route) {
   const nav = buildNavLinks(locale);
   const areasHubHref = absoluteUrl(getRoute('areas'), locale);
+  const quoteHref = absoluteUrl(getRoute('quote-calculator'), locale);
+  const quoteCurrent = route.id === 'quote-calculator' ? ' aria-current="page"' : '';
 
   return `      <ul class="site-nav" id="site-nav">
         <li class="nav-item nav-item--has-submenu">
@@ -190,6 +192,7 @@ ${renderNavSubmenuItems(SERVICE_NAV_ROUTE_IDS, locale, contentByRoute)}
 ${renderAreaNavSubmenuItems(locale)}
           </ul>
         </li>
+        <li><a href="${quoteHref}"${quoteCurrent}>${common.nav.quote}</a></li>
         <li><a href="${nav.contactHref}">${common.nav.contact}</a></li>
         <li>${renderLangSwitchLink(locale, common, route)}</li>
       </ul>`;
@@ -319,17 +322,110 @@ function renderAreasSection(heading, locale) {
   ].join('\n');
 }
 
-function renderSelectOptions(options) {
-  return options.map((opt) => `            <option value="${opt.value}">${opt.label}</option>`).join('\n');
+function fillPlaceholders(template, values) {
+  return template.replace(/\{(\w+)\}/g, (match, key) => (key in values ? values[key] : match));
+}
+
+function formatUsd(amount) {
+  const cents = Number.isInteger(amount) ? 0 : 2;
+  return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: cents, maximumFractionDigits: cents });
+}
+
+// Every item the page offers must have a matching entry in
+// pricing.config.js (a null price is fine; a missing key is a typo).
+function assertPricingKeys(form) {
+  const checks = [
+    ['cleaningTypes', form.cleaningTypes.map((t) => t.value)],
+    ['rooms', form.rooms.map((r) => r.id)],
+    ['extras', form.extras.map((e) => e.id)],
+    ['travelFee', form.areaOptions.map((a) => a.value)]
+  ];
+  for (const [section, ids] of checks) {
+    for (const id of ids) {
+      if (!pricingConfig[section] || !(id in pricingConfig[section])) {
+        throw new Error(`quote-calculator content uses "${id}" but pricing.config.js has no ${section}.${id}`);
+      }
+    }
+  }
+}
+
+function renderCleaningTypes(form) {
+  return form.cleaningTypes
+    .map((type, i) => {
+      const price = pricingConfig.cleaningTypes[type.value].basePrice;
+      const from = price == null ? '' : `<span class="qc-type-price">${fillPlaceholders(form.fromLabel, { price: formatUsd(price) })}</span>`;
+      return [
+        '            <label class="qc-type">',
+        `              <input type="radio" name="type" value="${type.value}"${i === 0 ? ' checked' : ''}>`,
+        '              <span class="qc-type-body">',
+        `                <span class="qc-type-name">${type.label}</span>`,
+        `                <span class="qc-type-desc">${type.description}</span>`,
+        `                ${from}`,
+        '              </span>',
+        '            </label>'
+      ].join('\n');
+    })
+    .join('\n');
+}
+
+function renderStepperRow(id, label, rule, form) {
+  const each = rule.price == null ? '' : `<small>${fillPlaceholders(form.eachLabel, { price: formatUsd(rule.price) })}</small>`;
+  const max = rule.max == null ? 20 : rule.max;
+  return [
+    '            <div class="qc-row">',
+    `              <label class="qc-row-label" for="qc-${id}">${label} ${each}</label>`,
+    '              <div class="qc-stepper">',
+    `                <button type="button" data-step="-1" data-target="qc-${id}" aria-label="${fillPlaceholders(form.decreaseLabel, { item: label })}">&minus;</button>`,
+    `                <input type="number" id="qc-${id}" name="${id}" min="0" max="${max}" value="${rule.default || 0}" inputmode="numeric">`,
+    `                <button type="button" data-step="1" data-target="qc-${id}" aria-label="${fillPlaceholders(form.increaseLabel, { item: label })}">+</button>`,
+    '              </div>',
+    '            </div>'
+  ].join('\n');
+}
+
+function renderToggleRow(id, label, rule) {
+  const price = rule.price == null ? '' : `<small>+${formatUsd(rule.price)}</small>`;
+  return [
+    '            <label class="qc-row qc-toggle">',
+    `              <span class="qc-row-label">${label} ${price}</span>`,
+    `              <input type="checkbox" name="${id}" value="1">`,
+    '            </label>'
+  ].join('\n');
+}
+
+function renderRooms(form) {
+  return form.rooms.map((room) => renderStepperRow(room.id, room.label, pricingConfig.rooms[room.id], form)).join('\n');
+}
+
+function renderExtras(form) {
+  return form.extras
+    .map((extra) => {
+      const rule = pricingConfig.extras[extra.id];
+      return rule.kind === 'toggle'
+        ? renderToggleRow(extra.id, extra.label, rule)
+        : renderStepperRow(extra.id, extra.label, rule, form);
+    })
+    .join('\n');
+}
+
+function renderAreaChips(form) {
+  return form.areaOptions
+    .map(
+      (area, i) =>
+        `            <label class="qc-chip"><input type="radio" name="area" value="${area.value}"${i === 0 ? ' checked' : ''}><span>${area.label}</span></label>`
+    )
+    .join('\n');
 }
 
 function buildCalculatorValues(locale, content, common, whatsappHref) {
   const nav = buildNavLinks(locale);
   const { form, result } = content;
+  assertPricingKeys(form);
 
   const i18n = {
-    serviceOptions: form.serviceOptions,
-    sizeOptions: form.sizeOptions,
+    cleaningTypes: form.cleaningTypes,
+    rooms: form.rooms,
+    extras: form.extras,
     areaOptions: form.areaOptions,
     result,
     whatsappMessageEstimate: content.whatsappMessageEstimate,
@@ -345,15 +441,23 @@ function buildCalculatorValues(locale, content, common, whatsappHref) {
     intro: content.intro,
     whatsappHref,
 
-    serviceLabel: form.serviceLabel,
-    serviceOptionsHtml: renderSelectOptions(form.serviceOptions),
-    sizeLabel: form.sizeLabel,
-    sizeOptionsHtml: renderSelectOptions(form.sizeOptions),
-    areaLabel: form.areaLabel,
-    areaOptionsHtml: renderSelectOptions(form.areaOptions),
-    submitLabel: form.submitLabel,
+    typeLegend: form.typeLegend,
+    cleaningTypesHtml: renderCleaningTypes(form),
+    roomsLegend: form.roomsLegend,
+    roomsHtml: renderRooms(form),
+    extrasLegend: form.extrasLegend,
+    extrasHtml: renderExtras(form),
+    areaLegend: form.areaLegend,
+    areaOptionsHtml: renderAreaChips(form),
+    otherServicesNote: form.otherServicesNote,
+    otherServicesLink: form.otherServicesLink,
 
-    calculatorI18nJson: JSON.stringify(i18n),
+    resultHeading: result.heading,
+    mobileBarLabel: result.mobileBarLabel,
+    mobileBarLink: result.mobileBarLink,
+    noscriptText: result.noscript,
+
+    calculatorI18nJson: JSON.stringify(i18n).replace(/</g, '\\u003c'),
 
     footerCopyright: common.footer.copyright,
     footerWhatsappLabel: common.footer.whatsappLabel

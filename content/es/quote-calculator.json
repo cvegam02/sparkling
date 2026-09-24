@@ -1,43 +1,70 @@
 {
-  "title": "Obtén tu Estimado | Rosa's Sparkling Clean & Management",
-  "metaDescription": "Responde tres preguntas rápidas y obtén un rango de precio estimado para tu propiedad, en Ocala, Tampa y Spring Hill, FL.",
-  "h1": "Obtén tu estimado",
-  "kicker": "Tres preguntas, sin formularios que firmar",
-  "intro": "Cuéntanos el servicio, el tamaño y el área, y te enviamos directo a WhatsApp con tus datos listos.",
+  "title": "Calculadora de Precio de Limpieza | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Arma tu cotización de limpieza cuarto por cuarto y ve el desglose de precio al instante, para casas en Ocala, Tampa y Spring Hill, FL.",
+  "h1": "Calcula tu limpieza",
+  "kicker": "Cuarto por cuarto, precio por precio",
+  "intro": "Elige el tipo de limpieza, cuenta tus cuartos y agrega los extras. Verás el desglose completo mientras eliges y nos lo envías por WhatsApp con un toque.",
   "whatsappMessage": "Hola, me gustaría una cotización",
   "relatedPages": ["vacant-home"],
 
   "form": {
-    "serviceLabel": "¿Qué necesitas?",
-    "serviceOptions": [
-      { "value": "presale", "label": "Preparación Pre-Sale" },
-      { "value": "post-sale", "label": "Post-Sale / Move-In Ready" },
-      { "value": "additional", "label": "Servicios adicionales (limpieza, pintura, reparaciones, jardinería)" }
+    "typeLegend": "Tipo de limpieza",
+    "cleaningTypes": [
+      { "value": "standard", "label": "Limpieza estándar", "description": "Mantenimiento regular: polvo, pisos, superficies de cocina y baño." },
+      { "value": "deep", "label": "Limpieza profunda", "description": "De arriba abajo: zócalos, juntas, detrás de electrodomésticos, suciedad acumulada." }
     ],
-    "sizeLabel": "¿Qué tan grande es la propiedad?",
-    "sizeOptions": [
-      { "value": "studio", "label": "Estudio - 1 habitación" },
-      { "value": "twothree", "label": "2-3 habitaciones" },
-      { "value": "fourplus", "label": "4+ habitaciones" }
+    "fromLabel": "desde {price}",
+
+    "roomsLegend": "Cuartos",
+    "rooms": [
+      { "id": "bedrooms", "label": "Recámaras" },
+      { "id": "bathrooms", "label": "Baños" },
+      { "id": "kitchens", "label": "Cocinas" },
+      { "id": "laundry", "label": "Cuartos de lavado" },
+      { "id": "living", "label": "Salas" },
+      { "id": "dining", "label": "Comedores" }
     ],
-    "areaLabel": "¿En qué área está la propiedad?",
+
+    "extrasLegend": "Extras",
+    "extras": [
+      { "id": "windows", "label": "Ventanas" },
+      { "id": "fridge", "label": "Refrigerador (por dentro)" },
+      { "id": "oven", "label": "Horno (por dentro)" }
+    ],
+    "eachLabel": "{price} c/u",
+
+    "areaLegend": "¿Dónde está la propiedad?",
     "areaOptions": [
       { "value": "ocala", "label": "Ocala" },
       { "value": "tampa", "label": "Tampa" },
       { "value": "spring-hill", "label": "Spring Hill" }
     ],
-    "submitLabel": "Ver mi estimado"
+
+    "decreaseLabel": "Menos {item}",
+    "increaseLabel": "Más {item}",
+    "otherServicesNote": "¿Necesitas preparación pre-venta, pintura, reparaciones o jardinería? Esos los cotizamos por chat —",
+    "otherServicesLink": "escríbenos por WhatsApp"
   },
 
   "result": {
-    "estimateHeading": "Tu rango estimado",
-    "estimateDisclaimer": "Esto es un estimado — el precio final se confirma una vez que hablemos por WhatsApp.",
+    "heading": "Desglose de precio",
+    "estimatedTimeLabel": "Tiempo estimado",
+    "suggestedCleanersLabel": "Personal sugerido",
+    "basePriceLabel": "{type} - Precio base",
+    "travelLabel": "Distancia ({area})",
+    "totalLabel": "Total",
+    "hours": "{h} h",
+    "minutes": "{m} min",
+    "disclaimer": "Esto es un estimado. El precio final se confirma una vez que hablemos por WhatsApp.",
     "fallbackHeading": "Te confirmamos el precio por chat",
-    "fallbackBody": "Esta combinación necesita una revisión rápida antes de poder cotizarla. Envíanos tus datos por WhatsApp y te respondemos con un precio personalizado hoy mismo.",
-    "whatsappCtaLabel": "Enviar esto por WhatsApp",
-    "startOverLabel": "Empezar de nuevo"
+    "fallbackBody": "Parte de lo que elegiste necesita una revisión rápida antes de poder cotizarlo. Envíanos tus datos por WhatsApp y te respondemos con el precio exacto.",
+    "whatsappCtaLabel": "Enviar esta cotización por WhatsApp",
+    "printLabel": "Guardar como PDF",
+    "mobileBarLabel": "Total estimado",
+    "mobileBarLink": "Ver desglose",
+    "noscript": "La calculadora necesita JavaScript. Escríbenos por WhatsApp y te cotizamos directamente."
   },
 
-  "whatsappMessageEstimate": "Hola, me gustaría reservar {service} ({size}) en {area}. Vi un rango estimado de {range} en el sitio.",
-  "whatsappMessageCustom": "Hola, me gustaría un precio personalizado para {service} ({size}) en {area}."
+  "whatsappMessageEstimate": "Hola, me gustaría reservar una {type} en {area}:\n{items}\nTotal estimado: {total}",
+  "whatsappMessageCustom": "Hola, me gustaría una cotización para una {type} en {area}:\n{items}"
 }
