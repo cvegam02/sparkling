@@ -43,7 +43,6 @@ module.exports = {
     { id: 'vacant-home', slug: 'vacant-home' },
     { id: 'services/pre-sale', slug: 'services/pre-sale' },
     { id: 'services/post-sale', slug: 'services/post-sale' },
-    { id: 'services/additional', slug: 'services/additional' },
     { id: 'services/cleaning', slug: 'services/cleaning' },
     { id: 'services/painting', slug: 'services/painting' },
     { id: 'services/repairs', slug: 'services/repairs' },

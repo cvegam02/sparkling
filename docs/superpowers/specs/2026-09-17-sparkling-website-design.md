@@ -43,7 +43,7 @@ Sparkling/
 ├── content/
 │   ├── en/
 │   │   ├── home.json
-│   │   ├── services/{pre-sale,post-sale,additional}.json
+│   │   ├── services/{pre-sale,post-sale}.json
 │   │   ├── areas/{ocala,tampa,spring-hill}.json
 │   │   ├── vacant-home.json
 │   │   └── quote-calculator.json

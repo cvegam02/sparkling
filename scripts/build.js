@@ -122,7 +122,6 @@ function buildNavLinks(locale) {
 const SERVICE_NAV_ROUTE_IDS = [
   'services/pre-sale',
   'services/post-sale',
-  'services/additional',
   'services/cleaning',
   'services/painting',
   'services/repairs',
@@ -271,11 +270,12 @@ function renderBillItems(items) {
     .join('\n');
 }
 
-function renderServiceCards(items, locale, fallbackHref) {
+function renderServiceCards(items, locale) {
   return items
     .map((item) => {
       const route = item.linkRouteId ? getRoute(item.linkRouteId) : null;
-      const href = route ? absoluteUrl(route, locale) : fallbackHref;
+      if (!route) throw new Error(`home services card "${item.slug}" has no valid linkRouteId`);
+      const href = absoluteUrl(route, locale);
       return `        <a class="service-card service-card--${item.slug}" href="${href}">
           <img class="service-photo" src="${ASSET_BASE}/assets/img/${item.image}" alt="${item.alt}" width="1536" height="1024" loading="lazy">
           <div class="service-card-body">
@@ -667,7 +667,7 @@ function buildHomeValues(locale, content, common, whatsappHref) {
 
     servicesHeading: content.services.heading,
     servicesBody: content.services.body,
-    serviceCardsHtml: renderServiceCards(content.services.items, locale, absoluteUrl(getRoute('services/additional'), locale)),
+    serviceCardsHtml: renderServiceCards(content.services.items, locale),
     servicesSecondaryNote: content.services.secondaryNote,
 
     howHeading: content.how.heading,

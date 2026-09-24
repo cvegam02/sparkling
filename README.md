@@ -33,7 +33,7 @@ Builds the site into `dist-preview/` and serves it at `http://localhost:5050/spa
 Every page's text lives in a JSON file under `content/<language>/`, e.g.:
 
 - `content/en/home.json` / `content/es/home.json` — the home page.
-- `content/en/services/pre-sale.json` / `content/es/services/pre-sale.json` — the Pre-Sale service page (same pattern for `post-sale.json`, `additional.json`).
+- `content/en/services/pre-sale.json` / `content/es/services/pre-sale.json` — the Pre-Sale service page (same pattern for `post-sale.json`).
 - `content/en/areas/ocala.json` / `content/es/areas/ocala.json` — the Ocala area page (same pattern for `tampa.json`, `spring-hill.json`).
 - `content/en/vacant-home.json` / `content/es/vacant-home.json` — the vacant/unsold property page.
 - `content/en/quote-calculator.json` / `content/es/quote-calculator.json` — the estimate calculator page.
