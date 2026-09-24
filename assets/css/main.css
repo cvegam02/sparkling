@@ -419,19 +419,19 @@ p {
   pointer-events: none;
 }
 
-.hero-video {
+.hero-image {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  aspect-ratio: 3 / 2;
   border-radius: var(--radius);
   /* Fades the edge nearest the copy column to transparent instead of a hard
-     rectangle, since (unlike the old transparent-background PNG) this is an
-     opaque video and would otherwise sit right behind the paragraph text
-     where .hero-graphic overlaps .hero-copy, hurting legibility. */
-  -webkit-mask-image: linear-gradient(to right, transparent, black 42%);
-  mask-image: linear-gradient(to right, transparent, black 42%);
+     rectangle, since this is an opaque photo that would otherwise sit right
+     behind the paragraph text where .hero-graphic overlaps .hero-copy. Kept
+     to the left ~25% so it never reaches the logo, which starts at ~32% of
+     the image width. */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 25%);
+  mask-image: linear-gradient(to right, transparent, black 25%);
 }
 
 /* Vacant-house note — short context band between the hero and the service
@@ -2118,11 +2118,18 @@ p {
     grid-template-columns: 1fr;
   }
 
-  /* The desktop layout overlaps the video behind the copy (absolute
+  /* The desktop layout overlaps the image behind the copy (absolute
      position + a mask-image fade for legibility). Mobile has no room for
-     an overlap, so the video instead becomes a normal block placed above
-     the copy — column-reverse flips it ahead of .hero-copy without
-     needing to reorder the markup. */
+     an overlap, so the image instead becomes a full-bleed block placed
+     above the copy — column-reverse flips it ahead of .hero-copy without
+     needing to reorder the markup. Its bottom edge fades into the page
+     background and the copy starts inside that fade, so there's no hard
+     photo edge between the two. The fade starts at 82% of the height,
+     below the logo's services line (~80%). */
+
+  .hero {
+    padding-top: 0;
+  }
 
   .hero-wrap {
     display: flex;
@@ -2131,14 +2138,16 @@ p {
 
   .hero-graphic {
     position: static;
-    width: 100%;
-    margin-bottom: var(--space-3);
+    width: auto;
+    margin-inline: calc(-1 * var(--space-3));
+    margin-bottom: calc(-1 * var(--space-2));
     transform: none;
   }
 
-  .hero-video {
-    -webkit-mask-image: none;
-    mask-image: none;
+  .hero-image {
+    border-radius: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent);
+    mask-image: linear-gradient(to bottom, black 82%, transparent);
   }
 
   .path-movein {

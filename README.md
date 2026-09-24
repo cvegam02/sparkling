@@ -87,7 +87,6 @@ This is a manual step outside this repository: create your business listing at [
 ## Images and performance
 
 - Service photos live in `assets/img/` as `.webp` files, which are already a compressed, modern format — keep new photos in `.webp` at similar dimensions (around 1536×1024) rather than adding large unoptimized JPEGs/PNGs.
-- `assets/img/logo-full.png` has a known typo baked into the artwork ("PAIHTING") — don't use it anywhere the text would be legible until a corrected export exists.
 - The site loads no JavaScript frameworks and no analytics/tracking scripts. The only page-specific script is the quote calculator's, which loads only on the estimate page — every other page ships just the small nav-toggle script.
 
 ## Mobile check

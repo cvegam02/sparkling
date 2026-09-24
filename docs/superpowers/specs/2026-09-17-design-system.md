@@ -108,9 +108,8 @@ Logo mark (`logo-icon.png`, 40×40) + wordmark on the left, nav links on the rig
 | Asset | Use |
 |---|---|
 | `assets/img/logo-icon.png` | Favicon, header brand mark, hero color-block composition. Transparent PNG, 1024×1024 — always constrain with `width`/`height`/`aspect-ratio`, never stretch. |
-| `assets/img/logo-full.png` | **Not currently used on the page.** Has a baked-in typo ("PAIHTING") in the pixel art — do not use anywhere the text would be legible until a corrected version exists. |
 | `assets/img/service-*.webp` | Real photography, one per service card, 1536×1024 source, `object-fit: cover` in a constrained box (4:3 desktop, square tile on mobile/tablet). |
-| `assets/video/hero.mp4` | **Not currently used.** Kept in the repo in case a future page wants it, but the home hero moved to the color-block composition instead (real-user legibility issues came up with text over video — see §7). |
+| `assets/img/hero.webp` | Home hero: logo over a living-room photo, 1536×1024. Desktop fades its left ~25% behind the copy; mobile shows it full-bleed with the bottom edge fading into the page. Never crop or mask past ~30% from the left or ~80% from the top — the logo and services line live there. |
 
 Always write a real, descriptive `alt` for content images (the four service photos). Purely decorative images/icons that sit next to visible text with the same meaning (nav icons, the header logo mark) use `alt=""` or are wrapped in an `aria-hidden="true"` parent instead.
 
@@ -126,7 +125,6 @@ Always write a real, descriptive `alt` for content images (the four service phot
 
 Not blocking, but worth cleaning up next time you're in the relevant file:
 - `.services-secondary` (the "Also available: windows, doors and screening." line) references `var(--color-ink-soft, currentColor)` — `--color-ink-soft` was never defined as a token, so it's silently falling back to `currentColor`. Either add the token or simplify the rule to `color: currentColor` explicitly.
-- `logo-full.png` has a typo baked into the artwork ("PAIHTING") — get a corrected export before using it anywhere (social sharing image, print, etc.).
 
 ## 9. Building a new page — checklist
 

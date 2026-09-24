@@ -636,6 +636,8 @@ function buildHomeValues(locale, content, common, whatsappHref) {
     kicker: content.kicker,
     tagline: content.tagline,
     heroBody: content.heroBody,
+    heroImage: content.heroImage,
+    heroImageAlt: content.heroImageAlt,
     ctaPrimaryLabel: content.ctaPrimaryLabel,
     quoteCalculatorUrl,
     whatsappLabel: content.whatsappLabel,
