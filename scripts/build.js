@@ -512,14 +512,14 @@ function renderHeroImage(content) {
 const VIDEO_MIME_TYPES = { '.mp4': 'video/mp4', '.webm': 'video/webm' };
 
 // Proof-of-work "evidence" block for a service page: a looping video when
-// the content provides one, otherwise a before/after photo. Renders nothing
-// when the page has no evidence block. The photo variant opens in a native
+// the content provides one (with `image` as its optional poster), otherwise
+// a before/after photo. Renders nothing when the page has no evidence block. The photo variant opens in a native
 // <dialog> lightbox on click (see assets/js/main.js) for a closer look at
 // full size; the video variant plays inline and needs no lightbox since its
 // own controls already give a bigger, pausable view.
 function renderEvidence(evidence, common) {
-  if (!evidence || !evidence.image) return '';
-  const posterSrc = `${ASSET_BASE}/assets/img/${evidence.image}`;
+  if (!evidence || (!evidence.image && !evidence.video)) return '';
+  const posterSrc = evidence.image ? `${ASSET_BASE}/assets/img/${evidence.image}` : '';
   const alt = evidence.alt || '';
 
   if (evidence.video) {
@@ -529,7 +529,7 @@ function renderEvidence(evidence, common) {
       '  <section class="evidence-section">',
       '    <div class="wrap">',
       evidence.heading ? `      <h2>${evidence.heading}</h2>` : '',
-      `      <video class="evidence-video" width="1536" height="1024" poster="${posterSrc}" aria-label="${alt}" autoplay muted loop playsinline controls preload="metadata">`,
+      `      <video class="evidence-video" width="1536" height="1024"${posterSrc ? ` poster="${posterSrc}"` : ''} aria-label="${alt}" autoplay muted loop playsinline controls preload="metadata">`,
       `        <source src="${videoSrc}" type="${mimeType}">`,
       '      </video>',
       evidence.caption ? `      <p class="evidence-caption">${evidence.caption}</p>` : '',
