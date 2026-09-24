@@ -4,11 +4,21 @@
   "h1": "A fresh coat sells faster than a fresh excuse.",
   "kicker": "Painting",
   "intro": "A faded exterior or scuffed walls are one of the first things a buyer notices and one of the fastest things to fix. We handle touch-ups, full rooms and full exteriors with the same crew doing the rest of the prep.",
+  "heroVideo": "vid-painting.mp4",
+  "heroVideoAlt": "Before and after comparison of a house exterior: faded, stained stucco on the left, freshly painted grey exterior with a tidied driveway on the right",
+  "theme": "paint",
+  "heroAlign": "center",
+  "overviewStyle": "cards",
   "heroImage": "service-paint.webp",
   "heroImageAlt": "A painter rolling white paint onto an interior wall",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about your painting service",
   "relatedPages": ["services/cleaning", "services/repairs", "services/gardening"],
+  "cta": {
+    "heading": "Send us a photo of the wall",
+    "body": "A quick photo on WhatsApp is all we need to quote touch-ups or a full room.",
+    "primary": "whatsapp"
+  },
   "sections": [
     {
       "heading": "What's included",
@@ -23,7 +33,6 @@
   "evidence": {
     "heading": "See the difference",
     "image": "evidence-paint.webp",
-    "video": "vid-painting.mp4",
     "alt": "Before and after comparison of a house exterior: faded, stained stucco on the left, freshly painted grey exterior with a tidied driveway on the right",
     "caption": "Same house, one paint job &mdash; curb appeal a listing photo can actually sell."
   }

@@ -4,9 +4,19 @@
   "h1": "Walk into a home that's already done.",
   "kicker": "Post-Sale / Move-In Ready",
   "intro": "Move-In Ready means you unlock the door to a clean, organized, welcoming home &mdash; nothing left for you to do.",
+  "heroVideo": "vid-move-in.mp4",
+  "heroVideoAlt": "Video of Rosa's team getting a home move-in ready: a full clean, organizing and unpacking, and light decorating touches",
+  "theme": "movein",
+  "heroAlign": "left",
+  "overviewStyle": "cards",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about Move-In Ready",
   "relatedPages": ["services/cleaning"],
+  "cta": {
+    "heading": "Ready when you are",
+    "body": "See your price in a minute with our calculator, or tell us about the property on WhatsApp.",
+    "primary": "quote"
+  },
   "sections": [
     {
       "heading": "What's included",
@@ -20,8 +30,8 @@
   ],
   "evidence": {
     "heading": "See the difference",
-    "video": "vid-move-in.mp4",
-    "alt": "Video of Rosa's team getting a home move-in ready",
-    "caption": "Unlock the door to a home that's already done."
+    "image": "evidence-movein.webp",
+    "alt": "Before and after comparison of an open living room and kitchen: moving boxes and bags everywhere on the left, unpacked, organized and decorated with plants and cushions on the right",
+    "caption": "From boxes on the floor to a home that's ready on day one."
   }
 }

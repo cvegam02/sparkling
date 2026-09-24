@@ -18,6 +18,12 @@
     "placeholderBody": "Estamos configurando nuestro perfil de Google Business para que pronto puedas leer reseñas reales de clientes aquí.",
     "linkLabel": "Ver nuestras reseñas en Google"
   },
+  "serviceCta": {
+    "heading": "Cuando tú digas",
+    "body": "Ve tu precio en un minuto con nuestra calculadora, o cuéntanos de la propiedad por WhatsApp.",
+    "quoteLabel": "Calcula tu limpieza"
+  },
+  "relatedHeading": "También te puede interesar",
   "evidence": {
     "expandLabel": "Ver imagen más grande",
     "closeLabel": "Cerrar"

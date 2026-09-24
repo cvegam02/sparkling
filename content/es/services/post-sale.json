@@ -4,9 +4,19 @@
   "h1": "Entra a una casa que ya está lista.",
   "kicker": "Post-Sale / Move-In Ready",
   "intro": "Move-In Ready significa abrir la puerta a una casa limpia, organizada y acogedora &mdash; sin nada pendiente para ti.",
+  "heroVideo": "vid-move-in.mp4",
+  "heroVideoAlt": "Video del equipo de Rosa dejando una casa lista para mudarse: limpieza completa, organización y desempaque, y toques de decoración",
+  "theme": "movein",
+  "heroAlign": "left",
+  "overviewStyle": "cards",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría preguntar sobre Move-In Ready",
   "relatedPages": ["services/cleaning"],
+  "cta": {
+    "heading": "Cuando tú digas",
+    "body": "Ve tu precio en un minuto con nuestra calculadora, o cuéntanos de la propiedad por WhatsApp.",
+    "primary": "quote"
+  },
   "sections": [
     {
       "heading": "Qué incluye",
@@ -20,8 +30,8 @@
   ],
   "evidence": {
     "heading": "Mira la diferencia",
-    "video": "vid-move-in.mp4",
-    "alt": "Video del equipo de Rosa dejando una casa lista para mudarse",
-    "caption": "Abre la puerta de una casa que ya está lista."
+    "image": "evidence-movein.webp",
+    "alt": "Comparación de antes y después de una sala y cocina abiertas: cajas y bolsas de mudanza por todas partes a la izquierda, todo desempacado, organizado y decorado con plantas y cojines a la derecha",
+    "caption": "De cajas en el piso a una casa lista desde el primer día."
   }
 }

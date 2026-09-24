@@ -221,6 +221,20 @@ const SERVICE_ICONS = {
   garden: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="7,15 17,15 15,21 9,21"/><line x1="12" y1="15" x2="12" y2="6"/><polygon points="12,6 12,9 5,7"/><polygon points="12,6 12,9 19,7"/></svg>'
 };
 
+// Per-service visual theme for video-hero pages (content `theme` field):
+// drives the icon badge in the hero and the `service-theme--<key>` class
+// that sets the page's accent colors in main.css.
+const THEME_ICONS = {
+  presale: PATH_ICONS.presale,
+  movein: PATH_ICONS.movein,
+  clean: SERVICE_ICONS.clean,
+  paint: SERVICE_ICONS.paint,
+  repairs: SERVICE_ICONS.repairs,
+  garden: SERVICE_ICONS.garden
+};
+
+const HERO_ALIGNS = ['left', 'center', 'right'];
+
 const EXPAND_ICON =
   '<svg class="evidence-zoom-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4,9 4,4 9,4"/><polyline points="15,4 20,4 20,9"/><polyline points="20,15 20,20 15,20"/><polyline points="9,20 4,20 4,15"/></svg>';
 
@@ -473,16 +487,78 @@ function writePricingData() {
 
 // Generic content blocks used by interior pages (service/area/vacant-home).
 // Each section is heading + body, with an optional checklist.
+function renderSectionList(items) {
+  if (!Array.isArray(items)) return '';
+  return [
+    '      <ul>',
+    items.map((item) => `        <li>${CHECK_ICON}${item}</li>`).join('\n'),
+    '      </ul>'
+  ].join('\n');
+}
+
+// Pages with a full-bleed video hero show their sections as side-by-side
+// cards in a single band, so short content doesn't read as a string of
+// near-empty full-width stripes after the big hero.
+function renderSectionCards(sections, style) {
+  if (sections.length === 0) return '';
+  const modifier = style === 'split' ? ' service-overview--split' : '';
+  const cards = sections
+    .map((section) =>
+      [
+        '      <article class="overview-card">',
+        `        <h2>${section.heading}</h2>`,
+        `        <p>${section.body}</p>`,
+        renderSectionList(section.items).replace(/^/gm, '  '),
+        '      </article>'
+      ]
+        .filter((line) => line.trim())
+        .join('\n')
+    )
+    .join('\n');
+  return [`  <section class="content-section service-overview${modifier}">`, '    <div class="wrap service-overview-grid">', cards, '    </div>', '  </section>'].join('\n');
+}
+
+// Closing call to action for video-hero pages. The page's own `cta`
+// (heading, body, primary) overrides the shared copy in common.json.
+// `primary: "quote"` leads with the cleaning calculator; "whatsapp" leads
+// with WhatsApp (the calculator only prices cleaning), and "whatsapp+quote"
+// keeps the calculator as a secondary option.
+function renderServiceCta(content, common, whatsappHref, locale) {
+  const cta = { ...common.serviceCta, ...(content.cta || {}) };
+  const quoteHref = absoluteUrl(getRoute('quote-calculator'), locale);
+  const quoteBtn = (cls) => `        <a class="btn ${cls}" href="${quoteHref}">${common.serviceCta.quoteLabel}</a>`;
+  const whatsappBtn = `        <a class="btn btn-whatsapp" href="${whatsappHref}" target="_blank" rel="noopener">${content.whatsappLabel || common.footer.whatsappLabel}</a>`;
+  const buttons = {
+    quote: [quoteBtn('btn-primary'), whatsappBtn],
+    whatsapp: [whatsappBtn],
+    'whatsapp+quote': [whatsappBtn, quoteBtn('btn-secondary')]
+  }[cta.primary || 'quote'];
+  if (!buttons) throw new Error(`unknown cta.primary "${cta.primary}"`);
+  return `  <section class="service-cta">
+    <div class="wrap">
+      <h2>${cta.heading}</h2>
+      <p>${cta.body}</p>
+      <div class="cta-row">
+${buttons.join('\n')}
+      </div>
+    </div>
+  </section>`;
+}
+
+function assertHeroTheme(content) {
+  if (!content.heroVideo) return;
+  if (!THEME_ICONS[content.theme]) {
+    throw new Error(`page with heroVideo needs a "theme" (one of ${Object.keys(THEME_ICONS).join(', ')}), got "${content.theme}"`);
+  }
+  if (content.heroAlign && !HERO_ALIGNS.includes(content.heroAlign)) {
+    throw new Error(`heroAlign must be one of ${HERO_ALIGNS.join(', ')}, got "${content.heroAlign}"`);
+  }
+}
+
 function renderSections(sections) {
   return sections
     .map((section) => {
-      const items = Array.isArray(section.items)
-        ? [
-            '      <ul>',
-            section.items.map((item) => `        <li>${CHECK_ICON}${item}</li>`).join('\n'),
-            '      </ul>'
-          ].join('\n')
-        : '';
+      const items = renderSectionList(section.items);
 
       return [
         '  <section class="content-section">',
@@ -499,11 +575,25 @@ function renderSections(sections) {
     .join('\n');
 }
 
+// Full-bleed looping background video behind the interior hero copy, with
+// a dark overlay (CSS) so the white text stays legible. Renders nothing when
+// the page has no heroVideo.
+function renderHeroBackground(content) {
+  if (!content.heroVideo) return '';
+  const videoSrc = `${ASSET_BASE}/assets/video/${content.heroVideo}`;
+  const mimeType = VIDEO_MIME_TYPES[path.extname(content.heroVideo)] || 'video/mp4';
+  return `    <div class="interior-hero-bg">
+      <video width="1280" height="720"${content.heroImage ? ` poster="${ASSET_BASE}/assets/img/${content.heroImage}"` : ''} aria-label="${content.heroVideoAlt || ''}" autoplay muted loop playsinline preload="auto">
+        <source src="${videoSrc}" type="${mimeType}">
+      </video>
+    </div>`;
+}
+
 // Discreet hero photo for an interior page (e.g. a service page). Renders
-// nothing when the page has no heroImage, so the hero falls back to its
-// plain text-only layout.
+// nothing when the page has no heroImage (or uses a heroVideo background
+// instead), so the hero falls back to its plain text-only layout.
 function renderHeroImage(content) {
-  if (!content.heroImage) return '';
+  if (content.heroVideo || !content.heroImage) return '';
   return `      <div class="interior-hero-media">
         <img src="${ASSET_BASE}/assets/img/${content.heroImage}" alt="${content.heroImageAlt || ''}" width="1536" height="1024" loading="lazy">
       </div>`;
@@ -517,6 +607,21 @@ const VIDEO_MIME_TYPES = { '.mp4': 'video/mp4', '.webm': 'video/webm' };
 // <dialog> lightbox on click (see assets/js/main.js) for a closer look at
 // full size; the video variant plays inline and needs no lightbox since its
 // own controls already give a bigger, pausable view.
+// Intrinsic pixel size of a WebP in assets/img, read from its header, so
+// width/height attributes match the real file (prevents layout shift and
+// wrong aspect hints). Falls back to 1536x1024 for other formats.
+function imageSize(file) {
+  const buf = fs.readFileSync(path.join(ROOT, 'assets', 'img', file));
+  const chunk = buf.toString('ascii', 12, 16);
+  if (chunk === 'VP8 ') return { width: buf.readUInt16LE(26) & 0x3fff, height: buf.readUInt16LE(28) & 0x3fff };
+  if (chunk === 'VP8L') {
+    const bits = buf.readUInt32LE(21);
+    return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1 };
+  }
+  if (chunk === 'VP8X') return { width: buf.readUIntLE(24, 3) + 1, height: buf.readUIntLE(27, 3) + 1 };
+  return { width: 1536, height: 1024 };
+}
+
 function renderEvidence(evidence, common) {
   if (!evidence || (!evidence.image && !evidence.video)) return '';
   const posterSrc = evidence.image ? `${ASSET_BASE}/assets/img/${evidence.image}` : '';
@@ -540,12 +645,13 @@ function renderEvidence(evidence, common) {
       .join('\n');
   }
 
+  const size = imageSize(evidence.image);
   return [
     '  <section class="evidence-section">',
     '    <div class="wrap">',
     evidence.heading ? `      <h2>${evidence.heading}</h2>` : '',
     `      <button type="button" class="evidence-photo-trigger" data-lightbox-trigger aria-label="${common.evidence.expandLabel}">`,
-    `        <img class="evidence-photo" src="${posterSrc}" alt="${alt}" width="1536" height="1024" loading="lazy">`,
+    `        <img class="evidence-photo" src="${posterSrc}" alt="${alt}" width="${size.width}" height="${size.height}" loading="lazy">`,
     `        ${EXPAND_ICON}`,
     '      </button>',
     evidence.caption ? `      <p class="evidence-caption">${evidence.caption}</p>` : '',
@@ -603,7 +709,7 @@ function renderReviews(common) {
   return render(template, { heading: common.reviews.heading, body });
 }
 
-function renderRelatedLinks(content, contentByRoute, locale) {
+function renderRelatedLinks(content, contentByRoute, locale, common) {
   const relatedIds = Array.isArray(content.relatedPages) ? content.relatedPages : [];
   if (relatedIds.length === 0) return '';
 
@@ -617,12 +723,14 @@ function renderRelatedLinks(content, contentByRoute, locale) {
       }
       const targetRoute = config.routes.find((r) => r.id === id);
       const href = absoluteUrl(targetRoute, locale);
-      const title = target[locale].content.title;
-      return `    <li><a href="${href}">${title}</a></li>`;
+      // Page titles carry a " | Rosa's Sparkling ..." suffix for SEO; the
+      // link only needs the page's own name.
+      const title = target[locale].content.title.split(' | ')[0];
+      return `      <li><a href="${href}">${title}</a></li>`;
     })
     .join('\n');
 
-  return render(template, { items });
+  return render(template, { items, heading: common.relatedHeading });
 }
 
 // --- page rendering -----------------------------------------------------
@@ -685,6 +793,7 @@ function buildHomeValues(locale, content, common, whatsappHref) {
 
 function buildInteriorValues(locale, content, common, whatsappHref) {
   const nav = buildNavLinks(locale);
+  assertHeroTheme(content);
 
   return {
     assetBase: ASSET_BASE,
@@ -695,8 +804,15 @@ function buildInteriorValues(locale, content, common, whatsappHref) {
     whatsappHref,
     whatsappLabel: content.whatsappLabel,
     heroImageHtml: renderHeroImage(content),
+    heroBackgroundHtml: renderHeroBackground(content),
+    heroModifierClass: content.heroVideo ? ` interior-hero--video interior-hero--align-${content.heroAlign || 'left'}` : '',
+    mainClassAttr: content.heroVideo ? ` class="service-theme service-theme--${content.theme}"` : '',
+    kickerIconHtml: content.heroVideo ? `<span class="kicker-icon" aria-hidden="true">${THEME_ICONS[content.theme]}</span>` : '',
 
-    sectionsHtml: renderSections(content.sections || []),
+    sectionsHtml: content.heroVideo
+      ? renderSectionCards(content.sections || [], content.overviewStyle)
+      : renderSections(content.sections || []),
+    serviceCtaHtml: content.heroVideo ? renderServiceCta(content, common, whatsappHref, locale) : '',
     evidenceHtml: renderEvidence(content.evidence, common),
     areasListHtml: content.areasSection ? renderAreasSection(content.areasSection.heading, locale) : '',
     reviewsHtml: content.showReviews ? renderReviews(common) : '',
@@ -725,7 +841,7 @@ function buildPage(route, locale, contentByRoute, commonByLocale) {
     pageValues = buildInteriorValues(locale, content, common, whatsappHref);
   }
 
-  pageValues.relatedLinks = renderRelatedLinks(content, contentByRoute, locale);
+  pageValues.relatedLinks = renderRelatedLinks(content, contentByRoute, locale, common);
   pageValues.siteNavHtml = renderSiteNav(locale, common, contentByRoute, route);
   pageValues.mobileLangSwitchHtml = renderLangSwitchLink(locale, common, route, 'mobile-lang-switch');
 

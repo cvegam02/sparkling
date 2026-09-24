@@ -1,6 +1,22 @@
 (function () {
   'use strict';
 
+  // Interior hero background videos autoplay (HTML attribute) so they work
+  // without JS. For anyone who has asked for less motion, stop them on
+  // their first frame instead.
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) return;
+
+  document.querySelectorAll('.interior-hero-bg video').forEach(function (video) {
+    video.removeAttribute('autoplay');
+    video.pause();
+  });
+})();
+
+(function () {
+  'use strict';
+
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');
   if (!toggle || !nav) return;

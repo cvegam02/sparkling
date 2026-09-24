@@ -4,11 +4,21 @@
   "h1": "Una limpieza lista para una muestra, no solo para una mirada rápida.",
   "kicker": "Limpieza",
   "intro": "Desde una limpieza profunda antes de las fotos hasta un calendario recurrente que mantiene la propiedad lista para el mercado, nuestros equipos limpian cada habitación como realmente la va a ver un comprador o inquilino.",
+  "heroVideo": "vid-cleaning.mp4",
+  "heroVideoAlt": "Comparación de antes y después de una habitación: desordenada con juguetes y cajones abiertos a la izquierda, ordenada y organizada a la derecha",
+  "theme": "clean",
+  "heroAlign": "right",
+  "overviewStyle": "split",
   "heroImage": "service-clean.webp",
   "heroImageAlt": "Un miembro del equipo de Rosa's Sparkling Clean & Management limpiando un piso de mármol en una sala luminosa",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría preguntar por su servicio de limpieza",
   "relatedPages": ["services/painting", "services/repairs", "services/gardening"],
+  "cta": {
+    "heading": "Tu precio, cuarto por cuarto",
+    "body": "Cuenta tus cuartos en la calculadora y ve el desglose completo antes de escribirnos.",
+    "primary": "quote"
+  },
   "sections": [
     {
       "heading": "Qué incluye",
@@ -23,7 +33,6 @@
   "evidence": {
     "heading": "Mira la diferencia",
     "image": "evidence-cleaning.webp",
-    "video": "vid-cleaning.mp4",
     "alt": "Comparación de antes y después de una habitación: desordenada con juguetes y cajones abiertos a la izquierda, ordenada y organizada a la derecha",
     "caption": "El mismo cuarto, una sola visita &mdash; nada se sacó, todo quedó en su lugar."
   }

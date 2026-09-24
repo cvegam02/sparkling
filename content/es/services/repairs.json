@@ -4,11 +4,21 @@
   "h1": "Alguien debería estar revisándola. Que seamos nosotros.",
   "kicker": "Reparaciones",
   "intro": "Una propiedad vacía o en venta necesita que alguien la revise &mdash; una puerta de gabinete floja, una fuga, un paquete abandonado en la entrada. Hacemos recorridos recurrentes y resolvemos las reparaciones menores nosotros mismos, en vez de solo mandarte una lista por correo.",
+  "heroVideo": "vid-repairs.webm",
+  "heroVideoAlt": "Comparación de antes y después de una cocina: puertas de gabinete colgando abiertas y dañadas a la izquierda, gabinetes reparados y cerrados con la mesada despejada a la derecha",
+  "theme": "repairs",
+  "heroAlign": "left",
+  "overviewStyle": "split",
   "heroImage": "service-fixing.webp",
   "heroImageAlt": "Un técnico instalando un cajón de cocina con un taladro",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría preguntar por su servicio de reparaciones de propiedades",
   "relatedPages": ["services/cleaning", "services/painting", "services/gardening"],
+  "cta": {
+    "heading": "Cuéntanos qué hay que arreglar",
+    "body": "Una puerta floja, una fuga, una lista de pendientes &mdash; mándala por WhatsApp y agendamos el primer recorrido.",
+    "primary": "whatsapp"
+  },
   "sections": [
     {
       "heading": "Qué incluye",
@@ -23,7 +33,6 @@
   "evidence": {
     "heading": "Mira la diferencia",
     "image": "evidence-repair.webp",
-    "video": "vid-repairs.webm",
     "alt": "Comparación de antes y después de una cocina: puertas de gabinete colgando abiertas y dañadas a la izquierda, gabinetes reparados y cerrados con la mesada despejada a la derecha",
     "caption": "La misma cocina, atendida a tiempo &mdash; nada que le sorprenda al inspector de un comprador."
   }

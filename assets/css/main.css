@@ -1069,6 +1069,127 @@ p {
   margin-bottom: var(--space-2);
 }
 
+/* Video variant: the video fills the whole hero as a background, under a
+   navy overlay (darker on the copy side) so the white text stays legible
+   over any frame. */
+.interior-hero--video {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: clamp(28rem, 72vh, 42rem);
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.interior-hero--video .interior-hero-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.interior-hero--video .interior-hero-copy {
+  max-width: 38rem;
+}
+
+.interior-hero--video h1 {
+  color: var(--color-white);
+}
+
+.interior-hero--video .kicker {
+  color: var(--color-white);
+  opacity: 0.85;
+}
+
+.interior-hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.interior-hero-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay: navy where the copy sits (for legibility), shading into the
+   page's accent color on the far side. The copy side follows heroAlign. */
+.interior-hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    var(--overlay-angle, 90deg),
+    rgba(20, 25, 47, 0.88) 0%,
+    rgba(20, 25, 47, 0.6) 50%,
+    color-mix(in srgb, var(--accent, var(--color-ink)) 40%, transparent) 100%
+  );
+}
+
+.interior-hero--align-right {
+  --overlay-angle: 270deg;
+}
+
+.interior-hero--align-right .interior-hero-copy {
+  margin-left: auto;
+}
+
+.interior-hero--align-center .interior-hero-bg::after {
+  background:
+    radial-gradient(ellipse at center, rgba(20, 25, 47, 0.85) 0%, rgba(20, 25, 47, 0.55) 70%, transparent 100%),
+    linear-gradient(to top, color-mix(in srgb, var(--accent, var(--color-ink)) 45%, transparent), transparent 60%);
+}
+
+.interior-hero--align-center .interior-hero-copy {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.interior-hero--align-center .cta-row {
+  justify-content: center;
+}
+
+/* A thin accent rule under the hero ties it to the page's color. */
+.interior-hero--video::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent, var(--color-pink)), var(--accent-2, var(--color-blue)));
+}
+
+.kicker-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.75rem;
+  border-radius: 50%;
+  vertical-align: middle;
+  background: var(--accent-badge, var(--color-pink));
+}
+
+.kicker-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  stroke: var(--color-white);
+}
+
+@media (max-width: 860px) {
+  .interior-hero--video {
+    min-height: 32rem;
+  }
+
+  .interior-hero-bg::after,
+  .interior-hero--align-center .interior-hero-bg::after {
+    background:
+      linear-gradient(to top, color-mix(in srgb, var(--accent, var(--color-ink)) 35%, transparent), transparent 50%),
+      rgba(20, 25, 47, 0.7);
+  }
+}
+
 /* Discreet — a single rounded photo, not the home hero's abstract color
    blocks, so interior pages read as calmer than the landing page. */
 .interior-hero-media {
@@ -1117,6 +1238,162 @@ p {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* Per-service themes (content `theme` field). Each page picks up its own
+   accent from the logo palette:
+   --accent        overlay tint, card rule, CTA band tint
+   --accent-2      second card rule, hero accent-rule gradient end
+   --accent-badge  hero icon badge (must keep 3:1 with a white icon, so
+                   gold uses its -deep shade)
+   --accent-check  checklist ticks (3:1 on white)
+   --panel-bg      solid "who it's for" panel behind white text (4.5:1) */
+
+.service-theme--presale {
+  --accent: var(--color-gold);
+  --accent-2: var(--color-blue-deep);
+  --accent-badge: var(--color-gold-deep);
+  --accent-check: var(--color-gold-deep);
+  --panel-bg: var(--color-ink);
+}
+
+.service-theme--movein {
+  --accent: var(--color-blue);
+  --accent-2: var(--color-pink-deep);
+  --accent-badge: var(--color-blue);
+  --accent-check: var(--color-blue-deep);
+  --panel-bg: var(--color-blue-deep);
+}
+
+.service-theme--clean {
+  --accent: var(--color-pink);
+  --accent-2: var(--color-pink-light);
+  --accent-badge: var(--color-pink);
+  --accent-check: var(--color-pink-deep);
+  --panel-bg: var(--color-pink-deep);
+}
+
+.service-theme--paint {
+  --accent: var(--color-blue);
+  --accent-2: var(--color-gold);
+  --accent-badge: var(--color-blue);
+  --accent-check: var(--color-blue-deep);
+  --panel-bg: var(--color-blue-deep);
+}
+
+.service-theme--repairs {
+  --accent: var(--color-gold);
+  --accent-2: var(--color-ink);
+  --accent-badge: var(--color-gold-deep);
+  --accent-check: var(--color-gold-deep);
+  --panel-bg: var(--color-ink);
+}
+
+.service-theme--garden {
+  --accent: var(--color-green);
+  --accent-2: var(--color-gold);
+  --accent-badge: var(--color-green);
+  --accent-check: var(--color-green-deep);
+  --panel-bg: var(--color-green-deep);
+}
+
+/* Video-hero service pages: sections as side-by-side cards, then a closing
+   call to action */
+
+.content-section.service-overview {
+  background: var(--color-cloud);
+  padding-block: var(--space-5);
+}
+
+.service-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.overview-card {
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  background: var(--color-white);
+  border: 1px solid var(--color-cloud-deep);
+  border-top: 4px solid var(--accent, var(--color-pink-deep));
+  border-radius: 12px;
+}
+
+.overview-card:nth-child(2) {
+  border-top-color: var(--accent-2, var(--color-blue));
+}
+
+.service-theme .content-section li svg {
+  stroke: var(--accent-check, var(--color-green));
+}
+
+/* Split variant: the checklist gets the wider column, and "who it's for"
+   becomes a solid accent panel set in the display face. */
+.service-overview--split .service-overview-grid {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+}
+
+.service-overview--split .overview-card:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--panel-bg, var(--color-ink));
+  border: 0;
+  border-left: 6px solid var(--accent-2, var(--color-pink));
+  color: var(--color-white);
+}
+
+.service-overview--split .overview-card:nth-child(2) h2 {
+  color: inherit;
+  font-size: var(--step-1);
+  opacity: 0.85;
+}
+
+.service-overview--split .overview-card:nth-child(2) p {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .service-overview--split .service-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overview-card h2 {
+  font-size: var(--step-2);
+}
+
+.overview-card ul {
+  margin-bottom: 0;
+}
+
+.overview-card li:last-child {
+  border-bottom: 0;
+}
+
+.service-cta {
+  padding-block: var(--space-5);
+  background: color-mix(in srgb, var(--accent, var(--color-pink)) 12%, var(--color-white));
+  border-top: 1px solid color-mix(in srgb, var(--accent, var(--color-pink)) 30%, var(--color-white));
+  text-align: center;
+}
+
+.service-cta p {
+  margin-inline: auto;
+}
+
+.service-cta .cta-row {
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  .overview-card {
+    padding: var(--space-3) var(--space-2) var(--space-2);
+  }
 }
 
 /* Service detail pages (cleaning.html, painting.html, repairs.html, gardening.html) */
@@ -1184,6 +1461,12 @@ p {
 .related-services {
   padding-block: var(--space-4);
   background: var(--color-cloud);
+  border-top: 1px solid var(--color-cloud-deep);
+}
+
+.related-services h2 {
+  font-size: var(--step-1);
+  margin: 0;
 }
 
 .related-services ul {

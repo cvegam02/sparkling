@@ -4,11 +4,21 @@
   "h1": "El atractivo exterior es la primera muestra, aunque nadie esté mirando.",
   "kicker": "Jardinería",
   "intro": "Un jardín descuidado es la primera señal de que una propiedad lleva tiempo vacía. Mantenemos el césped cortado, los setos con forma y los canteros limpios para que el exterior esté a la altura del trabajo que se hace adentro.",
+  "heroVideo": "vid-gardening.mp4",
+  "heroVideoAlt": "Comparación de antes y después de un jardín delantero: césped disparejo y crecido con setos sin podar a la izquierda, césped verde y prolijo con setos podados y canteros con mantillo a la derecha",
+  "theme": "garden",
+  "heroAlign": "right",
+  "overviewStyle": "cards",
   "heroImage": "service-landscaping.webp",
   "heroImageAlt": "Un jardinero podando un seto bien cuidado en el jardín delantero de una casa",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría preguntar por su servicio de jardinería",
   "relatedPages": ["services/cleaning", "services/painting", "services/repairs"],
+  "cta": {
+    "heading": "Pongamos ese jardín en forma",
+    "body": "Comparte una foto del jardín por WhatsApp y te sugerimos una limpieza única o un calendario regular.",
+    "primary": "whatsapp"
+  },
   "sections": [
     {
       "heading": "Qué incluye",
@@ -23,7 +33,6 @@
   "evidence": {
     "heading": "Mira la diferencia",
     "image": "evidence-landscaping.webp",
-    "video": "vid-gardening.mp4",
     "alt": "Comparación de antes y después de un jardín delantero: césped disparejo y crecido con setos sin podar a la izquierda, césped verde y prolijo con setos podados y canteros con mantillo a la derecha",
     "caption": "El mismo jardín, una sola visita &mdash; el tipo de fachada que sí llama la atención."
   }

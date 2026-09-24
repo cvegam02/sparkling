@@ -20,12 +20,13 @@
 
 <p class="mobile-brand-header">Rosa<span class="brand-apostrophe">'</span>s Sparkling Clean &amp; Management</p>
 
-<main id="top">
+<main id="top"{{mainClassAttr}}>
 
-  <section class="interior-hero">
+  <section class="interior-hero{{heroModifierClass}}">
+{{heroBackgroundHtml}}
     <div class="wrap interior-hero-wrap">
       <div class="interior-hero-copy">
-        <p class="kicker">{{kicker}}</p>
+        <p class="kicker">{{kickerIconHtml}}{{kicker}}</p>
         <h1>{{h1}}</h1>
         <p>{{intro}}</p>
         <div class="cta-row">
@@ -46,6 +47,8 @@
 {{areasListHtml}}
 
 {{reviewsHtml}}
+
+{{serviceCtaHtml}}
 
 {{relatedLinks}}
 </main>

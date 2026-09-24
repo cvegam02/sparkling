@@ -4,11 +4,21 @@
   "h1": "Una mano de pintura fresca vende más rápido que una excusa gastada.",
   "kicker": "Pintura",
   "intro": "Un exterior deslucido o paredes rayadas son de lo primero que nota un comprador y de lo más rápido de arreglar. Nos encargamos de retoques, habitaciones completas y exteriores completos con el mismo equipo que hace el resto de la preparación.",
+  "heroVideo": "vid-painting.mp4",
+  "heroVideoAlt": "Comparación de antes y después de un exterior de casa: estuco deslucido y manchado a la izquierda, exterior recién pintado en gris con la entrada ordenada a la derecha",
+  "theme": "paint",
+  "heroAlign": "center",
+  "overviewStyle": "cards",
   "heroImage": "service-paint.webp",
   "heroImageAlt": "Un pintor aplicando pintura blanca en una pared interior",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría preguntar por su servicio de pintura",
   "relatedPages": ["services/cleaning", "services/repairs", "services/gardening"],
+  "cta": {
+    "heading": "Mándanos una foto de la pared",
+    "body": "Una foto rápida por WhatsApp es todo lo que necesitamos para cotizar retoques o un cuarto completo.",
+    "primary": "whatsapp"
+  },
   "sections": [
     {
       "heading": "Qué incluye",
@@ -23,7 +33,6 @@
   "evidence": {
     "heading": "Mira la diferencia",
     "image": "evidence-paint.webp",
-    "video": "vid-painting.mp4",
     "alt": "Comparación de antes y después de un exterior de casa: estuco deslucido y manchado a la izquierda, exterior recién pintado en gris con la entrada ordenada a la derecha",
     "caption": "La misma casa, un solo trabajo de pintura &mdash; el tipo de fachada que sí vende en las fotos."
   }

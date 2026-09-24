@@ -4,9 +4,19 @@
   "h1": "Show-ready listings that sell for more, faster.",
   "kicker": "Pre-Sale prep",
   "intro": "Pre-Sale prep gets a listing photo-ready and keeps it that way through showings, so buyers see the property at its best from the first photo to closing day.",
+  "heroVideo": "vid-pre-sale.mp4",
+  "heroVideoAlt": "Video of Rosa's team preparing a home for sale: deep cleaning, staging and decorating, and minor touch-ups",
+  "theme": "presale",
+  "heroAlign": "center",
+  "overviewStyle": "split",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about Pre-Sale prep",
   "relatedPages": ["vacant-home", "services/post-sale"],
+  "cta": {
+    "heading": "Listing soon? Let's get it show-ready",
+    "body": "Send us the address and your listing date on WhatsApp &mdash; we'll plan the prep around it.",
+    "primary": "whatsapp+quote"
+  },
   "sections": [
     {
       "heading": "What's included",
@@ -20,8 +30,8 @@
   ],
   "evidence": {
     "heading": "See the difference",
-    "video": "vid-pre-sale.mp4",
-    "alt": "Video of Rosa's team preparing a home for sale",
-    "caption": "Photo-ready from the first showing to closing day."
+    "image": "evidence-presale.webp",
+    "alt": "Before and after comparison of a living room with a stone fireplace: worn leather sofa, dated rug and scuffed walls on the left, restaged with a light sofa, armchairs, plants and fresh accessories on the right",
+    "caption": "Same room, restaged &mdash; ready for the listing photos."
   }
 }

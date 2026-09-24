@@ -66,6 +66,7 @@ function collectAltTextWarnings(pages) {
     }
 
     checkAlt(page.file, page.content.heroImage, page.content.heroImageAlt);
+    checkAlt(page.file, page.content.heroVideo, page.content.heroVideoAlt);
 
     if (page.content.evidence) {
       checkAlt(page.file, page.content.evidence.image || page.content.evidence.video, page.content.evidence.alt);

@@ -18,6 +18,12 @@
     "placeholderBody": "We're setting up our Google Business Profile so you can read real customer reviews here soon.",
     "linkLabel": "See our reviews on Google"
   },
+  "serviceCta": {
+    "heading": "Ready when you are",
+    "body": "See your price in a minute with our calculator, or tell us about the property on WhatsApp.",
+    "quoteLabel": "Get your estimate"
+  },
+  "relatedHeading": "You might also need",
   "evidence": {
     "expandLabel": "View larger image",
     "closeLabel": "Close"

@@ -4,9 +4,19 @@
   "h1": "Listados listos para mostrar que se venden mejor y más rápido.",
   "kicker": "Preparación Pre-Sale",
   "intro": "La preparación Pre-Sale deja el listado listo para las fotos y así se mantiene durante los recorridos, para que los compradores vean la propiedad en su mejor momento desde la primera foto hasta el cierre.",
+  "heroVideo": "vid-pre-sale.mp4",
+  "heroVideoAlt": "Video del equipo de Rosa preparando una casa para la venta: limpieza profunda, staging y decoración, y pequeños retoques",
+  "theme": "presale",
+  "heroAlign": "center",
+  "overviewStyle": "split",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría preguntar sobre la preparación Pre-Sale",
   "relatedPages": ["vacant-home", "services/post-sale"],
+  "cta": {
+    "heading": "¿Vas a listar pronto? Dejémosla lista para mostrar",
+    "body": "Envíanos por WhatsApp la dirección y la fecha de listado, y planeamos la preparación alrededor de eso.",
+    "primary": "whatsapp+quote"
+  },
   "sections": [
     {
       "heading": "Qué incluye",
@@ -20,8 +30,8 @@
   ],
   "evidence": {
     "heading": "Mira la diferencia",
-    "video": "vid-pre-sale.mp4",
-    "alt": "Video del equipo de Rosa preparando una casa para la venta",
-    "caption": "Lista para las fotos desde la primera visita hasta el día del cierre."
+    "image": "evidence-presale.webp",
+    "alt": "Comparación de antes y después de una sala con chimenea de piedra: sofá de piel gastado, tapete viejo y paredes marcadas a la izquierda, rediseñada con sofá claro, sillones, plantas y accesorios nuevos a la derecha",
+    "caption": "La misma sala, con nuevo staging &mdash; lista para las fotos del listado."
   }
 }

@@ -4,11 +4,21 @@
   "h1": "Someone should be checking on it. Let it be us.",
   "kicker": "Repairs",
   "intro": "A vacant or listed property needs eyes on it &mdash; a loose cabinet door, a leak, a package left on the porch. We do recurring walkthroughs and handle the small repairs ourselves instead of just emailing you a list.",
+  "heroVideo": "vid-repairs.webm",
+  "heroVideoAlt": "Before and after comparison of a kitchen: cabinet doors hanging open and damaged on the left, cabinets repaired and closed with the counter cleared on the right",
+  "theme": "repairs",
+  "heroAlign": "left",
+  "overviewStyle": "split",
   "heroImage": "service-fixing.webp",
   "heroImageAlt": "A handyman installing a kitchen cabinet drawer with a power drill",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about your property repairs service",
   "relatedPages": ["services/cleaning", "services/painting", "services/gardening"],
+  "cta": {
+    "heading": "Tell us what needs fixing",
+    "body": "A loose door, a leak, a list of small things &mdash; send it on WhatsApp and we'll set up the first walkthrough.",
+    "primary": "whatsapp"
+  },
   "sections": [
     {
       "heading": "What's included",
@@ -23,7 +33,6 @@
   "evidence": {
     "heading": "See the difference",
     "image": "evidence-repair.webp",
-    "video": "vid-repairs.webm",
     "alt": "Before and after comparison of a kitchen: cabinet doors hanging open and damaged on the left, cabinets repaired and closed with the counter cleared on the right",
     "caption": "Same kitchen, caught early &mdash; nothing left to surprise a buyer's inspector."
   }

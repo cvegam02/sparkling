@@ -4,11 +4,21 @@
   "h1": "Cleaning that's ready for a showing, not just a glance.",
   "kicker": "Cleaning",
   "intro": "From a single deep clean before the listing photos go up to a recurring schedule that keeps a property market-ready, our crews clean every room the way a buyer or tenant will actually see it.",
+  "heroVideo": "vid-cleaning.mp4",
+  "heroVideoAlt": "Before and after comparison of a bedroom: cluttered with toys and open drawers on the left, tidied and organized on the right",
+  "theme": "clean",
+  "heroAlign": "right",
+  "overviewStyle": "split",
   "heroImage": "service-clean.webp",
   "heroImageAlt": "A Rosa's Sparkling Clean & Management team member wiping down a marble floor in a bright living room",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like to ask about your cleaning service",
   "relatedPages": ["services/painting", "services/repairs", "services/gardening"],
+  "cta": {
+    "heading": "Your price, room by room",
+    "body": "Count your rooms in our calculator and see the full breakdown before you message us.",
+    "primary": "quote"
+  },
   "sections": [
     {
       "heading": "What's included",
@@ -23,7 +33,6 @@
   "evidence": {
     "heading": "See the difference",
     "image": "evidence-cleaning.webp",
-    "video": "vid-cleaning.mp4",
     "alt": "Before and after comparison of a bedroom: cluttered with toys and open drawers on the left, tidied and organized on the right",
     "caption": "Same room, one visit &mdash; nothing moved out, everything put right."
   }
