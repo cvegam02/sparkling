@@ -22,10 +22,16 @@
 
 <main id="top">
 
-  <section class="hero">
-    <div class="wrap hero-wrap">
-      <div class="hero-copy">
-        <p class="kicker">{{kicker}}</p>
+  <section class="interior-hero interior-hero--video interior-hero--align-left">
+{{heroBackgroundHtml}}
+    <div class="wrap interior-hero-wrap">
+      <div class="interior-hero-copy">
+        <p class="kicker">
+          <span class="kicker-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>
+          </span>
+          {{kicker}}
+        </p>
         <p class="tagline">{{tagline}}</p>
         <h1>{{h1}}</h1>
         <p>{{heroBody}}</p>
@@ -37,22 +43,15 @@
           </a>
         </div>
       </div>
-      <div class="hero-graphic">
-        <img class="hero-image" src="{{assetBase}}/assets/img/{{heroImage}}" alt="{{heroImageAlt}}" width="1536" height="1024" fetchpriority="high">
-      </div>
     </div>
-  </section>
-
-  <section class="vacant-note">
-    <div class="wrap">
-      <h2>{{vacantNoteHeading}}</h2>
-      <p>{{vacantNoteBody}}</p>
-    </div>
+    <img id="hero-end-logo" class="hero-end-logo" src="{{assetBase}}/assets/img/logo-no-bg.png" alt="" width="1536" height="1024" aria-hidden="true">
   </section>
 
   <section class="paths" id="paths">
     <div class="wrap">
+      <div class="paths-ledger">
 {{pathsHtml}}
+      </div>
     </div>
   </section>
 

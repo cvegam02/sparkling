@@ -1,0 +1,32 @@
+{
+  "title": "Snowbird Home Care in Florida | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Seasonal home care for snowbirds in Ocala, Tampa and Spring Hill, FL &mdash; your Florida home cleaned, maintained and ready before you arrive for the season.",
+  "h1": "Your home, ready before you land.",
+  "kicker": "For seasonal Florida homeowners",
+  "navLabel": "Snowbird Care",
+  "intro": "Between visits, we keep your Florida home clean, maintained and stocked &mdash; so it's ready to welcome you back the moment you arrive for the season.",
+  "heroVideo": "vid-snowbird.mp4",
+  "heroVideoAlt": "Video of a Florida home being cleaned and stocked ahead of a seasonal owner's arrival",
+  "theme": "snowbird",
+  "heroAlign": "left",
+  "overviewStyle": "split",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I'm a seasonal homeowner and would like help getting my property ready",
+  "relatedPages": ["vacant-home"],
+  "cta": {
+    "heading": "Coordinated around your travel dates",
+    "body": "Tell us when you're arriving on WhatsApp, and we'll time the final clean and stock-up so the house is ready exactly when you are.",
+    "primary": "whatsapp+quote"
+  },
+  "sections": [
+    {
+      "heading": "What's included",
+      "body": "Every visit covers:",
+      "items": ["Seasonal deep clean before you arrive", "Ongoing upkeep while you're away", "Stocked and ready on arrival day"]
+    },
+    {
+      "heading": "Who it's for",
+      "body": "Seasonal Florida homeowners who split their time elsewhere and carry the same vacancy risks &mdash; insurance, exemption, wear and tear &mdash; as any home left empty for months at a time."
+    }
+  ]
+}

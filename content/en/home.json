@@ -6,17 +6,16 @@
   "tagline": "Clean spaces. Brighter places. Better living.",
   "heroImage": "hero.webp",
   "heroImageAlt": "Rosa's Sparkling Clean & Management logo over a bright, freshly cleaned living room — residential cleaning, painting, repairs and gardening",
+  "heroVideo": "hero.mp4",
+  "heroVideoAlt": "Video of Rosa's team cleaning, painting and preparing a Florida home — residential cleaning, painting, repairs and gardening",
+  "heroVideoLoop": false,
+  "heroEndReveal": "hero-end-logo",
   "heroBody": "Cleaning, painting, repairs and gardening &mdash; hire us for the complete package or a single service, and get the same reliable team either way. No juggling contractors, no guessing who to call next.",
   "ctaPrimaryLabel": "Get a free estimate",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I'd like a quote",
 
-  "vacantNote": {
-    "heading": "A vacant house is not a sold house.",
-    "body": "Every month a property sits empty, it costs you: higher insurance, a shrinking window on your homestead exemption, and wear no one's there to catch. We clean, stage and maintain the property so it shows well and sells faster &mdash; we don't buy it off you, we help you sell it right."
-  },
-
-  "relatedPages": ["vacant-home"],
+  "relatedPages": ["vacant-home", "inherited-property", "snowbird-home-care"],
 
   "paths": [
     {
@@ -36,6 +35,24 @@
       "items": ["Full move-in clean", "Organizing &amp; unpacking help", "Light decorating touches"],
       "ctaLabel": "Ask about Move-In Ready",
       "linkRouteId": "services/post-sale"
+    },
+    {
+      "slug": "inherited",
+      "title": "Inherited a house?",
+      "highlight": "Leave it to Rosa.",
+      "body": "From cleaning to light remodeling, interior decoration, and professional staging, I'll get your property ready &mdash; whether you're selling it or making it your own.",
+      "items": ["Full cleanout &amp; deep clean", "Light remodeling &amp; repairs", "Interior decoration", "Professional staging"],
+      "ctaLabel": "Ask about inherited properties",
+      "linkRouteId": "inherited-property"
+    },
+    {
+      "slug": "snowbird",
+      "title": "Coming back for the season?",
+      "highlight": "Your home, ready before you land.",
+      "body": "Between visits, we keep your Florida home clean, maintained and stocked &mdash; so it's ready to welcome you back the moment you arrive for the season.",
+      "items": ["Seasonal deep clean before you arrive", "Ongoing upkeep while you're away", "Stocked &amp; ready on arrival day"],
+      "ctaLabel": "Ask about seasonal home care",
+      "linkRouteId": "snowbird-home-care"
     }
   ],
 

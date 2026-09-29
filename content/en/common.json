@@ -1,7 +1,8 @@
 {
   "nav": {
     "services": "Services",
-    "vacantHome": "Vacant home?",
+    "fullServices": "Full Services",
+    "individualServices": "Individual Services",
     "areas": "Areas",
     "quote": "Get a quote",
     "contact": "Contact",

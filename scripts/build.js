@@ -103,35 +103,37 @@ function getRoute(id) {
 }
 
 // Site-wide nav is anchor-based on the home page itself, but on every other
-// page those anchors don't exist, so they must point back to the home page
-// (or to the dedicated vacant-home page once it exists).
+// page those anchors don't exist, so they must point back to the home page.
 function buildNavLinks(locale) {
   const homeUrl = absoluteUrl(getRoute('home'), locale);
-  const vacantRoute = getRoute('vacant-home');
 
   return {
     homeUrl,
-    servicesHref: `${homeUrl}#paths`,
-    vacantHomeHref: vacantRoute ? absoluteUrl(vacantRoute, locale) : `${homeUrl}#vacant-home`,
     contactHref: `${homeUrl}#contact`
   };
 }
 
-// Route ids for the individual service pages, in the order the "Services"
-// nav submenu lists them.
-const SERVICE_NAV_ROUTE_IDS = [
+// The "Services" nav dropdown groups every situation/service page into two
+// sections instead of one long flat list: bundled situational offerings
+// ("Full Services") vs. single atomic services ("Individual Services").
+const FULL_SERVICE_ROUTE_IDS = [
   'services/pre-sale',
   'services/post-sale',
-  'services/cleaning',
-  'services/painting',
-  'services/repairs',
-  'services/gardening'
+  'vacant-home',
+  'inherited-property',
+  'snowbird-home-care'
 ];
 
+const INDIVIDUAL_SERVICE_ROUTE_IDS = ['services/cleaning', 'services/painting', 'services/repairs', 'services/gardening'];
+
+// Prefers a page's short `navLabel` (added for pages whose `kicker` is a
+// full descriptive sentence, unsuitable for a menu item) and falls back to
+// `kicker`, which is already nav-length for the original service pages.
 function renderNavSubmenuItems(routeIds, locale, contentByRoute) {
   return routeIds
     .map((id) => {
-      const label = contentByRoute[id][locale].content.kicker;
+      const pageContent = contentByRoute[id][locale].content;
+      const label = pageContent.navLabel || pageContent.kicker;
       const href = absoluteUrl(getRoute(id), locale);
       return `              <li><a href="${href}">${label}</a></li>`;
     })
@@ -173,15 +175,17 @@ function renderSiteNav(locale, common, contentByRoute, route) {
 
   return `      <ul class="site-nav" id="site-nav">
         <li class="nav-item nav-item--has-submenu">
-          <a href="${nav.servicesHref}">${common.nav.services}</a>
-          <button type="button" class="nav-submenu-toggle" aria-expanded="false" aria-controls="nav-submenu-services" aria-label="${common.nav.submenuToggle}">
+          <button type="button" class="nav-submenu-toggle nav-submenu-toggle--label" aria-expanded="false" aria-controls="nav-submenu-services">
+            ${common.nav.services}
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <ul class="nav-submenu" id="nav-submenu-services">
-${renderNavSubmenuItems(SERVICE_NAV_ROUTE_IDS, locale, contentByRoute)}
+            <li class="nav-submenu-heading">${common.nav.fullServices}</li>
+${renderNavSubmenuItems(FULL_SERVICE_ROUTE_IDS, locale, contentByRoute)}
+            <li class="nav-submenu-heading">${common.nav.individualServices}</li>
+${renderNavSubmenuItems(INDIVIDUAL_SERVICE_ROUTE_IDS, locale, contentByRoute)}
           </ul>
         </li>
-        <li><a href="${nav.vacantHomeHref}">${common.nav.vacantHome}</a></li>
         <li class="nav-item nav-item--has-submenu">
           <a href="${areasHubHref}">${common.nav.areas}</a>
           <button type="button" class="nav-submenu-toggle" aria-expanded="false" aria-controls="nav-submenu-areas" aria-label="${common.nav.submenuToggle}">
@@ -206,7 +210,16 @@ const PATH_ICONS = {
   presale:
     '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-9"/><path d="M14.5 20v-6h-5v6"/></svg>',
   movein:
-    '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12 20 3"/><path d="M16 4l3 3"/><path d="M13 7l2.5 2.5"/></svg>'
+    '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12 20 3"/><path d="M16 4l3 3"/><path d="M13 7l2.5 2.5"/></svg>',
+  // A deed/will document — inheritance as a paper transfer of ownership.
+  inherited:
+    '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>',
+  // A bird heading toward the sun — migrating south for the season.
+  snowbird:
+    '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="7" r="3"/><polyline points="2,15 7,11 11,14 15,10 21,13"/></svg>',
+  // A yard sign — the vacant property waiting to go (back) on the market.
+  vacant:
+    '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="21" x2="7" y2="9"/><rect x="3" y="4" width="18" height="9" rx="1"/><line x1="8" y1="8" x2="16" y2="8"/></svg>'
 };
 
 // New additions (not part of the original locked set above) — built only
@@ -230,7 +243,10 @@ const THEME_ICONS = {
   clean: SERVICE_ICONS.clean,
   paint: SERVICE_ICONS.paint,
   repairs: SERVICE_ICONS.repairs,
-  garden: SERVICE_ICONS.garden
+  garden: SERVICE_ICONS.garden,
+  vacant: PATH_ICONS.vacant,
+  inherited: PATH_ICONS.inherited,
+  snowbird: PATH_ICONS.snowbird
 };
 
 const HERO_ALIGNS = ['left', 'center', 'right'];
@@ -249,22 +265,34 @@ const BILL_ICONS = {
 
 // --- repeating-group renderers -----------------------------------------
 
+// Four audiences as one ledger list of expandable rows instead of four
+// separate cards — see .paths-ledger in main.css. Native <details> needs no
+// JS; the first row starts open so the pattern is obvious on load, and
+// name="paths-group" makes the rows mutually exclusive in browsers that
+// support it (a harmless no-op elsewhere).
 function renderPaths(paths, locale) {
   return paths
-    .map((p) => {
-      const items = p.items.map((item) => `        <li>${CHECK_ICON}${item}</li>`).join('\n');
+    .map((p, i) => {
+      const items = p.items.map((item) => `            <li>${CHECK_ICON}${item}</li>`).join('\n');
       const href = p.linkRouteId ? absoluteUrl(getRoute(p.linkRouteId), locale) : '#contact';
       return [
-        `      <div class="path path-${p.slug}">`,
-        `        <span class="path-icon" aria-hidden="true">${PATH_ICONS[p.slug]}</span>`,
-        `        <h3>${p.title}</h3>`,
-        `        <p class="path-highlight">${p.highlight}</p>`,
-        `        <p>${p.body}</p>`,
-        '        <ul>',
+        `      <details class="path-row path-${p.slug}" name="paths-group"${i === 0 ? ' open' : ''}>`,
+        '        <summary>',
+        `          <span class="path-icon" aria-hidden="true">${PATH_ICONS[p.slug]}</span>`,
+        '          <span class="path-row-text">',
+        `            <span class="path-row-title">${p.title}</span>`,
+        `            <span class="path-row-highlight">${p.highlight}</span>`,
+        '          </span>',
+        '          <svg class="path-row-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+        '        </summary>',
+        '        <div class="path-row-body">',
+        `          <p>${p.body}</p>`,
+        '          <ul>',
         items,
-        '        </ul>',
-        `        <a class="btn btn-secondary" href="${href}">${p.ctaLabel}</a>`,
-        '      </div>'
+        '          </ul>',
+        `          <a class="btn btn-secondary" href="${href}">${p.ctaLabel}</a>`,
+        '        </div>',
+        '      </details>'
       ].join('\n');
     })
     .join('\n');
@@ -575,15 +603,21 @@ function renderSections(sections) {
     .join('\n');
 }
 
-// Full-bleed looping background video behind the interior hero copy, with
-// a dark overlay (CSS) so the white text stays legible. Renders nothing when
-// the page has no heroVideo.
+// Full-bleed background video behind the interior hero copy, with a dark
+// overlay (CSS) so the white text stays legible. Renders nothing when the
+// page has no heroVideo. Loops by default like every existing video-hero
+// page; set `heroVideoLoop: false` to play once, optionally pairing it with
+// `heroEndReveal: "<element id>"` so assets/js/main.js can reveal that
+// element (e.g. a logo) once the video's "ended" event fires — that event
+// never fires on a looping video, so the two go together.
 function renderHeroBackground(content) {
   if (!content.heroVideo) return '';
   const videoSrc = `${ASSET_BASE}/assets/video/${content.heroVideo}`;
   const mimeType = VIDEO_MIME_TYPES[path.extname(content.heroVideo)] || 'video/mp4';
+  const loopAttr = content.heroVideoLoop === false ? '' : ' loop';
+  const revealAttr = content.heroEndReveal ? ` data-reveal-on-end="${content.heroEndReveal}"` : '';
   return `    <div class="interior-hero-bg">
-      <video width="1280" height="720"${content.heroImage ? ` poster="${ASSET_BASE}/assets/img/${content.heroImage}"` : ''} aria-label="${content.heroVideoAlt || ''}" autoplay muted loop playsinline preload="auto">
+      <video width="1280" height="720"${content.heroImage ? ` poster="${ASSET_BASE}/assets/img/${content.heroImage}"` : ''} aria-label="${content.heroVideoAlt || ''}" autoplay muted${loopAttr} playsinline preload="auto"${revealAttr}>
         <source src="${videoSrc}" type="${mimeType}">
       </video>
     </div>`;
@@ -744,15 +778,11 @@ function buildHomeValues(locale, content, common, whatsappHref) {
     kicker: content.kicker,
     tagline: content.tagline,
     heroBody: content.heroBody,
-    heroImage: content.heroImage,
-    heroImageAlt: content.heroImageAlt,
+    heroBackgroundHtml: renderHeroBackground(content),
     ctaPrimaryLabel: content.ctaPrimaryLabel,
     quoteCalculatorUrl,
     whatsappLabel: content.whatsappLabel,
     whatsappHref,
-
-    vacantNoteHeading: content.vacantNote.heading,
-    vacantNoteBody: content.vacantNote.body,
 
     pathsHtml: renderPaths(content.paths, locale),
 

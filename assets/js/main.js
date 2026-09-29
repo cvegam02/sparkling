@@ -11,6 +11,29 @@
   document.querySelectorAll('.interior-hero-bg video').forEach(function (video) {
     video.removeAttribute('autoplay');
     video.pause();
+
+    // A paused, non-looping video never fires "ended", so anything waiting
+    // on that event (see the data-reveal-on-end handler below) needs to
+    // show up front instead of staying hidden forever.
+    var revealId = video.getAttribute('data-reveal-on-end');
+    var target = revealId && document.getElementById(revealId);
+    if (target) target.classList.add('is-visible');
+  });
+})();
+
+(function () {
+  'use strict';
+
+  // Non-looping hero videos (heroVideoLoop: false in content) can name an
+  // element to reveal once playback finishes — e.g. Home's logo fading in
+  // after the hero video plays through once. See renderHeroBackground in
+  // scripts/build.js for the data-reveal-on-end attribute this reads.
+  document.querySelectorAll('video[data-reveal-on-end]').forEach(function (video) {
+    var target = document.getElementById(video.getAttribute('data-reveal-on-end'));
+    if (!target) return;
+    video.addEventListener('ended', function () {
+      target.classList.add('is-visible');
+    });
   });
 })();
 

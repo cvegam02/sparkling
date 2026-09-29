@@ -6,17 +6,16 @@
   "tagline": "Espacios limpios. Lugares más luminosos. Mejor vivir.",
   "heroImage": "hero.webp",
   "heroImageAlt": "Logo de Rosa's Sparkling Clean & Management sobre una sala luminosa y recién limpia — limpieza residencial, pintura, reparaciones y jardinería",
+  "heroVideo": "hero.mp4",
+  "heroVideoAlt": "Video del equipo de Rosa's limpiando, pintando y preparando una casa en Florida — limpieza residencial, pintura, reparaciones y jardinería",
+  "heroVideoLoop": false,
+  "heroEndReveal": "hero-end-logo",
   "heroBody": "Limpieza, pintura, reparaciones y jardinería &mdash; contrátanos para el paquete completo o para un solo servicio, y ten siempre el mismo equipo de confianza. Sin coordinar varios contratistas, sin adivinar a quién llamar después.",
   "ctaPrimaryLabel": "Solicita un estimado gratis",
   "whatsappLabel": "Escríbenos por WhatsApp",
   "whatsappMessage": "Hola, me gustaría una cotización",
 
-  "vacantNote": {
-    "heading": "Una casa vacía no es una casa vendida.",
-    "body": "Cada mes que una propiedad permanece vacía te cuesta dinero: seguro más caro, una ventana que se cierra para tu exención de homestead, y desgaste que nadie está ahí para detectar. Limpiamos, preparamos y mantenemos la propiedad para que se vea bien y se venda más rápido &mdash; no te la compramos, te ayudamos a venderla como corresponde."
-  },
-
-  "relatedPages": ["vacant-home"],
+  "relatedPages": ["vacant-home", "inherited-property", "snowbird-home-care"],
 
   "paths": [
     {
@@ -36,6 +35,24 @@
       "items": ["Limpieza completa de mudanza", "Ayuda para organizar y desempacar", "Toques de decoración"],
       "ctaLabel": "Pregunta por Move-In Ready",
       "linkRouteId": "services/post-sale"
+    },
+    {
+      "slug": "inherited",
+      "title": "¿Heredaste una casa?",
+      "highlight": "Déjaselo a Rosa.",
+      "body": "Desde limpieza hasta remodelación ligera, decoración de interiores y staging profesional, dejo tu propiedad lista &mdash; ya sea para venderla o para vivir en ella.",
+      "items": ["Limpieza profunda completa", "Remodelación ligera y reparaciones", "Decoración de interiores", "Staging profesional"],
+      "ctaLabel": "Pregunta por propiedades heredadas",
+      "linkRouteId": "inherited-property"
+    },
+    {
+      "slug": "snowbird",
+      "title": "¿Vienes por la temporada?",
+      "highlight": "Tu casa lista antes de que llegues.",
+      "body": "Entre visita y visita, mantenemos tu casa en Florida limpia, cuidada y abastecida &mdash; lista para recibirte apenas llegues a pasar la temporada.",
+      "items": ["Limpieza profunda antes de tu llegada", "Mantenimiento continuo mientras no estás", "Abastecida y lista para el día que llegas"],
+      "ctaLabel": "Pregunta por cuidado estacional",
+      "linkRouteId": "snowbird-home-care"
     }
   ],
 

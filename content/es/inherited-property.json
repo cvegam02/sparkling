@@ -1,0 +1,32 @@
+{
+  "title": "¿Heredaste una Propiedad? La Dejamos Lista | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Limpieza completa, remodelación ligera, decoración y staging para propiedades heredadas en Ocala, Tampa y Spring Hill, FL &mdash; lista para vender o para quedarte con ella.",
+  "h1": "¿Heredaste una casa? Déjaselo a Rosa.",
+  "kicker": "Para herederos y propietarios de bienes en sucesión",
+  "navLabel": "Propiedad Heredada",
+  "intro": "Heredar una propiedad normalmente significa una casa que no se ha tocado en años, además de todo lo demás que ya estás manejando. Desde limpieza hasta remodelación ligera, decoración de interiores y staging profesional, dejo tu propiedad lista &mdash; ya sea para venderla o para vivir en ella.",
+  "heroVideo": "vid-inherited.mp4",
+  "heroVideoAlt": "Video del equipo de Rosa's preparando una propiedad heredada: limpieza completa, remodelación ligera, decoración y staging",
+  "theme": "inherited",
+  "heroAlign": "left",
+  "overviewStyle": "split",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, heredé una propiedad y me gustaría ayuda para dejarla lista",
+  "relatedPages": ["services/pre-sale", "vacant-home"],
+  "cta": {
+    "heading": "Cuando estés listo, aquí estamos",
+    "body": "Envíanos la dirección por WhatsApp y vemos por dónde empezar &mdash; limpieza, reparaciones, o directo a staging.",
+    "primary": "whatsapp+quote"
+  },
+  "sections": [
+    {
+      "heading": "Qué incluye",
+      "body": "Cada visita cubre lo que normalmente necesita una propiedad heredada:",
+      "items": ["Limpieza completa y profunda", "Remodelación ligera y reparaciones", "Decoración de interiores y staging profesional"]
+    },
+    {
+      "heading": "Para quién es",
+      "body": "Herederos y propietarios de bienes en sucesión que manejan una casa que ha estado sin tocar por años &mdash; ya sea que te prepares para venderla o planees mudarte tú. Si mientras tanto está vacía, nuestro cuidado de propiedades vacías también aplica."
+    }
+  ]
+}

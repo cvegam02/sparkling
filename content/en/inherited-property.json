@@ -1,0 +1,32 @@
+{
+  "title": "Inherited a Property? We Get It Ready | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Full cleanout, light remodeling, decoration and staging for inherited properties in Ocala, Tampa and Spring Hill, FL &mdash; ready to sell or ready to keep.",
+  "h1": "Inherited a house? Leave it to Rosa.",
+  "kicker": "For heirs and estate property owners",
+  "navLabel": "Inherited Property",
+  "intro": "Inheriting a property usually means a house that hasn't been touched in years, on top of everything else you're already handling. From cleaning to light remodeling, interior decoration, and professional staging, I'll get your property ready &mdash; whether you're selling it or making it your own.",
+  "heroVideo": "vid-inherited.mp4",
+  "heroVideoAlt": "Video of Rosa's team preparing an inherited property: full cleanout, light remodeling, decoration and staging",
+  "theme": "inherited",
+  "heroAlign": "left",
+  "overviewStyle": "split",
+  "whatsappLabel": "Message us on WhatsApp",
+  "whatsappMessage": "Hi, I inherited a property and would like help getting it ready",
+  "relatedPages": ["services/pre-sale", "vacant-home"],
+  "cta": {
+    "heading": "Ready when you are",
+    "body": "Send us the address on WhatsApp and we'll figure out where to start &mdash; cleanout, repairs, or straight to staging.",
+    "primary": "whatsapp+quote"
+  },
+  "sections": [
+    {
+      "heading": "What's included",
+      "body": "Every visit covers what an inherited property usually needs:",
+      "items": ["Full cleanout and deep clean", "Light remodeling and repairs", "Interior decoration and professional staging"]
+    },
+    {
+      "heading": "Who it's for",
+      "body": "Heirs and estate property owners handling a home that's sat untouched for years &mdash; whether you're preparing to sell or planning to move in yourself. If it's sitting vacant in the meantime, our vacant-property care applies too."
+    }
+  ]
+}

@@ -41,6 +41,8 @@ module.exports = {
     { id: 'home', slug: '', template: 'home' },
     { id: 'quote-calculator', slug: 'quote-calculator', template: 'calculator' },
     { id: 'vacant-home', slug: 'vacant-home' },
+    { id: 'inherited-property', slug: 'inherited-property' },
+    { id: 'snowbird-home-care', slug: 'snowbird-home-care' },
     { id: 'services/pre-sale', slug: 'services/pre-sale' },
     { id: 'services/post-sale', slug: 'services/post-sale' },
     { id: 'services/cleaning', slug: 'services/cleaning' },

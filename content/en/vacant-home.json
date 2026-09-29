@@ -3,27 +3,30 @@
   "metaDescription": "We prepare and maintain long-vacant, unsold properties in Ocala, Tampa and Spring Hill, FL, so you keep the full value of your sale instead of a lowball cash offer.",
   "h1": "A vacant property doesn't wait quietly.",
   "kicker": "For absentee owners and long-vacant listings",
+  "navLabel": "Vacant Home",
   "intro": "Every month a property sits empty and unsold, it's working against you: rising insurance costs, a shrinking window on your Florida homestead exemption, and wear no one is there to catch. We get the property back into sellable shape so you keep the full value of your sale.",
+  "heroVideo": "vid-vacant-home.mp4",
+  "heroVideoAlt": "Video of a vacant Florida property being cleaned, staged and maintained to stay sellable",
+  "theme": "vacant",
+  "heroAlign": "left",
+  "overviewStyle": "split",
   "whatsappLabel": "Message us on WhatsApp",
   "whatsappMessage": "Hi, I have a vacant property I'd like help preparing for sale",
-  "relatedPages": ["services/pre-sale"],
+  "relatedPages": ["services/pre-sale", "inherited-property", "snowbird-home-care"],
+  "cta": {
+    "heading": "Stop paying to wait",
+    "body": "Send us the address on WhatsApp and we'll plan a free walkthrough.",
+    "primary": "whatsapp+quote"
+  },
   "sections": [
     {
-      "heading": "The real cost of an empty house",
-      "body": "Vacancy isn't neutral &mdash; it actively costs you every month it continues:",
-      "items": [
-        "Insurance: vacant-property policies typically cost more than an occupied home's.",
-        "Homestead exemption: extended vacancy can put your Florida exemption at risk.",
-        "Wear and tear: an empty house shows deterioration no one's there to catch early."
-      ]
+      "heading": "What's included",
+      "body": "Every visit covers:",
+      "items": ["Regular check-ins and upkeep", "Deep clean and staging when you're ready to list", "Coordination of minor repairs so small issues don't become big ones"]
     },
     {
-      "heading": "We're not a cash-buyer company",
-      "body": "\"We buy houses for cash\" companies profit from exactly this situation &mdash; an owner who just wants the property gone. We don't buy your house. We prepare, stage and maintain it so it sells at its real market value, on your terms."
-    },
-    {
-      "heading": "Where to start",
-      "body": "Pre-Sale prep is the fastest path from a neglected, vacant property to a listing that's ready to show. If the sale takes longer than expected, ongoing Repairs visits keep the property looked-after in the meantime."
+      "heading": "Who it's for",
+      "body": "Absentee owners and long-vacant listings &mdash; not \"we buy houses for cash\" companies looking for a lowball deal. We're not that. We prepare, stage and maintain the property so it sells at its real market value, on your terms."
     }
   ]
 }

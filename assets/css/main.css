@@ -37,8 +37,9 @@
   --color-whatsapp-deep: #0c5c3b;
 
   /* Type */
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Bitter", Georgia, serif;
   --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Courier Prime", "Courier New", monospace;
 
   --step-0: clamp(1.0625rem, 1rem + 0.3vw, 1.125rem); /* body */
   --step-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); /* h3 */
@@ -262,6 +263,24 @@ p {
   transition: transform 0.15s ease;
 }
 
+/* "Services" has no page of its own — the whole label is the submenu
+   trigger (not a link), unlike "Areas" which keeps a separate label link
+   next to its toggle. */
+.nav-submenu-toggle--label {
+  width: auto;
+  height: auto;
+  gap: 0.35em;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  padding: 0.6em 0 calc(0.6em - 1px);
+  border-bottom: 1px solid transparent;
+}
+
+.nav-submenu-toggle--label:hover {
+  border-color: var(--color-pink);
+}
+
 .nav-item--has-submenu:hover .nav-submenu-toggle svg,
 .nav-item--has-submenu:focus-within .nav-submenu-toggle svg,
 .nav-item--has-submenu.is-open .nav-submenu-toggle svg {
@@ -289,6 +308,21 @@ p {
   padding: 0.6em var(--space-2);
   border-bottom: none;
   white-space: nowrap;
+}
+
+.nav-submenu-heading {
+  padding: 0.5em var(--space-2) 0.3em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.nav-submenu-heading:not(:first-child) {
+  margin-top: 0.4em;
+  padding-top: 0.6em;
+  border-top: 1px solid var(--color-cloud-deep);
 }
 
 .nav-item--has-submenu:hover .nav-submenu,
@@ -368,36 +402,6 @@ p {
   margin-top: var(--space-3);
 }
 
-/*
-  Hero — an abstract cluster of the logo's four brand colors with the mark
-  floating on top. Deliberately not a photo, so it reads as brand rather
-  than repeating the real service photography used lower on the page.
-*/
-
-.hero {
-  position: relative;
-  padding-block: var(--space-5);
-  overflow: hidden;
-}
-
-.hero-wrap {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-copy {
-  position: relative;
-  z-index: 2;
-  max-width: 32rem;
-}
-
-.hero-copy .kicker {
-  font-size: 0.95rem;
-  color: var(--color-ink);
-  opacity: 0.75;
-  margin-bottom: var(--space-2);
-}
-
 .tagline {
   font-family: var(--font-display);
   font-style: italic;
@@ -409,90 +413,93 @@ p {
   margin-bottom: var(--space-3);
 }
 
-.hero-graphic {
+/* Home's hero reuses the same video-hero shell as every interior page (see
+   .interior-hero below) instead of its own bespoke layout, so the two no
+   longer look like different sites. The logo takes the kicker-icon badge
+   slot other pages give to their service-theme icon, since Home doesn't
+   have a single service theme of its own. */
+.interior-hero--video .tagline {
+  color: var(--color-pink-light);
+}
+
+
+/* Revealed by assets/js/main.js once the (non-looping) hero video plays
+   through — see data-reveal-on-end on the <video> above. Hidden by default
+   so it never flashes before the video finishes. */
+.hero-end-logo {
   position: absolute;
   top: 50%;
-  right: -6%;
-  z-index: 1;
-  width: min(75%, 52rem);
-  transform: translateY(-50%);
+  right: var(--space-4);
+  z-index: 2;
+  width: min(84%, 48rem);
+  height: auto;
+  transform: translateY(-50%) scale(0.85);
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
 }
 
-.hero-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
-  border-radius: var(--radius);
-  /* Fades the edge nearest the copy column to transparent instead of a hard
-     rectangle, since this is an opaque photo that would otherwise sit right
-     behind the paragraph text where .hero-graphic overlaps .hero-copy. Kept
-     to the left ~25% so it never reaches the logo, which starts at ~32% of
-     the image width. */
-  -webkit-mask-image: linear-gradient(to right, transparent, black 25%);
-  mask-image: linear-gradient(to right, transparent, black 25%);
+.hero-end-logo.is-visible {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
 }
 
-/* Vacant-house note — short context band between the hero and the service
-   paths, so the page doesn't jump straight from the headline into "pick
-   your path" */
-
-.vacant-note {
-  padding-block: var(--space-5);
-  background: var(--color-cloud);
-  text-align: center;
-  border-top: 1px solid var(--color-cloud-deep);
+@media (max-width: 860px) {
+  .hero-end-logo {
+    display: none;
+  }
 }
 
-.vacant-note .wrap {
-  max-width: 42rem;
-  margin-inline: auto;
+@media (prefers-reduced-motion: reduce) {
+  .hero-end-logo {
+    transition: none;
+  }
 }
 
-.vacant-note h2 {
-  max-width: none;
-}
 
-.vacant-note p:last-child {
-  margin-bottom: 0;
-  max-width: none;
-}
-
-/* Two-path section: two independent cards, offset, that slide in from their own side on scroll */
+/* "Choose your path" — four audiences as one ledger list instead of four
+   competing colored boxes. Native <details>/<summary> (name="paths-group"
+   makes them mutually exclusive in browsers that support it, and it's a
+   harmless no-op — not broken — where they don't), so no JS is needed. */
 
 .paths {
-  padding-block: var(--space-5);
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-5);
   background: var(--color-cloud);
-  overflow: hidden;
 }
 
-.paths .wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  align-items: start;
-}
-
-.path {
-  padding: var(--space-4);
+.paths-ledger {
+  background: var(--color-white);
+  border: 1px solid var(--color-cloud-deep);
   border-radius: var(--radius);
 }
 
-.path-presale {
-  background: var(--color-blue-deep);
-  color: var(--color-white);
+.path-row {
+  border-bottom: 1px solid var(--color-cloud-deep);
 }
 
-.path-presale h3,
-.path-presale p {
-  color: inherit;
+.path-row:last-child {
+  border-bottom: none;
 }
 
-.path-movein {
-  background: var(--color-white);
-  border: 1px solid var(--color-cloud-deep);
-  margin-top: var(--space-4);
+/* A light tint distinct from both the white card and the page background
+   behind it (--color-cloud) — using the page color here made the expanded
+   row look like it had "escaped" the card onto the page. */
+.path-row[open] {
+  background: color-mix(in srgb, var(--color-cloud) 45%, var(--color-white));
+}
+
+.path-row summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  list-style: none;
+}
+
+.path-row summary::-webkit-details-marker {
+  display: none;
 }
 
 .path-icon {
@@ -501,13 +508,21 @@ p {
   justify-content: center;
   width: 3rem;
   height: 3rem;
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--color-pink);
-  margin-bottom: var(--space-2);
 }
 
 .path-movein .path-icon {
   background: var(--color-blue);
+}
+
+.path-inherited .path-icon {
+  background: var(--color-gold-deep);
+}
+
+.path-snowbird .path-icon {
+  background: var(--color-green);
 }
 
 .path-icon svg {
@@ -516,31 +531,72 @@ p {
   stroke: var(--color-white);
 }
 
-.path-highlight {
+.path-row-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.path-row-title {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--color-pink-light);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-ink);
 }
 
-.path-movein .path-highlight {
-  color: var(--color-pink-deep);
+.path-row-highlight {
+  font-size: 0.9rem;
+  color: var(--color-ink);
+  opacity: 0.7;
 }
 
-.path ul {
+.path-row-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+.path-row[open] .path-row-chevron {
+  transform: rotate(180deg);
+}
+
+.path-row-body {
+  padding: 0 var(--space-3) var(--space-3) calc(3rem + var(--space-2) + var(--space-3));
+}
+
+.path-row-body p {
+  margin: 0 0 var(--space-2);
+  max-width: none;
+}
+
+.path-row-body ul {
   list-style: none;
-  margin: 0 0 var(--space-3);
+  margin: 0 0 var(--space-2);
   padding: 0;
 }
 
-.path li {
+.path-row-body li {
   display: flex;
   align-items: center;
   gap: 0.65em;
-  padding: 0.5em 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--color-cloud-deep);
+  font-size: 0.92rem;
 }
 
-.path li svg {
+.path-row-body li:last-child {
+  border-bottom: none;
+}
+
+.path-row-body li svg {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -549,28 +605,6 @@ p {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-.path-presale li {
-  border-bottom-color: rgba(255, 255, 255, 0.15);
-}
-
-.path-presale li svg {
-  stroke: var(--color-gold);
-}
-
-.path a.btn-secondary {
-  border-color: currentColor;
-}
-
-.path-presale .btn-secondary {
-  border-color: var(--color-white);
-  color: var(--color-white);
-}
-
-.path-presale .btn-secondary:hover {
-  background: var(--color-white);
-  color: var(--color-blue-deep);
 }
 
 /*
@@ -744,7 +778,7 @@ p {
 }
 
 .results-price {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: clamp(2rem, 1.6rem + 2vw, 3rem);
 }
 
@@ -767,6 +801,7 @@ p {
   right: -2.6em;
   background: var(--color-gold);
   color: var(--color-ink);
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 600;
   padding: 0.25em 0.6em;
@@ -1292,6 +1327,35 @@ p {
 .service-theme--garden {
   --accent: var(--color-green);
   --accent-2: var(--color-gold);
+  --accent-badge: var(--color-green);
+  --accent-check: var(--color-green-deep);
+  --panel-bg: var(--color-green-deep);
+}
+
+/* Situational pages (Full Services), each keyed to the same accent already
+   used for that audience elsewhere on the site — vacant ties to the
+   vacant-band section on Home, inherited/snowbird tie to their path-icon
+   colors in the "choose your path" ledger. */
+
+.service-theme--vacant {
+  --accent: var(--color-green-deep);
+  --accent-2: var(--color-gold);
+  --accent-badge: var(--color-green-deep);
+  --accent-check: var(--color-green-deep);
+  --panel-bg: var(--color-green-deep);
+}
+
+.service-theme--inherited {
+  --accent: var(--color-gold-deep);
+  --accent-2: var(--color-ink);
+  --accent-badge: var(--color-gold-deep);
+  --accent-check: var(--color-gold-deep);
+  --panel-bg: var(--color-ink);
+}
+
+.service-theme--snowbird {
+  --accent: var(--color-green);
+  --accent-2: var(--color-blue);
   --accent-badge: var(--color-green);
   --accent-check: var(--color-green-deep);
   --panel-bg: var(--color-green-deep);
@@ -2137,16 +2201,10 @@ p {
     animation-timeline: view();
   }
 
-  .path-presale {
-    animation: slide-in-left linear both;
+  .paths-ledger {
+    animation: fade-slide-in linear both;
     animation-timeline: view();
     animation-range: entry 0% entry 100%;
-  }
-
-  .path-movein {
-    animation: slide-in-right linear both;
-    animation-timeline: view();
-    animation-range: entry 8% entry 100%;
   }
 
   .service-card:nth-child(1) {
@@ -2379,6 +2437,13 @@ p {
     border-bottom: 1px solid var(--color-cloud-deep);
   }
 
+  .nav-item--has-submenu > .nav-submenu-toggle--label {
+    flex: 1 1 auto;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.9em var(--space-1);
+  }
+
   .nav-submenu {
     position: static;
     flex: 1 0 100%;
@@ -2401,50 +2466,14 @@ p {
     grid-template-columns: 1fr;
   }
 
-  /* The desktop layout overlaps the image behind the copy (absolute
-     position + a mask-image fade for legibility). Mobile has no room for
-     an overlap, so the image instead becomes a full-bleed block placed
-     above the copy — column-reverse flips it ahead of .hero-copy without
-     needing to reorder the markup. Its bottom edge fades into the page
-     background and the copy starts inside that fade, so there's no hard
-     photo edge between the two. The fade starts at 82% of the height,
-     below the logo's services line (~80%). */
-
-  .hero {
-    padding-top: 0;
-  }
-
-  .hero-wrap {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .hero-graphic {
-    position: static;
-    width: auto;
-    margin-inline: calc(-1 * var(--space-3));
-    margin-bottom: calc(-1 * var(--space-2));
-    transform: none;
-  }
-
-  .hero-image {
-    border-radius: 0;
-    -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent);
-    mask-image: linear-gradient(to bottom, black 82%, transparent);
-  }
-
-  .path-movein {
-    margin-top: 0;
-  }
-
-  .path {
+  .path-row summary {
     padding: var(--space-2);
+    gap: var(--space-1);
   }
 
   .path-icon {
     width: 2.4rem;
     height: 2.4rem;
-    margin-bottom: var(--space-1);
   }
 
   .path-icon svg {
@@ -2452,27 +2481,25 @@ p {
     height: 1.3rem;
   }
 
-  .path h3 {
-    font-size: 1.15rem;
-    margin-bottom: 0.3em;
-  }
-
-  .path-highlight {
+  .path-row-title {
     font-size: 1rem;
-    margin-bottom: 0.5em;
   }
 
-  .path p {
+  .path-row-highlight {
+    font-size: 0.85rem;
+  }
+
+  .path-row-body {
+    padding: 0 var(--space-2) var(--space-2) calc(2.4rem + var(--space-1) + var(--space-2));
+  }
+
+  .path-row-body p {
     font-size: 0.92rem;
   }
 
-  .path ul {
-    margin-bottom: var(--space-2);
-  }
-
-  .path li {
+  .path-row-body li {
     padding: 0.4em 0;
-    font-size: 0.92rem;
+    font-size: 0.88rem;
   }
 
   .cta-row .btn,
@@ -2549,7 +2576,7 @@ p {
 
   .vacant-band,
   .results-card,
-  .path,
+  .paths-ledger,
   .service-card,
   .how li,
   .areas-list li,

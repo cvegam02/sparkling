@@ -1,7 +1,8 @@
 {
   "nav": {
     "services": "Servicios",
-    "vacantHome": "¿Casa vacía?",
+    "fullServices": "Servicios Completos",
+    "individualServices": "Servicios Individuales",
     "areas": "Áreas",
     "quote": "Cotizar",
     "contact": "Contacto",

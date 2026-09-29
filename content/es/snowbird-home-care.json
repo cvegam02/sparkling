@@ -1,0 +1,32 @@
+{
+  "title": "Cuidado Estacional de tu Casa en Florida (Snowbirds) | Rosa's Sparkling Clean & Management",
+  "metaDescription": "Cuidado estacional para snowbirds en Ocala, Tampa y Spring Hill, FL &mdash; tu casa en Florida limpia, mantenida y lista antes de que llegues a pasar la temporada.",
+  "h1": "Tu casa, lista antes de que llegues.",
+  "kicker": "Para propietarios estacionales en Florida",
+  "navLabel": "Cuidado Snowbird",
+  "intro": "Entre visita y visita, mantenemos tu casa en Florida limpia, cuidada y abastecida &mdash; lista para recibirte apenas llegues a pasar la temporada.",
+  "heroVideo": "vid-snowbird.mp4",
+  "heroVideoAlt": "Video de una casa en Florida siendo limpiada y abastecida antes de la llegada de su dueño estacional",
+  "theme": "snowbird",
+  "heroAlign": "left",
+  "overviewStyle": "split",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "whatsappMessage": "Hola, soy propietario estacional y me gustaría ayuda para dejar mi propiedad lista",
+  "relatedPages": ["vacant-home"],
+  "cta": {
+    "heading": "Coordinado según tus fechas de viaje",
+    "body": "Dinos cuándo llegas por WhatsApp, y coordinamos la limpieza final y el abastecimiento para que la casa esté lista justo cuando tú lo estés.",
+    "primary": "whatsapp+quote"
+  },
+  "sections": [
+    {
+      "heading": "Qué incluye",
+      "body": "Cada visita incluye:",
+      "items": ["Limpieza profunda estacional antes de tu llegada", "Mantenimiento continuo mientras no estás", "Abastecida y lista para el día que llegas"]
+    },
+    {
+      "heading": "Para quién es",
+      "body": "Propietarios estacionales en Florida que dividen su tiempo en otro lugar y cargan los mismos riesgos de vacancia &mdash; seguro, exención y desgaste &mdash; que cualquier casa que queda vacía por meses."
+    }
+  ]
+}
