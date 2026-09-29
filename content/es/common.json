@@ -17,7 +17,40 @@
   "reviews": {
     "heading": "Lo que dicen nuestros clientes",
     "placeholderBody": "Estamos configurando nuestro perfil de Google Business para que pronto puedas leer reseñas reales de clientes aquí.",
-    "linkLabel": "Ver nuestras reseñas en Google"
+    "linkLabel": "Ver nuestras reseñas en Google",
+    "exampleLabel": "Reseñas de ejemplo — pronto reseñas reales",
+    "sample": [
+      {
+        "name": "Jessica M.",
+        "rating": 5,
+        "quote": "Reservamos una limpieza de mudanza antes del cierre y la casa quedó como nueva. Llegaron a tiempo y hasta notaron detalles que se nos habían pasado."
+      },
+      {
+        "name": "Daniel R.",
+        "rating": 5,
+        "quote": "Excelente comunicación por WhatsApp de principio a fin, y el precio coincidió con la cotización — sin sorpresas al final."
+      },
+      {
+        "name": "Priya K.",
+        "rating": 5,
+        "quote": "Los contratamos para una limpieza profunda de preventa y ajustes de staging. Hizo una gran diferencia en qué tan rápido se mostró la casa."
+      },
+      {
+        "name": "Marcus T.",
+        "rating": 5,
+        "quote": "Necesitaba un retoque de pintura antes de una visita y lo resolvieron en un día. Las líneas quedaron limpias y el color combinó perfecto."
+      },
+      {
+        "name": "Angela S.",
+        "rating": 5,
+        "quote": "Arreglaron el jardín junto con la limpieza interior y solo esa mejora de fachada probablemente nos trajo más visitas."
+      },
+      {
+        "name": "Kevin O.",
+        "rating": 5,
+        "quote": "Se encargaron de una revisión completa en una propiedad vacía, desde reparaciones pequeñas hasta limpieza profunda, antes de publicarla. Un problema menos."
+      }
+    ]
   },
   "serviceCta": {
     "heading": "Cuando tú digas",

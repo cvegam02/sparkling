@@ -1677,6 +1677,76 @@ p {
   margin-inline: auto;
 }
 
+.reviews-example-badge {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  padding: 0.35em 0.9em;
+  background: var(--color-cloud);
+  border: 1px solid var(--color-cloud-deep);
+  border-radius: 999px;
+  color: var(--color-ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.reviews-scroll {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--space-3);
+  -webkit-overflow-scrolling: touch;
+  text-align: left;
+  padding-block-end: var(--space-2);
+  margin-block-end: calc(var(--space-2) * -1);
+}
+
+.review-card {
+  flex: 0 0 clamp(15.5rem, 80vw, 19rem);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--color-white);
+  border: 1px solid var(--color-cloud-deep);
+  border-radius: var(--radius);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.review-avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.review-stars {
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+}
+
+.review-quote {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.review-author {
+  margin: 0;
+  font-weight: 600;
+}
+
 /* Quote calculator */
 
 .calculator-wrap {

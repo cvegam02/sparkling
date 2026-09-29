@@ -737,10 +737,47 @@ function renderReviews(common) {
   } else if (profileUrl) {
     body = `    <p>${common.reviews.placeholderBody}</p>\n    <a class="btn btn-secondary" href="${profileUrl}" target="_blank" rel="noopener">${common.reviews.linkLabel}</a>`;
   } else {
-    body = `    <p>${common.reviews.placeholderBody}</p>`;
+    body = renderSampleReviews(common.reviews);
   }
 
   return render(template, { heading: common.reviews.heading, body });
+}
+
+// Dummy review cards shown until a real Google profile/widget is configured
+// in site.config.js (see renderReviews above). Content lives in
+// common.reviews.sample in content/<locale>/common.json.
+const REVIEW_AVATAR_COLORS = ['--color-pink', '--color-blue', '--color-gold-deep', '--color-green'];
+
+function reviewInitials(name) {
+  return name
+    .split(' ')
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase())
+    .join('')
+    .slice(0, 2);
+}
+
+function renderSampleReviews(reviews) {
+  const cards = reviews.sample
+    .map((review, i) => {
+      const avatarColor = REVIEW_AVATAR_COLORS[i % REVIEW_AVATAR_COLORS.length];
+      return `      <article class="review-card">
+        <div class="review-header">
+          <div class="review-avatar" style="background: var(${avatarColor})" aria-hidden="true">${reviewInitials(review.name)}</div>
+          <div>
+            <p class="review-author">${review.name}</p>
+            <div class="review-stars" aria-hidden="true">${'★'.repeat(review.rating)}</div>
+          </div>
+        </div>
+        <p class="review-quote">&ldquo;${review.quote}&rdquo;</p>
+      </article>`;
+    })
+    .join('\n');
+
+  return `    <span class="reviews-example-badge">${reviews.exampleLabel}</span>
+    <div class="reviews-scroll">
+${cards}
+    </div>`;
 }
 
 function renderRelatedLinks(content, contentByRoute, locale, common) {

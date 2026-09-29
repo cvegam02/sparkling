@@ -17,7 +17,40 @@
   "reviews": {
     "heading": "What customers say",
     "placeholderBody": "We're setting up our Google Business Profile so you can read real customer reviews here soon.",
-    "linkLabel": "See our reviews on Google"
+    "linkLabel": "See our reviews on Google",
+    "exampleLabel": "Example reviews — real ones coming soon",
+    "sample": [
+      {
+        "name": "Jessica M.",
+        "rating": 5,
+        "quote": "Booked a move-in clean before closing and the place looked brand new. They showed up on time and even caught things we hadn't noticed."
+      },
+      {
+        "name": "Daniel R.",
+        "rating": 5,
+        "quote": "Great communication over WhatsApp from start to finish, and the price matched the quote — no surprises at the end."
+      },
+      {
+        "name": "Priya K.",
+        "rating": 5,
+        "quote": "Used them for a pre-sale deep clean and staging touch-up. Made a real difference in how fast the house showed."
+      },
+      {
+        "name": "Marcus T.",
+        "rating": 5,
+        "quote": "Needed a quick paint touch-up before a showing and they turned it around in a day. Lines were clean and it matched perfectly."
+      },
+      {
+        "name": "Angela S.",
+        "rating": 5,
+        "quote": "They tidied up the yard along with the interior clean and the curb appeal alone probably helped us get more showings."
+      },
+      {
+        "name": "Kevin O.",
+        "rating": 5,
+        "quote": "Handled a full walkthrough on a vacant property, from small repairs to a deep clean, before we listed it. One less thing to worry about."
+      }
+    ]
   },
   "serviceCta": {
     "heading": "Ready when you are",
