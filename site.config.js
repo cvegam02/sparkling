@@ -13,6 +13,9 @@ module.exports = {
 
   business: {
     name: "Rosa's Sparkling Clean & Management",
+    // Registered legal entity name. Used in the footer copyright and as
+    // schema.org `legalName`; the brand `name` above stays as-is in headers/titles.
+    legalName: "Rosa's Sparkling Clean & Management LLC",
     // TODO: fill in with the real business phone number.
     phone: null,
     whatsapp: 'https://wa.me/10000000000',

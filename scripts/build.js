@@ -720,6 +720,7 @@ function renderLocalBusinessSchema(areasServed) {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: config.business.name,
+    ...(config.business.legalName ? { legalName: config.business.legalName } : {}),
     ...(config.business.phone ? { telephone: config.business.phone } : {}),
     areaServed: areasServed.map((name) => ({ '@type': 'City', name }))
   };
