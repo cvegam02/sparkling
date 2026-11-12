@@ -61,5 +61,12 @@
   "evidence": {
     "expandLabel": "Ver imagen más grande",
     "closeLabel": "Cerrar"
+  },
+  "shareImageAlt": "Logo de Rosa's Sparkling Clean & Management sobre una sala limpia y luminosa",
+  "notFound": {
+    "title": "Página no encontrada | Rosa's Sparkling",
+    "heading": "No encontramos esa página",
+    "body": "Puede que el enlace sea viejo o tenga un error. Vuelve a la página de inicio para encontrar lo que buscas.",
+    "homeLabel": "Ir a la página de inicio"
   }
 }

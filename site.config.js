@@ -25,6 +25,8 @@ module.exports = {
   // one:
   //   1. Set `profileUrl` to your Google Business Profile listing URL —
   //      the placeholder becomes a "See our reviews on Google" link.
+  //      It's also added to the LocalBusiness schema as `sameAs`, which
+  //      helps Google link the site to the profile.
   //   2. Optionally also set `widgetEmbedHtml` to the exact embed snippet
   //      Google (or your review-widget provider) gives you — when set, it
   //      replaces the placeholder text entirely with the real widget.

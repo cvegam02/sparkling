@@ -1104,6 +1104,18 @@ p {
   margin-bottom: var(--space-2);
 }
 
+/* 404 page: the English and Spanish messages stacked, each with its own
+   link home. */
+.not-found-wrap {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 40rem;
+}
+
+.not-found-message p {
+  margin-block: var(--space-2) var(--space-3);
+}
+
 /* Video variant: the video fills the whole hero as a background, under a
    navy overlay (darker on the copy side) so the white text stays legible
    over any frame. */

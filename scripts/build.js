@@ -7,6 +7,7 @@ const { URL } = require('url');
 const config = require('../site.config.js');
 const pricingConfig = require('../pricing.config.js');
 const { validateContent, collectAltTextWarnings } = require('./validate.js');
+const { renderSocialMeta, buildLocalBusinessJsonLd } = require('./seo.js');
 
 const ROOT = path.join(__dirname, '..');
 // PREVIEW_OUT_DIR/PREVIEW_BASE_URL let `npm run preview` build a local copy
@@ -20,6 +21,12 @@ const BASE_URL = process.env.PREVIEW_BASE_URL || config.baseUrl;
 // https://user.github.io/repo/), so every asset reference must be prefixed
 // with that subpath rather than assuming the site lives at the domain root.
 const ASSET_BASE = new URL(BASE_URL).pathname.replace(/\/$/, '');
+
+// Absolute URLs for <head> metadata (Open Graph, JSON-LD), which crawlers and
+// link-preview bots require to be fully qualified rather than root-relative.
+const SITE_ROOT = BASE_URL.replace(/\/$/, '');
+const SHARE_IMAGE_URL = `${SITE_ROOT}/assets/img/og-image.jpg`;
+const LOGO_URL = `${SITE_ROOT}/assets/img/logo-no-bg.png`;
 
 function readJson(filePath) {
   if (!fs.existsSync(filePath)) {
@@ -716,14 +723,14 @@ function renderLocalBusinessSchema(areasServed) {
     'utf8'
   );
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: config.business.name,
-    ...(config.business.legalName ? { legalName: config.business.legalName } : {}),
-    ...(config.business.phone ? { telephone: config.business.phone } : {}),
-    areaServed: areasServed.map((name) => ({ '@type': 'City', name }))
-  };
+  const jsonLd = buildLocalBusinessJsonLd({
+    business: config.business,
+    siteUrl: `${SITE_ROOT}/`,
+    logoUrl: LOGO_URL,
+    imageUrl: SHARE_IMAGE_URL,
+    areasServed,
+    googleProfileUrl: config.googleReviews.profileUrl
+  });
 
   return render(template, { jsonLd: JSON.stringify(jsonLd, null, 2) });
 }
@@ -917,12 +924,23 @@ function buildPage(route, locale, contentByRoute, commonByLocale) {
 
   const areasServed = content.areaServed || config.business.areasServed;
 
+  const canonicalUrl = absoluteUrl(route, locale);
+
   const finalHtml = render(layoutTemplate, {
     locale,
     title: content.title,
     metaDescription: content.metaDescription,
-    canonicalUrl: absoluteUrl(route, locale),
-    hreflangLinks: renderHreflangLinks(route),
+    headLinks: `  <link rel="canonical" href="${canonicalUrl}">\n${renderHreflangLinks(route)}`,
+    socialMeta: renderSocialMeta({
+      locale,
+      otherLocales: config.locales.filter((l) => l !== locale),
+      siteName: config.business.name,
+      title: content.title,
+      description: content.metaDescription,
+      url: canonicalUrl,
+      imageUrl: SHARE_IMAGE_URL,
+      imageAlt: common.shareImageAlt
+    }),
     assetBase: ASSET_BASE,
     localBusinessSchema: renderLocalBusinessSchema(areasServed),
     content: pageHtml
@@ -933,7 +951,54 @@ function buildPage(route, locale, contentByRoute, commonByLocale) {
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'index.html'), finalHtml);
 
-  return absoluteUrl(route, locale);
+  return canonicalUrl;
+}
+
+// GitHub Pages serves dist/404.html for any unknown path, in either locale,
+// so the page is bilingual: default-locale chrome with both messages in the
+// body. Kept out of the sitemap and marked noindex.
+function buildNotFoundPage(contentByRoute, commonByLocale) {
+  const locale = config.defaultLocale;
+  const common = commonByLocale[locale];
+  const homeRoute = getRoute('home');
+  const pageTemplate = fs.readFileSync(path.join(ROOT, 'templates', '404.html'), 'utf8');
+  const layoutTemplate = fs.readFileSync(path.join(ROOT, 'templates', 'layout.html'), 'utf8');
+
+  const messages = config.locales.map((l) => {
+    const { heading, body, homeLabel } = commonByLocale[l].notFound;
+    const tag = l === locale ? 'h1' : 'h2';
+    return [
+      `      <div class="not-found-message" lang="${l}">`,
+      `        <${tag}>${heading}</${tag}>`,
+      `        <p>${body}</p>`,
+      `        <a class="btn btn-primary" href="${absoluteUrl(homeRoute, l)}">${homeLabel}</a>`,
+      `      </div>`
+    ].join('\n');
+  });
+
+  const pageHtml = render(pageTemplate, {
+    assetBase: ASSET_BASE,
+    homeUrl: absoluteUrl(homeRoute, locale),
+    siteNavHtml: renderSiteNav(locale, common, contentByRoute, homeRoute),
+    mobileLangSwitchHtml: renderLangSwitchLink(locale, common, homeRoute, 'mobile-lang-switch'),
+    messagesHtml: messages.join('\n'),
+    whatsappHref: config.business.whatsapp,
+    footerCopyright: common.footer.copyright,
+    footerWhatsappLabel: common.footer.whatsappLabel
+  });
+
+  const finalHtml = render(layoutTemplate, {
+    locale,
+    title: common.notFound.title,
+    metaDescription: common.notFound.body,
+    headLinks: '  <meta name="robots" content="noindex">',
+    socialMeta: '',
+    assetBase: ASSET_BASE,
+    localBusinessSchema: '',
+    content: pageHtml
+  });
+
+  fs.writeFileSync(path.join(DIST, '404.html'), finalHtml);
 }
 
 // --- sitemap / robots -----------------------------------------------------
@@ -976,6 +1041,7 @@ function build() {
     }
   }
 
+  buildNotFoundPage(contentByRoute, commonByLocale);
   writeSitemap(urls);
   writeRobots();
 
