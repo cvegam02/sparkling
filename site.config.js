@@ -14,9 +14,10 @@ module.exports = {
     // Registered legal entity name. Used in the footer copyright and as
     // schema.org `legalName`; the brand `name` above stays as-is in headers/titles.
     legalName: "Rosa's Sparkling Clean & Management LLC",
-    // TODO: fill in with the real business phone number.
-    phone: null,
-    whatsapp: 'https://wa.me/10000000000',
+    // E.164-style for schema.org `telephone`; the same number is the
+    // WhatsApp line (wa.me takes digits only, country code first).
+    phone: '+1-813-834-1680',
+    whatsapp: 'https://wa.me/18138341680',
     areasServed: ['Ocala', 'Tampa', 'Spring Hill']
   },
 
