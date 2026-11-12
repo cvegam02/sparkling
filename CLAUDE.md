@@ -1,6 +1,6 @@
 # Sparkling Website
 
-Static marketing site for **Rosa's Sparkling Clean & Management** (property cleaning/staging/prep business, Ocala/Tampa/Spring Hill, FL). Bilingual (EN/ES), deployed to GitHub Pages via GitHub Actions. No backend, no database, no server-rendered logic.
+Static marketing site for **Rosa's Sparkling Clean & Management** (property cleaning/staging/prep business, Ocala/Tampa/Spring Hill, FL). Bilingual (EN/ES), deployed to GitHub Pages via GitHub Actions at https://rosasparkling.com. No backend, no database, no server-rendered logic.
 
 Full design/architecture: `docs/superpowers/specs/2026-09-17-sparkling-website-design.md`.
 
@@ -18,7 +18,7 @@ Full design/architecture: `docs/superpowers/specs/2026-09-17-sparkling-website-d
 - **`docs/design-reference.html` is a frozen design mockup, not the live site.** It used to live at the project root as `index.html`, got mistaken for the real homepage, and got hand-edited — that's why it was moved. Don't move it back, don't treat it as a page to update with real content/links.
 - **Two build outputs exist, both gitignored, never edit either by hand:**
   - `dist/` — from `npm run build`. Production output, internal links point at the real production `baseUrl`. This is what CI deploys. You don't need to look at it locally.
-  - `dist-preview/` — from `npm run preview`. Local-only output, internal links point at `http://localhost:5050/sparkling/` instead, so clicking around doesn't jump to a domain that isn't live. **This is the only thing to use for local review.**
+  - `dist-preview/` — from `npm run preview`. Local-only output, internal links point at `http://localhost:5050/sparkling/` instead, so clicking around doesn't jump to the live production site. **This is the only thing to use for local review.**
 - **`npm run preview` does not auto-rebuild on file changes.** It's a one-shot build + static server. After editing `content/`, `templates/`, or `assets/css/main.css`, the already-running preview server keeps serving stale files until you rebuild. If a preview server is already running, run `node scripts/preview.js` alone to refresh `dist-preview/` in place (no need to kill/restart the server — it just serves whatever is on disk, so a browser refresh picks up the new files). Don't manually copy `dist/` into a temp folder to "preview" it — that's how changes got lost once already.
 - **Never use Chrome/browser automation to validate a change, period — not even for JS runtime behavior.** The user does all visual/browser review themselves. Confirm changes by reading the CSS/HTML, running `curl`, or checking `dist-preview/` output directly; then tell the user it's ready for them to review. Only touch the browser tools if the user explicitly asks you to.
 - **CSS gotcha — `<img>` + `aspect-ratio` inside a flex/grid container:** if an `<img>` has HTML `width`/`height` attributes (all content images do, for layout-shift prevention) and its CSS sets `aspect-ratio` without also setting `height: auto`, Chrome can ignore the `aspect-ratio` and render the image at its raw intrinsic height instead of scaling with `width`. Always pair `aspect-ratio` with `height: auto` on any image rule (see `.service-photo`, `.interior-hero-media img` in `assets/css/main.css`).
@@ -48,4 +48,3 @@ WhatsApp is the primary contact channel. The quote calculator computes an estima
 - Full page copy (Content Blueprint) — owner has it, not yet shared.
 - Logo / brand colors — owner has them, not yet shared.
 - Google Business Profile (manual setup, outside this repo) — reviews section is a placeholder until it exists.
-- Custom domain — site currently targets the default GitHub Pages subdomain; base URL is a single config value for an easy switch later.

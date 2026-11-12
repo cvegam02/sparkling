@@ -4,9 +4,7 @@
 // data used to build hreflang pairs, sitemap URLs, and LocalBusiness schema.
 
 module.exports = {
-  // TODO: switch to the custom domain once one is bought. Until then this is
-  // the GitHub Pages default subdomain for this repo.
-  baseUrl: 'https://cvegam02.github.io/sparkling',
+  baseUrl: 'https://rosasparkling.com',
 
   defaultLocale: 'en',
   locales: ['en', 'es'],

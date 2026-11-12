@@ -26,7 +26,7 @@ Generates the site into `dist/` (gitignored). Every push to `main` also triggers
 npm run preview
 ```
 
-Builds the site into `dist-preview/` and serves it at `http://localhost:5050/sparkling/`. Unlike a plain `npm run build`, every link in this preview points back at `localhost` instead of the real `baseUrl` from `site.config.js` — so clicking around (services, areas, the calculator) stays on your machine instead of jumping to a domain that isn't live yet. Stop the server with Ctrl+C; `dist-preview/` is gitignored.
+Builds the site into `dist-preview/` and serves it at `http://localhost:5050/sparkling/`. Unlike a plain `npm run build`, every link in this preview points back at `localhost` instead of the real `baseUrl` from `site.config.js` — so clicking around (services, areas, the calculator) stays on your machine instead of jumping to the live production site. Stop the server with Ctrl+C; `dist-preview/` is gitignored.
 
 ## Editing page content
 
@@ -69,12 +69,12 @@ The reviews section on the home page and area pages shows a clean placeholder un
 
 No code changes needed for either step.
 
-## Adding a custom domain
+## Custom domain
 
-`site.config.js` has one `baseUrl` value at the top of the file. It currently points at the default GitHub Pages address. Once you buy a domain:
+The site lives at **https://rosasparkling.com**, set as the single `baseUrl` value at the top of `site.config.js`. The domain's DNS points at GitHub Pages and the domain is configured in the repository's Settings → Pages. If the domain ever changes:
 
-1. Point the domain's DNS at GitHub Pages (GitHub's docs walk through this — search "GitHub Pages custom domain").
-2. Add the domain in the repository's Settings → Pages.
+1. Point the new domain's DNS at GitHub Pages (GitHub's docs walk through this — search "GitHub Pages custom domain").
+2. Update the domain in the repository's Settings → Pages.
 3. Update `baseUrl` in `site.config.js` to the new domain.
 4. Run `npm run build` and redeploy.
 
